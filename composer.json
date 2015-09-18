@@ -16,7 +16,7 @@
             "url": "https://github.com/gios-asu/nectary.git",
             "type": "git"
         },
-    ]
+    ],
     "require": {
         "gios-asu/nectary": "dev-develop",
         "xamin/handlebars.php": "dev-master"
