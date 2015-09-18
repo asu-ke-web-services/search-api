@@ -1,0 +1,28 @@
+{
+    "name": "gios-asu/search-api",
+    "description": Search API for documents, data, research, people, etc",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "The Global Institute of Sustainability",
+            "email": "giosweb@asu.edu"
+        }
+    ],
+    "autoload": {
+        "classmap" : [ "src/" ]
+    },
+     "repositories": [
+        {
+            "url": "https://github.com/gios-asu/nectary.git",
+            "type": "git"
+        },
+    ]
+    "require": {
+        "gios-asu/nectary": "dev-develop",
+        "xamin/handlebars.php": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*",
+        "satooshi/php-coveralls": ">=0.6"
+    }
+}
