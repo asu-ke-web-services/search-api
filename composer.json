@@ -1,6 +1,6 @@
 {
     "name": "gios-asu/search-api",
-    "description": Search API for documents, data, research, people, etc",
+    "description": "Search API for documents, data, research, people, etc",
     "license": "MIT",
     "authors": [
         {
