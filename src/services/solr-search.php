@@ -2,6 +2,8 @@
 
 namespace Search_Api\Services;
 
-class Solr_Search {
+use Search_APi\Services\Search;
+
+class Solr_Search implements Search {
 
 }
