@@ -1,6 +1,6 @@
 <?php
 
-namespace Search_Api\Services;
+namespace Search_Api\Providers;
 
 use Search_APi\Services\Search;
 
