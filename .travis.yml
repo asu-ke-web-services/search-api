@@ -16,6 +16,7 @@ before_script:
 
 script:
   - vendor/bin/phpunit --coverage-clover coverage/clover.xml
+  - vendor/bin/phpspec run -c .phpspec.yml 
 
 after_script:
   - php vendor/bin/coveralls -v

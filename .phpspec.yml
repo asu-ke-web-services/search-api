@@ -1,0 +1,6 @@
+bootstrap: test/support/phpspec.php
+code_generation: false
+formatter.name: dot
+suites:
+  SearchApi_suite:
+    spec_path: test

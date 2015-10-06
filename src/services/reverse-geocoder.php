@@ -1,6 +1,6 @@
 <?php
 
-namespace Search_Api\Services;
+namespace SearchApi\Services;
 
-interface Reverse_Geocoder {
+interface ReverseGeocoder {
 }
