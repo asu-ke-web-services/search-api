@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
-         bootstrap="phpunit.php"
+         bootstrap="test/support/phpunit.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
@@ -13,18 +13,18 @@
          verbose="true"
 >
     <testsuites>
-        <testsuite name="Search API Unit Test Suite">
-            <directory suffix="-test.php">./tests/unit</directory>
+        <testsuite name="Unit-Test-Suite">
+            <directory suffix="-Test.php">test/unit</directory>
         </testsuite>
     </testsuites>
     <testsuites>
         <testsuite name="Search API Integration Test Suite">
-            <directory suffix="-test.php">./tests/integration</directory>
+            <directory suffix="-Test.php">test/integration</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory>
+            <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
     <logging>
