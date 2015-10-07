@@ -2,14 +2,14 @@
 /**
  * Search Engine Unit test
  */
-namespace Search_Api\Test;
+namespace SearchApi\Test\Unit;
 
-use Search_Api;
+use SearchApi;
 
 class Search_Engine_App_Test extends \PHPUnit_Framework_TestCase {
 
   public function test_that_the_class_is_defined() {
-    $this->assertTrue( class_exists( 'Search_Api\Search_Engine' ) );
+    $this->assertTrue( class_exists( 'SearchApi\SearchEngine' ) );
   }
 
 }

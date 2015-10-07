@@ -1,9 +1,9 @@
 <?php
 
-namespace Search_Api\Providers;
+namespace SearchApi\Providers;
 
-use Search_Api\Services\Search;
+use SearchApi\Services\Search;
 
-class Solr_Search implements Search {
+class SolrSearch implements Search {
 
 }

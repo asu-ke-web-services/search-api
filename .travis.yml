@@ -4,9 +4,10 @@ php:
   - 5.5.9
   - 5.5
   - 5.6
-  - 7.0
-  - nightly
-  - hhvm
+  #  Currently 7.+ and hhvm dont support xdebug
+  # - 7.0
+  # - nightly
+  # - hhvm
 
 install:
   - composer install --no-interaction --prefer-source
@@ -15,7 +16,9 @@ before_script:
   - mkdir coverage
 
 script:
-  - vendor/bin/phpunit --coverage-clover coverage/clover.xml
+  - vendor/bin/phpunit # --coverage-clover /tmp/coverage/clover.xml
+  - vendor/bin/phpspec run -c .phpspec.yml 
 
 after_script:
+  - vendor/bin/phpcov merge --clover coverage.xml coverage
   - php vendor/bin/coveralls -v

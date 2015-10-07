@@ -1,8 +1,8 @@
 <?php
 
-namespace Search_Api\Providers;
+namespace SearchApi\Providers;
 
-use Search_Api\Services\Reverse_Geocoder;
+use SearchApi\Services\ReverseGeocoder;
 
-class Google_Reverse_Geocoder implements Reverse_Geocoder {
+class GoogleReverseGeocoder implements ReverseGeocoder {
 }

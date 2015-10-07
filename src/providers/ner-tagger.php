@@ -1,8 +1,8 @@
 <?php
 
-namespace Search_Api\Providers;
+namespace SearchApi\Providers;
 
-use Search_Api\Services\Tagger;
+use SearchApi\Services\Tagger;
 
-class Ner_Tagger implements Tagger {
+class NerTagger implements Tagger {
 }

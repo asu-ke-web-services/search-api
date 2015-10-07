@@ -1,6 +1,6 @@
 <?php
 
-namespace Search_Api\Models;
+namespace SearchApi\Models;
 
-class Search_Request {
+class SearchRequest {
 }

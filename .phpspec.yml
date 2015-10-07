@@ -1,0 +1,14 @@
+bootstrap: test/support/phpspec.php
+code_generation: false
+formatter: dot
+
+suites:
+  SearchApi_suite:
+    spec_path: test
+
+extensions:
+  - PhpSpec\Extension\CodeCoverageExtension
+
+code_coverage:
+  output: coverage/phpspec.cov
+  format: php
