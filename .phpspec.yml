@@ -10,5 +10,5 @@ extensions:
   - PhpSpec\Extension\CodeCoverageExtension
 
 code_coverage:
-  output: coverage/phpspec.phpcoverage
+  output: coverage/phpspec.cov
   format: php
