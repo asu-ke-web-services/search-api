@@ -15,8 +15,9 @@ before_script:
   - mkdir coverage
 
 script:
-  - vendor/bin/phpunit --coverage-clover coverage/clover.xml
+  - vendor/bin/phpunit # --coverage-clover /tmp/coverage/clover.xml
   - vendor/bin/phpspec run -c .phpspec.yml 
 
 after_script:
+  - vendor/bin/phpcov merge --clover coverage.xml coverage
   - php vendor/bin/coveralls -v
