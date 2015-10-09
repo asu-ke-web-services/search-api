@@ -11,6 +11,8 @@ php:
 
 install:
   - composer install --no-interaction --prefer-source
+  - composer create-project wp-coding-standards/wpcs:dev-master --no-dev -n standards/wpcs
+  - ./vendor/bin/phpcs -vvv -w --config-set installed_paths '../../../standards/gios/,../../../standards/wpcs/'
 
 before_script:
   - mkdir coverage
@@ -18,6 +20,7 @@ before_script:
 script:
   - vendor/bin/phpunit # --coverage-clover /tmp/coverage/clover.xml
   - vendor/bin/phpspec run -c .phpspec.yml 
+  - vendor/bin/phpcs --standard=GIOS --ignore= ./src
 
 after_script:
   - vendor/bin/phpcov merge --clover coverage.xml coverage
