@@ -27,6 +27,7 @@
         "phpspec/phpspec": "~2.0",
         "phpunit/phpcov": "*",
         "henrikbjorn/phpspec-code-coverage": "~1.0",
-        "ext-xdebug": ">=2.1.4"
+        "ext-xdebug": ">=2.1.4",
+        "squizlabs/php_codesniffer": "2.*"
     }
 }
