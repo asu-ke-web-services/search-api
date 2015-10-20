@@ -43,5 +43,4 @@ class SearchEngineSpec extends ObjectBehavior {
     $search_results = $this->handle_request( $request );
     $search_results->results->shouldContain( 'foo' );
   }
-
 }
