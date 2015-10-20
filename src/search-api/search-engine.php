@@ -10,6 +10,11 @@ use SearchApi\Models as Models;
 class SearchEngine {
 
   public function handle_request( Models\SearchRequest $request ) {
+    if ( empty( $request ) ) {
+      // handle an empty request
+      return new Models\SearchResult();
+    }
+    // do stuff with $request
     return new Models\SearchResult();
   }
 }
