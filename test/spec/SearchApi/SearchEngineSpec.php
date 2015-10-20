@@ -22,12 +22,19 @@ class SearchEngineSpec extends ObjectBehavior {
     $this->handle_request( $empty_search_request )->shouldReturnAnInstanceOf( 'SearchApi\Models\SearchResult' );
   }
 
-  /** Step 1 */
-  function it_should_return_results() {
+  /** Initial specifications */
+  function it_should_return_non_empty_results() {
     $request = new Models\SearchRequest();
     $request->text = 'foo';
     $search_results = $this->handle_request( $request );
     $search_results->results->shouldNotBeEmpty();
+  }
+
+  function it_should_return_multiple_results() {
+    $request = new Models\SearchRequest();
+    $request->text = 'foo';
+    $search_results = $this->handle_request( $request );
+    $search_results->count->shouldBeGreaterThan( 0 );
   }
 
   function it_should_return_the_search_text_in_results() {
@@ -37,10 +44,4 @@ class SearchEngineSpec extends ObjectBehavior {
     $search_results->results->shouldContain( 'foo' );
   }
 
-  function it_should_return_multiple_results() {
-    $request = new Models\SearchRequest();
-    $request->text = 'foo';
-    $search_results = $this->handle_request( $request );
-    $search_results->count->shouldBeGreaterThan( 0 );
-  }
 }
