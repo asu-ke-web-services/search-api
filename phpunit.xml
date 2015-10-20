@@ -14,12 +14,12 @@
 >
     <testsuites>
         <testsuite name="Unit-Test-Suite">
-            <directory suffix="-Test.php">test/unit</directory>
+            <directory suffix="-test.php">test/unit</directory>
         </testsuite>
     </testsuites>
     <testsuites>
         <testsuite name="Search API Integration Test Suite">
-            <directory suffix="-Test.php">test/integration</directory>
+            <directory suffix="-test.php">test/integration</directory>
         </testsuite>
     </testsuites>
     <filter>

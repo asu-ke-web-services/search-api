@@ -52,6 +52,17 @@
     <property name="checkClosures" value="true" />
   </rule>
 
+  <rule ref="Squiz.PHP.CommentedOutCode"/>
+  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+  <rule ref="Generic.Commenting.Todo"/>
+  <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+
+  <!-- phpspec likes files named with TitleCase -->
+  <rule ref="Generic.Files.LowercasedFilename">
+      <exclude-pattern>*/test/spec/*</exclude-pattern>
+  </rule>
+
   <!-- TODO write a rule for opening brace must be on same line as class declaration -->
 
   <!-- TODO write a rule for no empty lines after function declaration -->
