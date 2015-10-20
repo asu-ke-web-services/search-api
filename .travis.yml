@@ -1,5 +1,12 @@
 language: php
 
+sudo: false
+
+cache: 
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+
 php:
   - 5.5.9
   - 5.5
@@ -20,7 +27,7 @@ before_script:
 script:
   - vendor/bin/phpunit # --coverage-clover /tmp/coverage/clover.xml
   - vendor/bin/phpspec run -c .phpspec.yml 
-  - vendor/bin/phpcs --standard=GIOS --ignore= ./src
+  - vendor/bin/phpcs --standard=GIOS --ignore= ./src ./test
 
 after_script:
   - vendor/bin/phpcov merge --clover coverage.xml coverage

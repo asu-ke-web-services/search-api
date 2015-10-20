@@ -9,4 +9,8 @@ use SearchApi\Services\Search;
  */
 class SolrSearch implements Search {
 
+  function query( $query_text ) {
+    // This is just an placeholder
+    return array( $query_text );
+  }
 }
