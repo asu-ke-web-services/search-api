@@ -28,7 +28,7 @@ vendor/bin/phpspec run -c .phpspec.yml
 
 ## To check the coding standards:
 ```
-vendor/bin/phpcs --standard=GIOS src
+vendor/bin/phpcs --standard=GIOS src test
 ```
 
 
