@@ -10,14 +10,14 @@ use SearchApi\Services\Search as Search;
  * returns search results.
  */
 class SearchEngine {
-  protected $searchService;
+  protected $search_service;
 
   public function __construct() {
-    $this->searchService = new Providers\SolrSearch();
+    $this->search_service = new Providers\SolrSearch();
   }
 
-  public function useSearchService( Search $search ) {
-    $this->searchService = $search;
+  public function use_search_service( Search $search ) {
+    $this->search_service = $search;
   }
 
   public function handle_request( Models\SearchRequest $request ) {
@@ -28,8 +28,8 @@ class SearchEngine {
 
     // do stuff with $request
     $response = new Models\SearchResult();
-    $response->results = $this->searchService->query($request->text);
-    $response->count = count($response->results);
+    $response->results = $this->search_service->query( $request->text );
+    $response->count = count( $response->results );
     return $response;
   }
 }
