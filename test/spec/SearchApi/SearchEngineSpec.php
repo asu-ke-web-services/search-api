@@ -22,7 +22,7 @@ class SearchEngineSpec extends ObjectBehavior {
     $this->handle_request( $empty_search_request )->shouldReturnAnInstanceOf( 'SearchApi\Models\SearchResult' );
   }
 
-  function it_should_return_a_result_when_searching_for_foo(Search $search) {
+  function it_should_return_a_result_when_searching_for_foo( Search $search ) {
     $search->query( 'foo' )->shouldBeCalled()->willReturn( array( 'foo' ) );
     $this->use_search_service( $search );
 
