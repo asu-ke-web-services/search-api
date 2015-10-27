@@ -15,6 +15,9 @@ class SearchEngine {
       return new Models\SearchResult();
     }
     // do stuff with $request
-    return new Models\SearchResult();
+    $response = new Models\SearchResult();
+    $response->results = array("foo", "test");
+    $response->count = 2;
+    return $response;
   }
 }
