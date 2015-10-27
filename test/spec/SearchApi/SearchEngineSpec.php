@@ -4,6 +4,7 @@ namespace spec\SearchApi;
 
 use SearchApi;
 use SearchApi\Models;
+use SearchApi\Services\Search;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -12,35 +13,23 @@ use Prophecy\Argument;
  * SearchEngineSpec - Spec integration test for the search engine (higher level functions)
  */
 class SearchEngineSpec extends ObjectBehavior {
-
   function it_is_initializable() {
     $this->shouldHaveType( 'SearchApi\SearchEngine' );
   }
 
-  function it_should_handle_requests() {
+  function it_should_return_an_empty_response_when_given_an_empty_request() {
     $empty_search_request = new Models\SearchRequest();
     $this->handle_request( $empty_search_request )->shouldReturnAnInstanceOf( 'SearchApi\Models\SearchResult' );
   }
 
-  /** Initial specifications */
-  function it_should_return_non_empty_results() {
-    $request = new Models\SearchRequest();
-    $request->text = 'foo';
-    $search_results = $this->handle_request( $request );
-    $search_results->results->shouldNotBeEmpty();
-  }
+  function it_should_return_a_result_when_searching_for_foo(Search $search) {
+    $search->query( "foo" )->shouldBeCalled()->willReturn( array( "foo" ) );
+    $this->useSearchService( $search );
 
-  function it_should_return_multiple_results() {
-    $request = new Models\SearchRequest();
-    $request->text = 'foo';
-    $search_results = $this->handle_request( $request );
-    $search_results->count->shouldBeGreaterThan( 0 );
-  }
+    $foo_request = new Models\SearchRequest();
+    $foo_request->text = "foo";
 
-  function it_should_return_the_search_text_in_results() {
-    $request = new Models\SearchRequest();
-    $request->text = 'foo';
-    $search_results = $this->handle_request( $request );
-    $search_results->results->shouldContain( 'foo' );
+    $response = $this->handle_request( $foo_request );
+    $response->results->shouldHaveCount( 1 );
   }
 }
