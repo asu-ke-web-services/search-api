@@ -12,4 +12,12 @@ class SearchTerm {
   public $related;        // (string[])   Array of related keywords
   public $count;          // (int)        Occurences of keyword
   public $isUserInput;    // (bool)       TRUE if term is a user-specified keyword, FALSE if it is not
+
+  function __construct( $value, $category, $related, $count, $isUserInput ) {
+    $this->value = $value;
+    $this->category = $category;
+    $this->related = $related;
+    $this->count = $count;
+    $this->isUserInput = $isUserInput;
+  }
 }
