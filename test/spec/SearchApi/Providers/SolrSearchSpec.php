@@ -21,38 +21,21 @@ class SolrSearchSpec extends ObjectBehavior {
   function it_should_call_query_builder( QueryBuilder $queryBuilder ) {
     $this->beConstructedWith( $queryBuilder );
 
-    $keywords = array( new Models\SearchTerm() );
+    $queryBuilder->build_query( 'test', null )->shouldBeCalled();
 
-    $queryBuilder->build_query( $keywords )->shouldBeCalled();
-
-    $this->query( $keywords );
+    $this->query( 'test' );
   }
 
-  function it_should_execute_query( QueryBuilder $queryBuilder ) {
-    $this->beConstructedWith( $queryBuilder );
+  function it_should_return_null_when_keywords_empty() {
+    $result = $this->query( null );
 
-    $keywords = array( new Models\SearchTerm() );
-
-    $queryString = 'query';
-    $queryBuilder->build_query( Argument::any() )->shouldBeCalled()->willReturn( $queryString );
-
-    $this->execute_query( $queryString )->shouldBeCalled();
-
-    $this->query( $keywords );
+    $result->shouldBeNull();
   }
 
-  function it_should_return_search_result_if_keywords_are_nonempty( QueryBuilder $queryBuilder ) {
-    $this->beConstructedWith( $queryBuilder );
-
-    $keywords = array( new Models\SearchTerm() );
-
-    $queryBuilder->build_query( Argument::any() )->shouldBeCalled();
-    $this->execute_query( Argument::any() )->shouldBeCalled()->willReturn( );
-
-    $searchResult = new Models\SearchResult();
-    $this->parse_result( Argument::any() )->shouldBeCalled()->willReturn( $searchResult );
-
+  function it_should_return_search_result_when_keywords_not_empty() {
+    $keywords = array( new Models\SearchTerm( 'test' ) );
     $result = $this->query( $keywords );
+
     $result->shouldHaveType( 'SearchApi\Models\SearchResult' );
   }
 }
