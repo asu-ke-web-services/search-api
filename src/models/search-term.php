@@ -19,7 +19,7 @@ class SearchTerm {
   public $count;
   public $isUserInput;
 
-  function __construct( $value, $category, $related, $count, $isUserInput ) {
+  function __construct( $value = null, $category = null, $related = null, $count = null, $isUserInput = null ) {
     $this->value = $value;
     $this->category = $category;
     $this->related = $related;
