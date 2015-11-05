@@ -22,7 +22,7 @@ class Google_Geocoder_Mock {
         '"formatted_address" : "New York, USA",' +
         '"formatted_address" : "United States",';
       } else {
-        return '"formatted_address" : "277 Bedford Avenue, Brooklyn, NY 11211, USA",';
+        return '"formatted_address" : "277 Bedford Avenue, Brooklyn, NY 11211, USA"';
       }
     } else {
       return 'Invalid Key';
