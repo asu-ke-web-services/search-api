@@ -1,6 +1,6 @@
 <?php
 
-namespace SearchApi\Test\Support;
+namespace SearchApi\Test\Support\Mocks;
 
 use SearchApi\Models as Models;
 
