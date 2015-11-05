@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Providers;
+namespace spec\Support;
 
 use SearchApi;
 use SearchApi\Models as Models;
@@ -9,9 +9,9 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * Geo_Parser_Spec - Spec integration test for the Geo Parser Geocoder (higher level functions)
+ * GeoParserSpec - Spec integration test for the Geo Parser Geocoder (higher level functions)
  */
-class Geo_Parser_Spec extends ObjectBehavior {
+class GeoParserSpec extends ObjectBehavior {
   function it_is_initializable() {
     $this->shouldHaveType( 'SearchApi\Support\Geo_Parser' );
   }
