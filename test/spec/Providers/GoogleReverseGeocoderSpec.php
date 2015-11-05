@@ -2,7 +2,8 @@
 
 namespace spec\Providers;
 
-use SearchApi\Providers;
+use SearchApi;
+
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -13,5 +14,16 @@ use Prophecy\Argument;
 class GoogleReverseGeocoderSpec extends ObjectBehavior {
   function it_is_initializable() {
     $this->shouldHaveType( 'SearchApi\Providers\GoogleReverseGeocoder' );
+  }
+  
+  function it_should_return_a_result() {
+  	$geo_cordinate = new Models\GeoCoordinate();
+  	$key = 'geokey';
+  	$this->reverse_geocoding_with_latlin( $geo_cordinate, $key );
+  }
+  
+  function it_should_return_invalid_key() {
+  	$this->reverse_geocoding_with_latlin( 'place_id_var', 'bad_key_test_var')
+  	  ->shouldBeCalled()->willReturn( 'Invalid Key' );
   }
 }
