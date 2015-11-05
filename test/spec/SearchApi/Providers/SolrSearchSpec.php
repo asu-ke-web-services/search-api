@@ -21,7 +21,7 @@ class SolrSearchSpec extends ObjectBehavior {
   function it_should_call_query_builder( QueryBuilder $queryBuilder ) {
     $this->beConstructedWith( $queryBuilder );
 
-    $queryBuilder->build_query( 'test', null )->shouldBeCalled();
+    $queryBuilder->build( 'test', null )->shouldBeCalled();
 
     $this->query( 'test' );
   }

@@ -9,5 +9,5 @@ namespace SearchApi\Builders;
  *   Build a query string from provided search terms and search options
  */
 interface QueryBuilder {
-  function build_query( $keywords, $options = null );
+  function build( $keywords, $options = null );
 }

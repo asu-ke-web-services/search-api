@@ -39,7 +39,7 @@ class SolrSearch implements Search {
       return null;
     }
 
-    $queryString = $this->queryBuilder->build_query( $keywords, $options );
+    $queryString = $this->queryBuilder->build( $keywords, $options );
 
     // do something with query string
 

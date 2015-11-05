@@ -11,7 +11,7 @@ use SearchApi\Builders\QueryBuilder;
  *   Build a query string from provided search terms and search options
  */
 class SolrQueryBuilder implements QueryBuilder {
-  function build_query( $keywords, $options = null ) {
+  function build( $keywords, $options = null ) {
     return null;
   }
 }
