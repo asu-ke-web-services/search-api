@@ -3,7 +3,7 @@
 namespace spec\Providers;
 
 use SearchApi;
-
+use SearchApi\Models as Models;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -17,7 +17,7 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
   }
   
   function it_should_return_a_result() {
-  	$geo_cordinate = new Models\GeoCoordinate();
+  	$geo_cordinate = new Models\GeoCoordinate( 123, 456 );
   	$key = 'geokey';
   	$this->reverse_geocoding_with_latlin( $geo_cordinate, $key );
   }
