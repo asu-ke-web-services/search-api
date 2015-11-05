@@ -19,7 +19,8 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
   function it_should_return_a_result() {
   	$geo_cordinate = new Models\GeoCoordinate( 123, 456 );
   	$key = 'geokey';
-  	$this->reverse_geocoding_with_latlin( $geo_cordinate, $key );
+  	$this->reverse_geocoding_with_latlin( $geo_cordinate, $key )
+  	->shouldBeCalled()->shouldReturn( '277 Bedford Avenue, Brooklyn, NY 11211, USA' );
   }
 
   function it_should_return_invalid_key() {
