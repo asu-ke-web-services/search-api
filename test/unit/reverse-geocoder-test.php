@@ -1,7 +1,7 @@
 <?php
 /**
  * Search Engine Unit test
-*/
+ */
 namespace SearchApi\Test\Unit;
 
 use SearchApi;
@@ -11,7 +11,7 @@ use SearchApi;
  */
 class Reverse_Geocoder_Test extends \PHPUnit_Framework_TestCase {
 
-	public function test_that_the_class_is_defined() {
-		$this->assertTrue( class_exists( 'SearchApi\Providers\GoogleReverseGeocoder' ) );
-	}
+  public function test_that_the_class_is_defined() {
+    $this->assertTrue( class_exists( 'SearchApi\Providers\GoogleReverseGeocoder' ) );
+  }
 }
