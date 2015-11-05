@@ -11,7 +11,11 @@ use SearchApi;
  */
 class Reverse_Geocoder_Test extends \PHPUnit_Framework_TestCase {
 
-  public function test_that_the_class_is_defined() {
+  public function test_that_the_class_GoogleReverseGeocoder_is_defined() {
     $this->assertTrue( class_exists( 'SearchApi\Providers\GoogleReverseGeocoder' ) );
+  }
+  
+  public function test_that_the_class_Geo_Parser_is_defined() {
+  	$this->assertTrue( class_exists( 'SearchApi\Support\Geo_Parser' ) );
   }
 }
