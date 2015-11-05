@@ -12,7 +12,7 @@ use SearchApi\Services\ReverseGeocoder as ReverseGeocoder;
  * location via GoogleMaps.
  */
 class GoogleReverseGeocoder implements ReverseGeocoder {
-  public function reverse_geocoding_with_latlin( Models\GeoCoordinate $geo_coordinate, $key ) {
+  public function reverse_geocoding_with_latlng( Models\GeoCoordinate $geo_coordinate, $key ) {
   	$parser = new Support\Geo_Parser();
 
     $geocoding_results = Test\Support\Google_Geocoder_Mock::reverse_geocoding( $geo_coordinate, $key );
