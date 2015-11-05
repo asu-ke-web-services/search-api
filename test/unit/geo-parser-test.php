@@ -7,7 +7,7 @@ namespace SearchApi\Test\Unit;
 use SearchApi;
 
 /**
- * Reverse_Geocoder_Test - Unit test for the reverse geocoder (lower level functions)
+ * Reverse_Geocoder_Test - Unit test for the geo parser (lower level functions)
  */
 class Geo_Parser_Test extends \PHPUnit_Framework_TestCase {
 
