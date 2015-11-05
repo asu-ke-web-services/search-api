@@ -5,7 +5,7 @@ namespace SearchApi\Builders;
 use SearchApi\Builders\QueryBuilder;
 
 /**
- * Class SolrQueryBuilder - Responsible for building a query string for SolrSearch
+ * Responsible for building a query string for SolrSearch
  */
 class SolrQueryBuilder implements QueryBuilder {
   /**
