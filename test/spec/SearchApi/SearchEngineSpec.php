@@ -23,12 +23,14 @@ class SearchEngineSpec extends ObjectBehavior {
   }
 
   function it_should_return_a_result_when_searching_for_foo( Search $search ) {
+    $this->beConstructedWith($search);
     $search->query( 'foo' )->shouldBeCalled()->willReturn( array( 'foo' ) );
 
+    
     $foo_request = new Models\SearchRequest();
     $foo_request->text = 'foo';
 
-    $response = $this->handle_request( $foo_request, $search );
-    $response->results->shouldHaveCount( 1 );
+    $response = $this->handle_request( $foo_request );
+    $response->results->shouldHaveCount( 1 ); 
   }
 }

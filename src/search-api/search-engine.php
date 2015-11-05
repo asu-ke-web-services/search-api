@@ -10,15 +10,20 @@ use SearchApi\Services\Search as Search;
  * returns search results.
  */
 class SearchEngine {
-  public function handle_request( Models\SearchRequest $request, Search $search = null ) {
-    // Use a default search service
-    if ( $search === null ) {
-      $search = new Providers\SolrSearch();
-    }
+  private $search;
 
+  public function __construct( Search $search = null ) {
+    if ( $search ) {
+      $this->search = $search;
+    } else {
+      $this->search = new Providers\SolrSearch();
+    }
+  }
+
+  public function handle_request( Models\SearchRequest $request ) {
     // do stuff with $request
     $response = new Models\SearchResult();
-    $response->results = $search->query( $request->text );
+    $response->results = $this->search->query( $request->text );
     $response->count = count( $response->results );
     return $response;
   }
