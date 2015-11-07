@@ -17,7 +17,6 @@ class GeoParserSpec extends ObjectBehavior {
   }
 
   function it_should_return_a_result() {
-  	$this->reverse_geocoder_parser( 'test' )->shouldBeCalled()
-  	->shouldReturn( '277 Bedford Avenue, Brooklyn, NY 11211, USA' );
+  	$this->reverse_geocoder_parser( 'test' )->shouldBeString();
   }
 }
