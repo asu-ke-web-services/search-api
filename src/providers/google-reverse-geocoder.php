@@ -11,17 +11,10 @@ use SearchApi\Services\ReverseGeocoder as ReverseGeocoder;
  * location via GoogleMaps.
  */
 class GoogleReverseGeocoder implements ReverseGeocoder {
-  public function reverse_geocoding_with_latlng( Models\GeoCoordinate $geo_coordinate, $key ) {
+  public function get_locations( Models\GeoCoordinate $geo_coordinate ) {
   	$parser = new Support\Geo_Parser();
 
-    $geocoding_results = Mocks\Google_Geocoder_Mock::reverse_geocoding( $geo_coordinate, $key );
+    //$geocoding_results = Mocks\Google_Geocoder_Mock reverse_geocoding( $geo_coordinate, $key );
     return $parser->reverse_geocoder_parser( $geocoding_results );
-  }
-
-  public function reverse_geocoding_with_place_id( $place_id, $key ) {
-  	$parser = new Support\Geo_Parser();
-
-  	$geocoding_results = Mocks\Google_Geocoder_Mock::reverse_geocoding( $place_id, $key );
-  	return $parser->reverse_geocoder_parser( $geocoding_results );
   }
 }
