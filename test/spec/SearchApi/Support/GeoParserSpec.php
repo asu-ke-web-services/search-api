@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Support;
+namespace spec\SearchApi\Support;
 
 use SearchApi;
 use SearchApi\Models as Models;
@@ -13,7 +13,7 @@ use Prophecy\Argument;
  */
 class GeoParserSpec extends ObjectBehavior {
   function it_is_initializable() {
-    $this->shouldHaveType( 'SearchApi\Support\Geo_Parser' );
+    $this->shouldHaveType( 'SearchApi\Support\GeoParser' );
   }
 
   function it_should_return_a_result() {

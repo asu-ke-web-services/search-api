@@ -3,7 +3,6 @@
 namespace SearchApi\Providers;
 
 use SearchApi\Models as Models;
-use SearchApi\Test\Support\Mocks as Mocks;
 use SearchApi\Support as Support;
 use SearchApi\Services\ReverseGeocoder as ReverseGeocoder;
 

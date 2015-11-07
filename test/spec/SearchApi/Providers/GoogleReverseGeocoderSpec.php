@@ -1,9 +1,10 @@
 <?php
 
-namespace spec\Providers;
+namespace spec\SearchApi\Providers;
 
 use SearchApi;
 use SearchApi\Models as Models;
+use SearchApi\Providers as Providers;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

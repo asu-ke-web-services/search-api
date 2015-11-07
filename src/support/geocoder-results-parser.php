@@ -5,7 +5,7 @@ namespace SearchApi\Support;
 /**
  * Class Geo_Parser - Parses the returned result from a Geocoder
  */
-class Geo_Parser {
+class GeoParser {
   public function reverse_geocoder_parser( $geocoder_results ) {
     // add code to parse either xml or json results returned by google
 
