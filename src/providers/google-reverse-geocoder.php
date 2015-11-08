@@ -4,6 +4,7 @@ namespace SearchApi\Providers;
 
 use SearchApi\Models as Models;
 use SearchApi\Support as Support;
+use SearchApi\Test\Support\Mocks as Mocks;
 use SearchApi\Services\ReverseGeocoder as ReverseGeocoder;
 
 /**
@@ -11,10 +12,20 @@ use SearchApi\Services\ReverseGeocoder as ReverseGeocoder;
  * location via GoogleMaps.
  */
 class GoogleReverseGeocoder implements ReverseGeocoder {
-  public function get_locations( Models\GeoCoordinate $geo_coordinate ) {
-  	$parser = new Support\Geo_Parser();
+  public $api_key;
 
-    //$geocoding_results = Mocks\Google_Geocoder_Mock reverse_geocoding( $geo_coordinate, $key );
+  public function __construct( $key = null ) {
+  	$this->api_key = $key;
+  }
+
+  public function get_locations( Models\GeoCoordinate $geo_coordinate ) {
+  	$parser = new Support\GeoParser();
+  	$mock = new Mocks\Google_Geocoder_Mock();
+  	$geocoding_results = $mock->reverse_geocoding( $geo_coordinate, $this->api_key );
+  	if ( $geocoding_results === 'Invalid Key' ) {
+  	  return 'Invalid Key';
+  	}
+
     return $parser->reverse_geocoder_parser( $geocoding_results );
   }
 }

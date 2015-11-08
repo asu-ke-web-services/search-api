@@ -18,14 +18,16 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
   }
 
   function it_should_return_a_result() {
+  	$this->api_key = 'geokey';
   	$geo_cordinate = new Models\GeoCoordinate( 123, 456 );
-  	$key = 'geokey';
-  	$this->reverse_geocoding_with_latlin( $geo_cordinate, $key )
-  	->shouldBeCalled()->shouldReturn( '277 Bedford Avenue, Brooklyn, NY 11211, USA' );
+  	$this->get_locations( $geo_cordinate )
+  	->shouldReturn( '277 Bedford Avenue, Brooklyn, NY 11211, USA' );
   }
 
   function it_should_return_invalid_key() {
-  	$this->reverse_geocoding_with_latlin( 'place_id_var', 'bad_key_test_var' )
-    ->shouldBeCalled()->willReturn( 'Invalid Key' );
+  	$this->api_key = 'bad_key_test';
+  	$geo_cordinate = new Models\GeoCoordinate( 123, 456 );
+  	$this->get_locations( $geo_cordinate )
+    ->shouldReturn( 'Invalid Key' );
   }
 }
