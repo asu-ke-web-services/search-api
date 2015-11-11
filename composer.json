@@ -19,7 +19,8 @@
     ],
     "require": {
         "gios-asu/nectary": "dev-develop",
-        "xamin/handlebars.php": "dev-master"
+        "xamin/handlebars.php": "dev-master",
+        "agentile/php-stanford-nlp": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.*",
