@@ -27,23 +27,27 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
 
   // returns array of terms based on latitude and longitude
   public function get_locations( Models\GeoCoordinate $geo_coordinate ) {
-  	// removing this soon vvv
-  	$mock = new Mocks\Google_Geocoder_Mock();
-    // "service" call
-  	$geocoding_results = $mock->reverse_geocoding( $geo_coordinate, $this->api_key );
+  	// check if need to ad key to url
+    if ( $this->api_key === null ) {
+      // add code to append key to url
+    }
 
-  	// check if need to add a key to the service call
-  	// currently after mock call -> will go to before service call once implemented
-  	if ( $this->api_key === null ) {
-  	  return $this->geo_parser->reverse_geocoder_parser( $geocoding_results );
-  	} else {
-      // checks if valid key -> will be romoved after service call implemented
-      if ( $this->api_key !== 'geokey' ) {
-      	// For now: set results to error message to indicate a bad key -> will be removed
-        $geocoding_results = $mock->error_message;
-      }
-      // else: build service call with key
-      return $this->geo_parser->reverse_geocoder_parser( $geocoding_results );
-  	}
+    // add "service" call
+    // temp mock results of service call
+    $geocoding_results = '"results from geocoding" : "results"';
+
+    // checks if valid key -> will be romoved after service call implemented
+    // and if key is used
+    if ( $this->api_key !== 'geokey' && $this->api_key !== null ) {
+      // For now: set results to error message to indicate a bad key -> will be removed
+      $geocoding_results =
+      '{'.
+		  '  "error_message": "The provided API key is invalid.",'.
+		  '  "results": [],'.
+		  '  "status": "REQUEST_DENIED"'.
+	    '}';
+    }
+    // else: build service call with key
+    return $this->geo_parser->reverse_geocoder_parser( $geocoding_results );
   }
 }
