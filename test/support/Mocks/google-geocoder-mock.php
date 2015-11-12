@@ -8,6 +8,13 @@ use SearchApi\Models as Models;
  * Class Google_Geocoder_Mock - basic mock of google's geocoder
  */
 class Google_Geocoder_Mock {
+  public $error_message =
+  '{
+		"error_message": "The provided API key is invalid.",
+		"results": [],
+		"status": "REQUEST_DENIED"
+	 }';
+
   public function reverse_geocoding( $latlin, $key ) {
     if ( $key === 'geokey' ) {
       if ( $latlin === null ) {
