@@ -13,19 +13,20 @@ use SearchApi\Services\ReverseGeocoder as ReverseGeocoder;
  */
 class GoogleReverseGeocoder implements ReverseGeocoder {
   public $api_key;
+	private $geo_parser;
 
-  public function __construct( $key = null ) {
+  public function __construct( $key = NULL, $parser = NULL ) {
   	$this->api_key = $key;
+  	$this->geo_parser = $parser;
   }
 
   public function get_locations( Models\GeoCoordinate $geo_coordinate ) {
-  	$parser = new Support\GeoParser();
   	$mock = new Mocks\Google_Geocoder_Mock();
   	$geocoding_results = $mock->reverse_geocoding( $geo_coordinate, $this->api_key );
   	if ( $geocoding_results === 'Invalid Key' ) {
   	  return 'Invalid Key';
   	}
 
-    return $parser->reverse_geocoder_parser( $geocoding_results );
+    return $this->geo_parser->reverse_geocoder_parser( $geocoding_results );
   }
 }
