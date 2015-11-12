@@ -17,9 +17,9 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
   function it_is_initializable() {
     $this->shouldHaveType( 'SearchApi\Providers\GoogleReverseGeocoder' );
   }
-  
+
   function it_should_have_key_null() {
-  	$this->api_key->shouldBe( NULL );
+  	$this->api_key->shouldBe( null );
   }
 
   function it_should_return_a_result() {
@@ -27,7 +27,7 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
   	$geo_cordinate = new Models\GeoCoordinate( 123, 456 );
   	$this->get_locations( $geo_cordinate )
   	->shouldReturn( '277 Bedford Avenue, Brooklyn, NY 11211, USA' );
-  }  
+  }
 
   function it_should_throw_invalid_key() {
   	$this->beConstructedWith( 'bad_key_test', new Support\GeoParser );

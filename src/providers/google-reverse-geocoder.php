@@ -13,9 +13,9 @@ use SearchApi\Services\ReverseGeocoder as ReverseGeocoder;
  */
 class GoogleReverseGeocoder implements ReverseGeocoder {
   public $api_key;
-	private $geo_parser;
+  private $geo_parser;
 
-  public function __construct( $key = NULL, $parser = NULL ) {
+  public function __construct( $key = null, $parser = null ) {
   	$this->api_key = $key;
   	$this->geo_parser = $parser;
   }
