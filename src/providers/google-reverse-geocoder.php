@@ -34,7 +34,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
 
     // add "service" call
     // temp mock results of service call
-    $geocoding_results = '"results from geocoding" : "results"';
+    $geocoding_results = '{"results from geocoding" : "results"}';
 
     // checks if valid key -> will be romoved after service call implemented
     // and if key is used
