@@ -27,11 +27,11 @@ class NerTaggerSpec extends ObjectBehavior {
     $test_result = $this->tagger_service( 'test' );
 
     $test_result->shouldBeArray();
-    for ( $count = 0; $count < count( $test_result ); $count++ ) {
-      $test_result[ $count ]->shouldBeArray();
-      $test_result[ $count ]->shouldHaveCount( 2 );
-      $test_result[ $count ][0]->shouldBeString();
-      $test_result[ $count ][1]->shouldBeString();
+    foreach ( $test_result as &$result ) {
+      $result->shouldBeArray();
+      $result->shouldHaveCount( 2 );
+      $result[0]->shouldBeString();
+      $result[1]->shouldBeString();
     }
 
     // Tests only for dummy return values
@@ -55,6 +55,5 @@ class NerTaggerSpec extends ObjectBehavior {
     $test_result[0]->text->shouldReturn( 'Phoenix' );
     $test_result[0]->type->shouldReturn( 'LOCATION' );
     $test_result[0]->relevance->shouldReturn( 1.0 );
-    $test_result[1]->relevance->shouldReturn( 0.5 );
   }
 }

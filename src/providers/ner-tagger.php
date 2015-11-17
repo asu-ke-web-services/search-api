@@ -62,8 +62,8 @@ class NerTagger implements Tagger {
       return null;
     }
 
-    for ( $count = 0; $count < count( $tagger_results ); $count++ ) {
-      $keywords[] = new Keyword( $tagger_results[ $count ][0], $tagger_results[ $count ][1], 1.0 / ( $count + 1 ) );
+    foreach ( $tagger_results as &$result ) {
+      $keywords[] = new Keyword( $result[0], $result[1], 1.0 );
     }
 
     return $keywords;
