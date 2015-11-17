@@ -24,21 +24,21 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
 
   function it_should_return_a_result_without_key() {
   	$this->beConstructedWith( null, new Support\GeoParser );
-  	$geo_cordinate = new Models\GeoCoordinate( 123, 456 );
+  	$geo_cordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
   	$this->get_locations( $geo_cordinate )
   	->shouldReturn( '277 Bedford Avenue, Brooklyn, NY 11211, USA' );
   }
 
   function it_should_return_a_result_with_key() {
   	$this->beConstructedWith( 'geokey', new Support\GeoParser );
-  	$geo_cordinate = new Models\GeoCoordinate( 123, 456 );
+  	$geo_cordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
   	$this->get_locations( $geo_cordinate )
   	->shouldReturn( '277 Bedford Avenue, Brooklyn, NY 11211, USA' );
   }
 
   function it_should_throw_invalid_key() {
   	$this->beConstructedWith( 'bad_key_test', new Support\GeoParser );
-  	$geo_cordinate = new Models\GeoCoordinate( 123, 456 );
+  	$geo_cordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
     $this->shouldThrow( new \Exception( 'Invalid Key' ) )
     ->during( 'get_locations', array( $geo_cordinate ) );
   }

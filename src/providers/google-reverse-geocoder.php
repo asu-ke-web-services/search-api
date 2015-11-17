@@ -27,27 +27,33 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
 
   // returns array of terms based on latitude and longitude
   public function get_locations( Models\GeoCoordinate $geo_coordinate ) {
-  	// check if need to ad key to url
-    if ( $this->api_key === null ) {
-      // add code to append key to url
+    // code to call the google geocoder service
+    // creating base url
+    $service_url = 'https://maps.googleapis.com/maps/api/geocode/json?'.
+    "latlng={$geo_coordinate->lat},{$geo_coordinate->lng}";
+
+    // checking if api key is given, if so adding it to url
+    // second half of if statement is for testing purposes
+    if ( $this->api_key !== null && $this->api_key !== 'geokey' ) {
+    	$service_url = $service_url.'&key={$this->api_key}';
     }
 
-    // add "service" call
-    // temp mock results of service call
-    $geocoding_results = '{"results from geocoding" : "results"}';
+    // implementing a curl call to the service
+    $curl = curl_init($service_url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $geocoding_results = curl_exec($curl);
 
-    // checks if valid key -> will be romoved after service call implemented
-    // and if key is used
-    if ( $this->api_key !== 'geokey' && $this->api_key !== null ) {
-      // For now: set results to error message to indicate a bad key -> will be removed
-      $geocoding_results =
-      '{'.
-		  '  "error_message": "The provided API key is invalid.",'.
-		  '  "results": [],'.
-		  '  "status": "REQUEST_DENIED"'.
-	    '}';
+    // checking if the curl was successful
+    if ($geocoding_results === false) {
+    	$info = curl_getinfo($curl);
+    	curl_close($curl);
+    	throw new Exception('error occured during curl exec. Additioanl info: ' . var_export($info));
     }
-    // else: build service call with key
+
+    // closing the curl
+    curl_close($curl);
+
+    // calling parser
     return $this->geo_parser->reverse_geocoder_parser( $geocoding_results );
   }
 }
