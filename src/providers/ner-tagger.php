@@ -3,7 +3,7 @@
 namespace SearchApi\Providers;
 use SearchApi\Models\Keyword;
 use SearchApi\Services\Tagger;
-use SearchApi\Services\StanfordNLP\NERTagger as StanfordNERTagger;
+use StanfordNLP\NERTagger as StanfordNERTagger;
 
 /**
  * NerTagger - This is a tagger implementation that uses the Named Entity Recognizer and returns an array of keywords.
@@ -14,10 +14,8 @@ class NerTagger implements Tagger {
   public function get_tags( $request_string = '' ) {
     // Call the NER Tagger service
     $tagger_results = $this->call_tagger_service( $request_string );
-    // Parse the service results
-    $parsed_results = $this->parse_tagger_results( $tagger_results );
     // Convert results into keywords
-    $keywords = $this->result_to_keyword( $parsed_results );
+    $keywords = $this->results_to_keywords( $tagger_results );
 
     return $keywords;
   }
@@ -28,47 +26,45 @@ class NerTagger implements Tagger {
       return null;
     }
 
-    // $pos = new StanfordNERTagger ( 'SearchApi/Services/StandfordNER/classifiers/english.all.3class.distsim.crf.ser.gz', 'SearchApi/Services/StandfordNER/stanford-ner.jar' );
-    // $result = $pos->tag( explode (' ', $request_string ) );
+    $tagger_results = array(
+      0 => array(
+        0 => 'Phoenix',
+        1 => 'LOCATION',
+      ),
+      1 => array(
+        0 => 'Arizona',
+        1 => 'LOCATION',
+      ),
+      2 => array(
+        0 => 'Jim',
+        1 => 'PERSON',
+      ),
+      3 => array(
+        0 => 'ASU',
+        1 => 'ORGANIZATION',
+      ),
+      4 => array(
+        0 => 'November',
+        1 => 'DATE',
+      ),
+      5 => array(
+        0 => '12:00',
+        1 => 'TIME',
+      ),
+    );
 
-    return '<wi num="0" entity="O">phoenix</wi> <wi num="1" entity="O">arizona</wi>';
-  }
-
-  // Parse the tagger results into an array of terms
-  public function parse_tagger_results( $tagger_results = '' ) {
-    if ( $tagger_results === null || $tagger_results === '' ) {
-      return null;
-    }
-
-    // Replace using SimpleXML?
-    $parsed_results = array();
-    $substring = '';
-    $offset = 0;
-    $pos = strpos( $tagger_results, '</wi>', $offset );
-
-    while ( $pos !== false ) {
-      $pos = $pos + 5;
-      $substring = substr( $tagger_results, $offset, $pos - $offset );
-      array_push( $parsed_results, $substring );
-      if ( $pos + 1 < strlen( $tagger_results ) ) {
-        $offset = $pos + 1;
-        $pos = strpos( $tagger_results, '</wi>', $offset );
-      } else {
-        $pos = false;
-      }
-    }
-
-    return $parsed_results;
+    return $tagger_results;
   }
 
   // Interpret the XML nodes to Keyword objects
-  public function result_to_keyword( $parsed_results = '' ) {
-    if ( $parsed_results === null || $parsed_results === '' ) {
+  public function results_to_keywords( $tagger_results ) {
+    if ( $tagger_results === null ) {
       return null;
     }
 
-    $keywords[] = new Keyword( 'phoenix', 'location', 1.0 );
-    $keywords[] = new Keyword( 'arizona', 'location', 1.0 );
+    for ( $count = 0; $count < count( $tagger_results ); $count++ ) {
+      $keywords[] = new Keyword( $tagger_results[ $count ][0], $tagger_results[ $count ][1], 1.0 / ( $count + 1 ) );
+    }
 
     return $keywords;
   }
