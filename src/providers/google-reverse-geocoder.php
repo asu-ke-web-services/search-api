@@ -35,23 +35,23 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     // checking if api key is given, if so adding it to url
     // second half of if statement is for testing purposes
     if ( $this->api_key !== null && $this->api_key !== 'geokey' ) {
-    	$service_url = $service_url.'&key={$this->api_key}';
+      $service_url = $service_url.'&key={$this->api_key}';
     }
 
     // implementing a curl call to the service
-    $curl = curl_init($service_url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $geocoding_results = curl_exec($curl);
+    $curl = curl_init( $service_url );
+    curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+    $geocoding_results = curl_exec( $curl );
 
     // checking if the curl was successful
-    if ($geocoding_results === false) {
-    	$info = curl_getinfo($curl);
-    	curl_close($curl);
-    	throw new Exception('error occured during curl exec. Additioanl info: ' . var_export($info));
+    if ( $geocoding_results === false ) {
+      $info = curl_getinfo( $curl );
+      curl_close( $curl );
+      throw new Exception( 'error occured during curl exec. Additioanl info: ' . var_export( $info ) );
     }
 
     // closing the curl
-    curl_close($curl);
+    curl_close( $curl );
 
     // calling parser
     return $this->geo_parser->reverse_geocoder_parser( $geocoding_results );

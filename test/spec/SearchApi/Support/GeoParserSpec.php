@@ -19,12 +19,12 @@ class GeoParserSpec extends ObjectBehavior {
   function it_should_return_an_empty_array() {
   	$this->reverse_geocoder_parser( '{"test":"test"}' )->shouldBeArray();
   }
-  
+
   function it_should_throw_invalid_key() {
   	$this->shouldThrow( new \Exception( 'Invalid Key' ) )
   	->during( 'reverse_geocoder_parser', array( '{"status" : "REQUEST_DENIED"}' ) );
   }
-  
+
   function it_should_throw_invalid_json_object() {
   	$this->shouldThrow( new \Exception( 'Invalid Json Object' ) )
   	->during( 'reverse_geocoder_parser', array( '{bad_json : isbad}' ) );
