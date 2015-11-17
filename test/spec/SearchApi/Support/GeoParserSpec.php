@@ -19,4 +19,9 @@ class GeoParserSpec extends ObjectBehavior {
   function it_should_return_a_result() {
   	$this->reverse_geocoder_parser( 'test' )->shouldBeString();
   }
+  
+  function it_should_throw_invalid_key() {
+  	$this->shouldThrow( new \Exception( 'Invalid Key' ) )
+  	->during( 'reverse_geocoder_parser', array( '{"status" : "REQUEST_DENIED"}' ) );
+  }
 }
