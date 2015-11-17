@@ -26,14 +26,14 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
   	$this->beConstructedWith( null, new Support\GeoParser );
   	$geo_cordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
   	$this->get_locations( $geo_cordinate )
-  	->shouldReturn( '277 Bedford Avenue, Brooklyn, NY 11211, USA' );
+  	->shouldBeArray();
   }
 
   function it_should_return_a_result_with_key() {
   	$this->beConstructedWith( 'geokey', new Support\GeoParser );
   	$geo_cordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
   	$this->get_locations( $geo_cordinate )
-  	->shouldReturn( '277 Bedford Avenue, Brooklyn, NY 11211, USA' );
+  	->shouldBeArray();
   }
 
   function it_should_throw_invalid_key() {

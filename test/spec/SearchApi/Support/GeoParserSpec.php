@@ -16,8 +16,8 @@ class GeoParserSpec extends ObjectBehavior {
     $this->shouldHaveType( 'SearchApi\Support\GeoParser' );
   }
 
-  function it_should_return_a_result() {
-  	$this->reverse_geocoder_parser( '{"test":"test"}' )->shouldBeString();
+  function it_should_return_an_empty_array() {
+  	$this->reverse_geocoder_parser( '{"test":"test"}' )->shouldBeArray();
   }
   
   function it_should_throw_invalid_key() {
