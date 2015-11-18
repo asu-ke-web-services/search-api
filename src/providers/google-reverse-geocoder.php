@@ -16,9 +16,9 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
   private $geo_parser; // injected parser
 
   public function __construct( $key = null, $parser = null ) {
-  	$this->api_key = $key;
+    $this->api_key = $key;
 
-  	if ( $parser === null ) {
+    if ( $parser === null ) {
       // default parser
       $parser = new Support\GeoParser;
   	}
