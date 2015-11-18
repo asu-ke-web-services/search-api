@@ -35,6 +35,11 @@ class GeoParser {
     // creating array of search terms to return
     $search_term_array = array();
 
+    // checking for null case
+    if ( $geocoder_results === null ) {
+      return $search_term_array;
+    }
+
     // code that parses the array from the json object
     // making sure results is there and moving $geocoder_results to the inner array
     if ( array_key_exists( 'results', $geocoder_results ) ) {
