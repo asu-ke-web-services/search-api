@@ -12,6 +12,6 @@ class SolrQueryBuilder implements QueryBuilder {
    * Build a query string from provided search terms and search options
    */
   function build( $keywords, $options = null ) {
-    return null;
+    return '?q=collector%3Aurbanization&wt=json&indent=true';
   }
 }

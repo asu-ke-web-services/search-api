@@ -5,6 +5,7 @@ namespace SearchApi\Providers;
 use SearchApi\Services\Search;
 use SearchApi\Models\SearchTerm;
 use SearchApi\Models\SearchResult;
+use SearchApi\Models\SearchResultItem;
 use SearchApi\Models\SearchOptions;
 
 use SearchApi\Builders\QueryBuilder;
@@ -19,6 +20,7 @@ use SearchApi\Builders\SolrQueryBuilder;
 class SolrSearch implements Search {
 
   private $queryBuilder;
+  private $apiUrl;
 
   /**
    * Constructor
@@ -31,6 +33,47 @@ class SolrSearch implements Search {
     } else {
       $this->queryBuilder = new SolrQueryBuilder();
     }
+    $this->apiUrl = 'http://127.0.0.1:8983/solr/gios/select'; // TODO: get this url from a config file
+  }
+
+  function dispatch_query( $queryString ) {
+    // create curl resource
+    $ch = curl_init();
+
+    // Use curl to make GET request to SOLR server.
+    curl_setopt( $ch, CURLOPT_URL, $this->apiUrl . $queryString );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+    $queryResult = curl_exec( $ch );
+    curl_close( $ch );
+
+    return $queryResult;
+  }
+
+  function parse_query_response( $responseString ) {
+    $result = new SearchResult();
+    $result->results = array();
+
+    $parsedResult = json_decode( $responseString );
+
+    if ( ! $parsedResult || ! property_exists( $parsedResult, 'response' ) ) {
+      return null;
+    }
+
+    $docs = $parsedResult->response->docs;
+    foreach ( $docs as $doc ) {
+      $item = new SearchResultItem();
+      $item->id = $doc->id;
+      $item->title = $doc->title;
+      if ( property_exists( $doc, 'author' ) ) {
+        $item->author = $doc->author;
+      }
+      if ( property_exists( $doc, 'publication_date' ) ) {
+        $item->date = $doc->publication_date;
+      }
+      array_push( $result->results, $item );
+    }
+
+    return $result;
   }
 
   function query( $keywords, $options = null ) {
@@ -41,8 +84,10 @@ class SolrSearch implements Search {
 
     $queryString = $this->queryBuilder->build( $keywords, $options );
 
-    // do something with query string
+    $queryResult = $this->dispatch_query( $queryString );
 
-    return new SearchResult();
+    $searchResults = $this->parse_query_response( $queryResult );
+
+    return $searchResults;
   }
 }
