@@ -6,9 +6,6 @@ namespace SearchApi\Clients;
  * Uses curl to make http requests.
  */
 class CurlHttpClient implements HttpClient {
-  /**
-   * Simple GET request. Given a URL, return a string for the response.
-   */
   private $curl;
 
   function __construct() {
@@ -20,6 +17,9 @@ class CurlHttpClient implements HttpClient {
     curl_close( $this->curl );
   }
 
+  /**
+   * Simple GET request. Given a URL, return a string for the response.
+   */
   function get( $url ) {
     // Use curl to make GET request to SOLR server.
     $ch = $this->curl;

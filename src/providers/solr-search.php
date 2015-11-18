@@ -14,10 +14,11 @@ use SearchApi\Builders\SolrQueryBuilder;
 use SearchApi\Clients;
 
 /**
- * Class SolrSearch - This is a placeholder class that will be an interface to a Solr Search Index
+ * Interface to Solr server.
  *
- * @var QueryBuilder queryBuilder Obj with implementation of QueryBuilder constructing Solr-specific query string.
- * @method SearchResult query (SearchTerm[]|null $keywords, SearchOptions|null options) Interface defined in Services\Search
+ * @var QueryBuilder $queryBuilder Obj with implementation of QueryBuilder constructing Solr-specific query string.
+ * @var string $apiUrl Base URL for the solr query API
+ * @var HttpClient $httpClient Preferred http client wrapper for making simple GET requests.
  */
 class SolrSearch implements Search {
 
@@ -28,8 +29,8 @@ class SolrSearch implements Search {
   /**
    * Constructor with optional params
    *
-   * @param queryBuilder QueryBuilder Should be able to inject dependency to use any solr-specific impl. of QueryBuilder
-   * @param httpClient HttpClient Preferred http client wrapper. Defaults to CurlHttpClient
+   * @param QueryBuilder $queryBuilder Should be able to inject dependency to use any solr-specific impl. of QueryBuilder
+   * @param HttpClient $httpClient Preferred http client wrapper. Defaults to CurlHttpClient
    */
   function __construct( QueryBuilder $queryBuilder = null, Clients\HttpClient $httpClient = null ) {
     if ( $queryBuilder ) {
@@ -47,6 +48,11 @@ class SolrSearch implements Search {
     $this->apiUrl = 'http://127.0.0.1:8983/solr/gios/select'; // TODO: get this url from a config file
   }
 
+  /**
+   * Create a search result from a JSON string.
+   * returns SearchResult
+   * @param string $responseString
+   */
   function parse_query_response( $responseString ) {
     $result = new SearchResult();
     $result->results = array();
@@ -76,6 +82,13 @@ class SolrSearch implements Search {
     return $result;
   }
 
+  /**
+   * Make a query to solr server, with options for pagination, sorting, etc.
+   * Returns SearchResult
+   *
+   * @param SearchTerm[]|null $keywords Keywords to search
+   * @param SearchApi\Models\SearchOptions|null $options Query options
+   */
   function query( $keywords, $options = null ) {
     // This is just a placeholder
     if ( $keywords === null ) {
