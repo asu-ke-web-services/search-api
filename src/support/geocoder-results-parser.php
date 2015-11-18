@@ -10,7 +10,7 @@ use SearchApi\Models as Models;
  * Class Geo_Parser - Parses the returned result from a Geocoder
  */
 class GeoParser {
-  public function reverse_geocoder_parser( $json_results ) {
+  public function reverse_geocoder_json_decoder( $json_results ) {
   	// code that decodes the json object into anrray
   	// make sure utf8 format
     $json_results = utf8_encode( $json_results );
@@ -27,6 +27,11 @@ class GeoParser {
       throw new Exception( 'Invalid Key' );
     }
 
+    // return decoded json
+    return $geocoder_results;
+  }
+
+  public function reverse_geocoder_parser( $geocoder_results ) {
     // creating array of search terms to return
     $search_term_array = array();
 
@@ -71,6 +76,6 @@ class GeoParser {
     } // making sure results is there and moving $geocoder_results to the inner array
 
     // returning an array of SearchTerms
-  	return $search_term_array;
+    return $search_term_array;
   }
 }

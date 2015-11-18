@@ -53,7 +53,9 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     // closing the curl
     curl_close( $curl );
 
+    // calling json decoder
+    $decoded_json = $this->geo_parser->reverse_geocoder_json_decoder( $geocoding_results );
     // calling parser
-    return $this->geo_parser->reverse_geocoder_parser( $geocoding_results );
+    return $this->geo_parser->reverse_geocoder_parser( $decoded_json );
   }
 }
