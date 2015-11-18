@@ -23,8 +23,8 @@ class SearchEngineSpec extends ObjectBehavior {
   }
 
   function it_should_return_a_result_when_searching_for_foo( Search $search ) {
+    $this->beConstructedWith( $search );
     $search->query( 'foo' )->shouldBeCalled()->willReturn( array( 'foo' ) );
-    $this->use_search_service( $search );
 
     $foo_request = new Models\SearchRequest();
     $foo_request->text = 'foo';

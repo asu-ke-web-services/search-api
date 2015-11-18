@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8d29fb58446b121dc5386815a1af37c8",
-    "content-hash": "37436ce6c6f56c6160109461731e1bed",
+    "hash": "40c000dc51e079b2d9b227e7515c6297",
+    "content-hash": "1217067c09e51f06e9f073c4912dd67c",
     "packages": [
         {
             "name": "agentile/php-stanford-nlp",
@@ -55,11 +55,17 @@
         },
         {
             "name": "gios-asu/nectary",
-            "version": "dev-develop",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gios-asu/nectary.git",
-                "reference": "95f9daac4169367631f372cbb4b9a55d6837f54e"
+                "reference": "7db9487a54ce004cc9a31757b4147e4cbebfc641"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gios-asu/nectary/zipball/7db9487a54ce004cc9a31757b4147e4cbebfc641",
+                "reference": "7db9487a54ce004cc9a31757b4147e4cbebfc641",
+                "shasum": ""
             },
             "require": {
                 "xamin/handlebars.php": "dev-master"
@@ -85,6 +91,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -95,7 +102,7 @@
                 }
             ],
             "description": "A simple PHP framework that is not tied to a web interface",
-            "time": "2015-10-30 23:42:34"
+            "time": "2015-10-30 22:49:17"
         },
         {
             "name": "xamin/handlebars.php",
@@ -1995,7 +2002,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "gios-asu/nectary": 20,
         "xamin/handlebars.php": 20,
         "agentile/php-stanford-nlp": 20
     },
