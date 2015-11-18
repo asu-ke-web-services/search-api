@@ -18,7 +18,7 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
     $this->shouldHaveType( 'SearchApi\Providers\GoogleReverseGeocoder' );
   }
 
-  function it_should_have_key_null() {
+  function it_shouldnt_have_an_api_key_by_default() {
   	$this->api_key->shouldBe( null );
   }
 
