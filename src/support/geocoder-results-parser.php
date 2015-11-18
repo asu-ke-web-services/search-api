@@ -35,7 +35,7 @@ class GeoParser {
     // creating array of search terms to return
     $search_term_array = array();
 
-    // checking for null case
+    // checking for if the input is null case
     if ( $geocoder_results === null ) {
       return $search_term_array;
     }
