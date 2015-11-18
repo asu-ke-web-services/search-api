@@ -11,6 +11,8 @@ use SearchApi\Models\SearchOptions;
 use SearchApi\Builders\QueryBuilder;
 use SearchApi\Builders\SolrQueryBuilder;
 
+use SearchApi\Clients;
+
 /**
  * Class SolrSearch - This is a placeholder class that will be an interface to a Solr Search Index
  *
@@ -21,32 +23,28 @@ class SolrSearch implements Search {
 
   private $queryBuilder;
   private $apiUrl;
+  private $httpClient;
 
   /**
-   * Constructor
+   * Constructor with optional params
    *
    * @param queryBuilder QueryBuilder Should be able to inject dependency to use any solr-specific impl. of QueryBuilder
+   * @param httpClient HttpClient Preferred http client wrapper. Defaults to CurlHttpClient
    */
-  function __construct( QueryBuilder $queryBuilder = null ) {
+  function __construct( QueryBuilder $queryBuilder = null, Clients\HttpClient $httpClient = null ) {
     if ( $queryBuilder ) {
       $this->queryBuilder = $queryBuilder;
     } else {
       $this->queryBuilder = new SolrQueryBuilder();
     }
+
+    if ( $httpClient ) {
+      $this->httpClient = $httpClient;
+    } else {
+      $this->httpClient = new Clients\CurlHttpClient();
+    }
+
     $this->apiUrl = 'http://127.0.0.1:8983/solr/gios/select'; // TODO: get this url from a config file
-  }
-
-  function dispatch_query( $queryString ) {
-    // create curl resource
-    $ch = curl_init();
-
-    // Use curl to make GET request to SOLR server.
-    curl_setopt( $ch, CURLOPT_URL, $this->apiUrl . $queryString );
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-    $queryResult = curl_exec( $ch );
-    curl_close( $ch );
-
-    return $queryResult;
   }
 
   function parse_query_response( $responseString ) {
@@ -73,6 +71,8 @@ class SolrSearch implements Search {
       array_push( $result->results, $item );
     }
 
+    $result->count = count( $result->results );
+
     return $result;
   }
 
@@ -84,7 +84,7 @@ class SolrSearch implements Search {
 
     $queryString = $this->queryBuilder->build( $keywords, $options );
 
-    $queryResult = $this->dispatch_query( $queryString );
+    $queryResult = $this->httpClient->get( $this->apiUrl . $queryString );
 
     $searchResults = $this->parse_query_response( $queryResult );
 
