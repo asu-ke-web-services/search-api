@@ -26,6 +26,7 @@ class NerTagger implements Tagger {
       return null;
     }
 
+    // This is a mock return value
     $tagger_results = array(
       [ 'Phoenix', 'LOCATION' ],
       [ 'Arizona', 'LOCATION' ],
@@ -44,6 +45,7 @@ class NerTagger implements Tagger {
       return null;
     }
 
+    // This works properly, but does not handle 'relevance' yet
     foreach ( $tagger_results as $result ) {
       $keywords[] = new Keyword( $result[0], $result[1], 1.0 );
     }
