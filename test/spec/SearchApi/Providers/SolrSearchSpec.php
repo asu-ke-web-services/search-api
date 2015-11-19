@@ -9,7 +9,6 @@ use SearchApi\Builders\QueryBuilder;
 use SearchApi\Clients\HttpClient;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 /**
  * SolrSearchSpec - Spec test for SolrSearch
@@ -34,8 +33,8 @@ class SolrSearchSpec extends ObjectBehavior {
   }
 
   function it_should_return_search_result_when_keywords_not_empty( QueryBuilder $queryBuilder, HttpClient $httpClient ) {
-    $queryBuilder->build( 'test', null )->willReturn( 'test2' );
-    $httpClient->get( Argument::any() )->willReturn( '{"responseHeader":{"response":{"numFound":1,"start":0,"docs":[{"id":"testid","author":"testauthor","date":"testdate","content":"testcontent"}]}}' );
+    $queryBuilder->build( 'test', null )->willReturn( 'test_query' );
+    $httpClient->get( 'test_query' )->willReturn( '{"responseHeader":{"response":{"numFound":1,"start":0,"docs":[{"id":"testid","author":"testauthor","date":"testdate","content":"testcontent"}]}}' );
 
     $result = $this->query( 'test' );
     $result->shouldHaveType( 'SearchApi\Models\SearchResult' );
