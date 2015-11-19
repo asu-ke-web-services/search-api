@@ -27,7 +27,7 @@ class NerTaggerSpec extends ObjectBehavior {
     $test_result = $this->tagger_service( 'test' );
 
     $test_result->shouldBeArray();
-    foreach ( $test_result as &$result ) {
+    foreach ( $test_result as $result ) {
       $result->shouldBeArray();
       $result->shouldHaveCount( 2 );
       $result[0]->shouldBeString();

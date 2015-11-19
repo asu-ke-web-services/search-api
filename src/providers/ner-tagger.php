@@ -44,7 +44,7 @@ class NerTagger implements Tagger {
       return null;
     }
 
-    foreach ( $tagger_results as &$result ) {
+    foreach ( $tagger_results as $result ) {
       $keywords[] = new Keyword( $result[0], $result[1], 1.0 );
     }
 
