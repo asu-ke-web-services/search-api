@@ -27,30 +27,12 @@ class NerTagger implements Tagger {
     }
 
     $tagger_results = array(
-      0 => array(
-        0 => 'Phoenix',
-        1 => 'LOCATION',
-      ),
-      1 => array(
-        0 => 'Arizona',
-        1 => 'LOCATION',
-      ),
-      2 => array(
-        0 => 'Jim',
-        1 => 'PERSON',
-      ),
-      3 => array(
-        0 => 'ASU',
-        1 => 'ORGANIZATION',
-      ),
-      4 => array(
-        0 => 'November',
-        1 => 'DATE',
-      ),
-      5 => array(
-        0 => '12:00',
-        1 => 'TIME',
-      ),
+      [ 'Phoenix', 'LOCATION' ],
+      [ 'Arizona', 'LOCATION' ],
+      [ 'Jim', 'PERSON' ],
+      [ 'ASU', 'ORGANIZATION' ],
+      [ 'November', 'DATE' ],
+      [ '12:00', 'TIME' ],
     );
 
     return $tagger_results;
