@@ -42,7 +42,7 @@ class SolrSearch implements Search {
     if ( $httpClient ) {
       $this->httpClient = $httpClient;
     } else {
-       $this->httpClient = new Clients\CurlHttpClient();
+      $this->httpClient = new Clients\CurlHttpClient();
     }
 
     // TODO: Require $apiUrl param
