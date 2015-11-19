@@ -72,7 +72,9 @@ class SolrSearch implements Search {
     foreach ( $docs as $doc ) {
       $item = new SearchResultItem();
       $item->id = $doc->id;
-      $item->title = $doc->title;
+      if ( property_exists( $doc, 'title' ) ) {
+        $item->title = $doc->title;
+      }
       if ( property_exists( $doc, 'author' ) ) {
         $item->author = $doc->author;
       }
