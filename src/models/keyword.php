@@ -14,9 +14,9 @@ class Keyword {
   public $type;
   public $relevance;
 
-  function __construct( $a1, $a2, $a3 ) {
-    $this->text = $a1;
-    $this->type = $a2;
-    $this->relevance = $a3;
+  function __construct( $text, $type, $relevance ) {
+    $this->text = $text;
+    $this->type = $type;
+    $this->relevance = $relevance;
   }
 }
