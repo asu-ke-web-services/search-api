@@ -33,8 +33,9 @@ class SolrSearchSpec extends ObjectBehavior {
   }
 
   function it_should_return_search_result_when_keywords_not_empty( QueryBuilder $queryBuilder, HttpClient $httpClient ) {
+    $this->beConstructedWith( $queryBuilder, $httpClient, 'url/' );
     $queryBuilder->build( 'test', null )->willReturn( 'test_query' );
-    $httpClient->get( 'test_query' )->willReturn( '{"response":{"numFound":1,"start":0,"docs":[{"id":"testid","author":"testauthor","date":"testdate","content":"testcontent"}]}}' );
+    $httpClient->get( 'url/test_query' )->shouldBeCalled()->willReturn( '{"response":{"numFound":1,"start":0,"docs":[{"id":"testid","author":"testauthor","date":"testdate","content":"testcontent"}]}}' );
 
     $result = $this->query( 'test' );
     $result->shouldHaveType( 'SearchApi\Models\SearchResult' );

@@ -32,7 +32,7 @@ class SolrSearch implements Search {
    * @param QueryBuilder $queryBuilder Should be able to inject dependency to use any solr-specific impl. of QueryBuilder
    * @param HttpClient $httpClient Preferred http client wrapper. Defaults to CurlHttpClient
    */
-  function __construct( QueryBuilder $queryBuilder = null, Clients\HttpClient $httpClient = null ) {
+  function __construct( QueryBuilder $queryBuilder = null, Clients\HttpClient $httpClient = null, $apiUrl = null ) {
     if ( $queryBuilder ) {
       $this->queryBuilder = $queryBuilder;
     } else {
@@ -42,10 +42,15 @@ class SolrSearch implements Search {
     if ( $httpClient ) {
       $this->httpClient = $httpClient;
     } else {
-      $this->httpClient = new Clients\CurlHttpClient();
+       $this->httpClient = new Clients\CurlHttpClient();
     }
 
-    $this->apiUrl = 'http://127.0.0.1:8983/solr/gios/select'; // TODO: get this url from a config file
+    // TODO: Require $apiUrl param
+    if ( $apiUrl ) {
+      $this->apiUrl = $apiUrl;
+    } else {
+      $this->apiUrl = 'http://127.0.0.1:8983/solr/gios/select'; // TODO: get this url from a config file
+    }
   }
 
   /**
