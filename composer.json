@@ -11,14 +11,8 @@
     "autoload": {
         "classmap" : [ "src/" ]
     },
-     "repositories": [
-        {
-            "url": "https://github.com/gios-asu/nectary.git",
-            "type": "git"
-        }
-    ],
     "require": {
-        "gios-asu/nectary": "dev-develop",
+        "gios-asu/nectary": "^0.1.0",
         "xamin/handlebars.php": "dev-master",
         "agentile/php-stanford-nlp": "dev-master"
     },
