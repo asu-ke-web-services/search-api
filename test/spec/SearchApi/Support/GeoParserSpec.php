@@ -46,6 +46,68 @@ class GeoParserSpec extends ObjectBehavior {
   	$result->shouldBeArray();
   	$result->shouldHaveCount( 0 );
   }
+
+  function it_should_return_an_array_of_search_terms() {
+    // testing string
+  	$test_string =
+    '{
+      "results": [
+        {
+  	      "address_components": [
+            {
+  				    "long_name": "Bedford Avenue",
+  				    "short_name": "Bedford Ave",
+  				    "types": [
+  			  		  "route"
+  				    ]
+  			    },
+  			    {
+  				    "long_name": "Williamsburg",
+  				    "short_name": "Williamsburg",
+  				    "types": [
+  				 		  "neighborhood",
+  						  "political"
+  				    ]
+  			    }
+  			  ],
+  			  "place_id": "ChIJd8BlQ2BZwokRAFUEcm_qrcA"
+  		  },
+  		  {
+  			  "address_components": [
+  			    {
+  				    "long_name": "Williamsburg",
+  				    "short_name": "Williamsburg",
+  				    "types": [
+  						  "neighborhood",
+  						  "political"
+  				    ]
+  			    }
+  			  ],
+  			  "place_id": "ChIJi27VXGBZwokRM8ErPyB91yk"
+  		  }
+  		],
+  		"status": "OK"
+  	}';
+    // end of the test string
+
+  	// turning test string into json_decoder array
+    $test_string = json_decode( $test_string, true );
+
+    // checking it is array and has 2 elements
+  	$result = $this->reverse_geocoder_parser( $test_string );
+  	$result->shouldBeArray();
+  	$result->shouldHaveCount( 2 );
+
+    // checking the first element value and count
+    $value_checker = $result[0];
+    $value_checker->value->shouldBe( 'Bedford Avenue' );
+    $value_checker->count->shouldBe( 1 );
+
+    // checking the second element value and count
+    $value_checker = $result[1];
+    $value_checker->value->shouldBe( 'Williamsburg' );
+    $value_checker->count->shouldBe( 2 );
+  }
   // end of reverse_geocoder_parser tests
 
   // combined reverse_geocoder_json_decoder and reverse_geocoder_parser tests
