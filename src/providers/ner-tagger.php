@@ -22,7 +22,7 @@ class NerTagger implements Tagger {
 
   // Call the NER service and save results as a string containing an XML document
   public function tagger_service( $request_string = '' ) {
-    if ( $request_string === null || $request_string === '' ) {
+    if ( empty( $request_string ) ) {
       return null;
     }
 
