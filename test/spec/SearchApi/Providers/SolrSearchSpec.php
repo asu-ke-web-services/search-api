@@ -14,6 +14,9 @@ use PhpSpec\ObjectBehavior;
  * SolrSearchSpec - Spec test for SolrSearch
  */
 class SolrSearchSpec extends ObjectBehavior {
+
+  private $queryResponse = '{"response":{"numFound":1,"start":0,"docs":[{"id":"testid","author":"testauthor","date":"testdate","content":"testcontent"}]}}';
+
   function it_is_initializable() {
     $this->shouldHaveType( 'SearchApi\Providers\SolrSearch' );
   }
@@ -35,10 +38,20 @@ class SolrSearchSpec extends ObjectBehavior {
   function it_should_return_search_result_when_keywords_not_empty( QueryBuilder $queryBuilder, HttpClient $httpClient ) {
     $this->beConstructedWith( $queryBuilder, $httpClient, 'url/' );
     $queryBuilder->build( 'test', null )->willReturn( 'test_query' );
-    $httpClient->get( 'url/test_query' )->shouldBeCalled()->willReturn( '{"response":{"numFound":1,"start":0,"docs":[{"id":"testid","author":"testauthor","date":"testdate","content":"testcontent"}]}}' );
+    $httpClient->get( 'url/test_query' )->shouldBeCalled()->willReturn( $this->queryResponse );
 
     $result = $this->query( 'test' );
     $result->shouldHaveType( 'SearchApi\Models\SearchResult' );
     $result->count->shouldBe( 1 );
+  }
+
+  function it_should_parse_valid_query_response( QueryBuilder $queryBuilder, HttpClient $httpClient ) {
+    $this->beConstructedWith( $queryBuilder, $httpClient, 'url/' );
+    $this->parse_query_response( $this->queryResponse )->shouldHaveType( 'SearchApi\Models\SearchResult' );
+  }
+
+  function it_should_have_query_response_parser_return_null_if_input_empty( QueryBuilder $queryBuilder, HttpClient $httpClient ) {
+    $this->beConstructedWith( $queryBuilder, $httpClient, 'url/' );
+    $this->parse_query_response( '' )->shouldBe( null );
   }
 }
