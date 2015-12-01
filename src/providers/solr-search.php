@@ -32,6 +32,7 @@ class SolrSearch implements Search {
    *
    * @param QueryBuilder $queryBuilder Should be able to inject dependency to use any solr-specific impl. of QueryBuilder
    * @var Command $httpGetCommand Preferred http get command for making simple GET requests.
+   * @var string $apiUrl Base URL for the solr query API
    */
   function __construct( QueryBuilder $queryBuilder = null, Commands\Command $httpGetCommand = null, $apiUrl = null ) {
     if ( $queryBuilder ) {
