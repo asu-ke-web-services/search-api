@@ -12,37 +12,32 @@ use SearchApi\Builders\QueryBuilder;
 use SearchApi\Builders\SolrQueryBuilder;
 
 use SearchApi\Clients;
+use SearchApi\Commands;
 
 /**
  * Interface to Solr server.
  *
  * @var QueryBuilder $queryBuilder Obj with implementation of QueryBuilder constructing Solr-specific query string.
  * @var string $apiUrl Base URL for the solr query API
- * @var HttpClient $httpClient Preferred http client wrapper for making simple GET requests.
+ * @var Command $httpGetCommand Preferred http get command for making simple GET requests.
  */
 class SolrSearch implements Search {
 
   private $queryBuilder;
   private $apiUrl;
-  private $httpClient;
+  private $httpGetCommand;
 
   /**
    * Constructor with optional params
    *
    * @param QueryBuilder $queryBuilder Should be able to inject dependency to use any solr-specific impl. of QueryBuilder
-   * @param HttpClient $httpClient Preferred http client wrapper. Defaults to CurlHttpClient
+   * @var Command $httpGetCommand Preferred http get command for making simple GET requests.
    */
-  function __construct( QueryBuilder $queryBuilder = null, Clients\HttpClient $httpClient = null, $apiUrl = null ) {
+  function __construct( QueryBuilder $queryBuilder = null, Commands\Command $httpGetCommand = null, $apiUrl = null ) {
     if ( $queryBuilder ) {
       $this->queryBuilder = $queryBuilder;
     } else {
       $this->queryBuilder = new SolrQueryBuilder();
-    }
-
-    if ( $httpClient ) {
-      $this->httpClient = $httpClient;
-    } else {
-      $this->httpClient = new Clients\CurlHttpClient();
     }
 
     // TODO: Require $apiUrl param
@@ -50,6 +45,12 @@ class SolrSearch implements Search {
       $this->apiUrl = $apiUrl;
     } else {
       $this->apiUrl = 'http://127.0.0.1:8983/solr/gios/select'; // TODO: get this url from a config file
+    }
+
+    if ( $httpGetCommand ) {
+      $this->httpGetCommand = $httpGetCommand;
+    } else {
+      $this->httpGetCommand = new Commands\HttpGet( $this->apiUrl );
     }
   }
 
@@ -104,7 +105,8 @@ class SolrSearch implements Search {
 
     $queryString = $this->queryBuilder->build( $keywords, $options );
 
-    $queryResult = $this->httpClient->get( $this->apiUrl . $queryString );
+    $this->httpGetCommand->setUrl( $this->apiUrl . $queryString );
+    $queryResult = $this->httpGetCommand->execute();
 
     $searchResults = $this->parse_query_response( $queryResult );
 
