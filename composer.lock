@@ -4,9 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "023867050682df4d727c68bbf5c95c76",
-    "content-hash": "1508fd6e28394ffa894cffbb48aa9edc",
+    "hash": "40c000dc51e079b2d9b227e7515c6297",
+    "content-hash": "1217067c09e51f06e9f073c4912dd67c",
     "packages": [
+        {
+            "name": "agentile/php-stanford-nlp",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agentile/PHP-Stanford-NLP.git",
+                "reference": "51f99f1aaa1c3d5822fe634346b2b4b33a7a6223"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agentile/PHP-Stanford-NLP/zipball/51f99f1aaa1c3d5822fe634346b2b4b33a7a6223",
+                "reference": "51f99f1aaa1c3d5822fe634346b2b4b33a7a6223",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "StanfordNLP": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Gentile",
+                    "email": "asgentile@gmail.com",
+                    "homepage": "http://agentile.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP interface to Stanford NLP Tools",
+            "homepage": "https://github.com/agentile/PHP-Stanford-NLP",
+            "keywords": [
+                "ner",
+                "nlp",
+                "parser",
+                "pos",
+                "stanford"
+            ],
+            "time": "2014-10-18 15:24:25"
+        },
         {
             "name": "gios-asu/nectary",
             "version": "0.1.0",
@@ -806,16 +852,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.16",
+            "version": "4.8.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "625f8c345606ed0f3a141dfb88f4116f0e22978e"
+                "reference": "fa33d4ad96481b91df343d83e8c8aabed6b1dfd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/625f8c345606ed0f3a141dfb88f4116f0e22978e",
-                "reference": "625f8c345606ed0f3a141dfb88f4116f0e22978e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fa33d4ad96481b91df343d83e8c8aabed6b1dfd3",
+                "reference": "fa33d4ad96481b91df343d83e8c8aabed6b1dfd3",
                 "shasum": ""
             },
             "require": {
@@ -874,7 +920,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-10-23 06:48:33"
+            "time": "2015-11-11 11:32:49"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1956,7 +2002,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "xamin/handlebars.php": 20
+        "xamin/handlebars.php": 20,
+        "agentile/php-stanford-nlp": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
