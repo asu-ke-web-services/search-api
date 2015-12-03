@@ -11,9 +11,9 @@ use StanfordNLP\NERTagger as StanfordNERTagger;
  */
 class NerTagger implements Tagger {
   // Convert a search string into an array of Keyword objects
-  public function get_tags( $request_string = '' ) {
+  public function tagger_service( $request_string = '' ) {
     // Call the NER Tagger service
-    $tagger_results = $this->tagger_service( $request_string );
+    $tagger_results = $this->get_tags( $request_string );
     // Convert results into keywords
     $keywords = $this->results_to_keywords( $tagger_results );
 
@@ -21,7 +21,7 @@ class NerTagger implements Tagger {
   }
 
   // Call the NER service and save results as a string containing an XML document
-  public function tagger_service( $request_string = '' ) {
+  public function get_tags( $request_string = '' ) {
     if ( empty( $request_string ) ) {
       return null;
     }
