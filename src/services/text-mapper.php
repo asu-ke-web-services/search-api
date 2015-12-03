@@ -3,8 +3,9 @@
 namespace SearchApi\Services;
 
 /**
- * Interface TextMapper - Should make a request to a text mapping service and return results in a synonym object
+ * Interface TextMapper - Given an array of words, it should make a request to a text mapping service and
+ * return results in an array of synonym objects
  */
 interface TextMapper {
-  function get_synonyms( $word );
+  function get_synonyms( $words );
 }
