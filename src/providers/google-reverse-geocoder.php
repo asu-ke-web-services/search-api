@@ -21,8 +21,8 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     if ( $parser === null ) {
       // default parser
       $parser = new Support\GeoParser;
-  	}
-  	$this->geo_parser = $parser;
+    }
+    $this->geo_parser = $parser;
   }
 
   // returns array of terms based on latitude and longitude

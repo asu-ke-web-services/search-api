@@ -11,8 +11,8 @@ use SearchApi\Models as Models;
  */
 class GeoParser {
   public function reverse_geocoder_json_decoder( $json_results ) {
-  	// code that decodes the json object into anrray
-  	// make sure utf8 format
+    // code that decodes the json object into anrray
+    // make sure utf8 format
     $json_results = utf8_encode( $json_results );
     // decode json into associate array
     $geocoder_results = json_decode( $json_results, true );
@@ -23,7 +23,7 @@ class GeoParser {
 
     // check for valid key
     if ( array_key_exists( 'status', $geocoder_results ) &&
-    		$geocoder_results['status'] === 'REQUEST_DENIED' ) {
+            $geocoder_results['status'] === 'REQUEST_DENIED' ) {
       throw new Exception( 'Invalid Key' );
     }
 

@@ -46,6 +46,7 @@
           <property name="exact" value="true"/>
       </properties>
   </rule>
+  <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
 
   <!-- Braces on the same line -->
   <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie">

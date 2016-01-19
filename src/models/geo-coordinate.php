@@ -5,8 +5,8 @@ namespace SearchApi\Models;
 /**
  * Class GeoCoordinate - Longitude and Latitude coordinates
  *
- * @var $lat   float 	latitude
- * @var $lng   float 	longitude
+ * @var $lat   float    latitude
+ * @var $lng   float    longitude
  */
 class GeoCoordinate {
   public $lat;
