@@ -20,8 +20,9 @@ class NerTagger implements Tagger {
     return $keywords;
   }
 
-  // Call the NER service and save results as a string containing an XML document
+  // Call the NER service and return the results
   public function tagger_service( $request_string = '' ) {
+    // Return null if there is no request
     if ( empty( $request_string ) ) {
       return null;
     }
@@ -39,13 +40,14 @@ class NerTagger implements Tagger {
     return $tagger_results;
   }
 
-  // Interpret the XML nodes to Keyword objects
+  // Interpret the tagger results into Keyword objects
   public function results_to_keywords( $tagger_results ) {
+    // Return null if there are no results
     if ( $tagger_results === null ) {
       return null;
     }
 
-    // This works properly, but does not handle 'relevance' yet
+    // This works properly, but does not handle 'relevance' yet (temporary)
     foreach ( $tagger_results as $result ) {
       $keywords[] = new Keyword( $result[0], $result[1], 1.0 );
     }
