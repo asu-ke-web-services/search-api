@@ -42,10 +42,6 @@ class GeoParser {
       throw new Exception( 'Invalid Json String' );
     }
 
-    if ( array_key_exists( 'status', $geocoder_results ) ) {
-      throw new Exception( 'Invalid Json String' );
-    }
-
     // return decoded json
     return $geocoder_results;
   }

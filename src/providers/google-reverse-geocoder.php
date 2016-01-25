@@ -53,9 +53,9 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     $service_url = $this->create_URL( $geo_coordinate );
 
     // implementing a curl call using http-get curl call
-    $curl = new Commands\HttpGet();
-    $this->curl->setUrl( $service_url );
-    $geocoding_results = $this->curl->execute();
+    $curl_caller = new Commands\HttpGet();
+    $curl_caller->setUrl( $service_url );
+    $geocoding_results = $curl_caller->execute();
 
     // checking if the curl was successful
     if ( $geocoding_results === false ) {
