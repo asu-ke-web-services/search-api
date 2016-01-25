@@ -8,13 +8,13 @@ use SearchApi\Models as Models;
 
 /**
  * Class Geo_Parser - Parses the returned result from a Geocoder
- * 
+ *
  * @throws Exception - error if bad json object or json string
  */
 class GeoParser {
 
   /**
-   * function: reverse_geocoder_json_decoder
+   * Function: reverse_geocoder_json_decoder
    *
    * @param Json obj $json_results
    * @throws Exception -  error if bad json object or json string
@@ -27,7 +27,7 @@ class GeoParser {
     $returnArrays = true;
     $geocoder_results = json_decode( $json_results, $returnArrays );
 
-    //checking if received Json was valid
+    // checking if received Json was valid
     if ( $geocoder_results === null ) {
       throw new Exception( 'Invalid Json Object' );
     }
@@ -35,7 +35,7 @@ class GeoParser {
     // check for valid key
     if ( array_key_exists( 'status', $geocoder_results ) &&
         $geocoder_results['status'] !== 'OK' ) {
-      //UPDATE: update with new "Invalid Key" status
+      // UPDATE: update with new "Invalid Key" status
       if ( $geocoder_results['status'] === 'REQUEST_DENIED' ) {
         throw new Exception( 'Invalid Key' );
       }
@@ -51,7 +51,7 @@ class GeoParser {
   }
 
   /**
-   * function: reverse_geocoder_parser
+   * Function: reverse_geocoder_parser
    *
    * @param Json Array $geocoder_results
    */

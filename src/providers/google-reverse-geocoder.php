@@ -8,7 +8,7 @@ use SearchApi\Commands as Commands;
 use SearchApi\Services\ReverseGeocoder as ReverseGeocoder;
 
 /**
- * Class GoogleReverseGeocoder - Given a latlin or place id to find a point 
+ * Class GoogleReverseGeocoder - Given a latlin or place id to find a point
  * or polygon that can represent that location via GoogleMaps.
  */
 class GoogleReverseGeocoder implements ReverseGeocoder {
@@ -25,9 +25,9 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     $this->geo_parser = $parser;
   }
 
-/**
- * function for generating the url for the curl call
- */
+  /**
+   * Function for generating the url for the curl call
+   */
   public function create_URL( Models\GeoCoordinate $geo_coordinate ) {
     $service_url = 'https://maps.googleapis.com/maps/api/geocode/json?'.
     "latlng={$geo_coordinate->lat},{$geo_coordinate->lng}";
@@ -37,24 +37,24 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     if ( $this->api_key !== null && $this->api_key !== 'geokey' ) {
       $service_url = $service_url."&key={$this->api_key}";
     }
-    
+
     return $service_url;
   }
 
   /**
-   * function to gather the location data for the coordinates given
+   * Function to gather the location data for the coordinates given
    *
    * @param Models\GeoCoordinate $geo_coordinate
    * @throws Exception - error in curl call
    */
   public function get_locations( Models\GeoCoordinate $geo_coordinate ) {
 
-    //building the url
-    $service_url = create_URL();
+    // building the url
+    $service_url = $this->create_URL( $geo_coordinate );
 
     // implementing a curl call using http-get curl call
     $curl = new Commands\HttpGet();
-    $this->curl->setUrl($service_url);
+    $this->curl->setUrl( $service_url );
     $geocoding_results = $this->curl->execute();
 
     // checking if the curl was successful
