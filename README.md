@@ -41,3 +41,11 @@ composer update
 This will regenerate the class auto-loader which does dependency mapping and creates static load order in the vendor folder.
 
 
+# Configuration
+See `config.conf.example` for example configuration.
+
+For example,
+```
+SolrApiUrl=http://127.0.0.1:8983/solr/gios/select
+```
+specifies the SOLR endpoint URL.

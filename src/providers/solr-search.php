@@ -41,11 +41,8 @@ class SolrSearch implements Search {
       $this->queryBuilder = new SolrQueryBuilder();
     }
 
-    // TODO: Require $apiUrl param
     if ( $apiUrl ) {
       $this->apiUrl = $apiUrl;
-    } else {
-      $this->apiUrl = 'http://127.0.0.1:8983/solr/gios/select'; // TODO: get this url from a config file
     }
 
     if ( $httpGetCommand ) {
