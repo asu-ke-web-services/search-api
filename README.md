@@ -36,7 +36,7 @@ vendor/bin/phpcs --standard=GIOS src test
 # Developing the Search API
 If you add a new class (or rename a class) file in the ```src``` folder you will need to run
 ```
-composer update
+composer dump-autoload
 ```
 This will regenerate the class auto-loader which does dependency mapping and creates static load order in the vendor folder.
 
