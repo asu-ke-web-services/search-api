@@ -3,69 +3,50 @@
 namespace SearchApi\Support;
 
 
-use Exception;
 use SearchApi\Models as Models;
 
 /**
- * Class Geo_Parser - Parses the returned result from a Geocoder
- *
- * @throws Exception - error if bad json object or json string
+ * Class Geo_Json_Parser - Parses the returned result from a Geocoder
  */
-class GeoParser {
+class GeoJsonParsers {
 
-  /**
-   * Function: reverse_geocoder_json_decoder
-   *
-   * @param Json obj $json_results
-   * @throws Exception -  error if bad json object or json string
-   */
-  public function reverse_geocoder_json_decoder( $json_results ) {
-    // code that decodes the json object into anrray
-    // make sure utf8 format
-    $json_results = utf8_encode( $json_results );
-    // decode json into associate array
-    $returnArrays = true;
-    $geocoder_results = json_decode( $json_results, $returnArrays );
+  private $json_results;
 
-    // checking if received Json was valid
-    if ( $geocoder_results === null ) {
-      throw new Exception( 'Invalid Json Object' );
-    }
-
-    // check for valid key
-    if ( array_key_exists( 'status', $geocoder_results ) &&
-        $geocoder_results['status'] !== 'OK' ) {
-      // UPDATE: update with new "Invalid Key" status
-      if ( $geocoder_results['status'] === 'REQUEST_DENIED' ) {
-        throw new Exception( 'Invalid Key' );
-      }
-      throw new Exception( 'Invalid Json String' );
-    }
-
-    // return decoded json
-    return $geocoder_results;
+  public function __construct( $results ) {
+    $this->json_results = $results;
   }
 
   /**
-   * Function: reverse_geocoder_parser
+   * Function to select the parser
    *
-   * @param Json Array $geocoder_results
+   * @param parser_pick - used to pick the correct parser
    */
-  public function reverse_geocoder_parser( $geocoder_results ) {
-    // creating array of search terms to return
+  public function Parser_Selector( $parser_pick ) {
+    if( $parser_pick == "Google" ) {
+      return $this->Reverse_Geocoder_Google_Parser();
+    }
+    // default parser
+    return $this->Reverse_Geocoder_Google_Parser();
+  }
+
+  /**
+   * Function for parsing google's geocoder
+   */
+  public function Reverse_Geocoder_Google_Parser() {
+  // creating array of search terms to return
     $search_term_array = array();
 
     // checking for if the input is null case
-    if ( $geocoder_results === null ) {
+    if ( $this->json_results === null ) {
       return $search_term_array;
     }
 
     // code that parses the array from the json object
     // making sure results is there and moving $geocoder_results to the inner array
-    if ( array_key_exists( 'results', $geocoder_results ) ) {
-      $geocoder_results = $geocoder_results['results'];
+    if ( array_key_exists( 'results', $this->json_results ) ) {
+      $this->json_results = $this->json_results['results'];
       // loopin through each address found and getting the locations
-      foreach ( $geocoder_results as $result ) {
+      foreach ( $this->json_results as $result ) {
         // checking if address_components exists
         if ( array_key_exists( 'address_components', $result ) ) {
           $result = $result['address_components'];
