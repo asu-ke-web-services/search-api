@@ -1,6 +1,6 @@
 <?php
 /**
- * Search Engine Unit test
+ * Geo Coder Unit tests
  */
 namespace SearchApi\Test\Unit;
 
@@ -9,10 +9,10 @@ use SearchApi;
 /**
  * Geo_coder__Unit_Tests - Unit tests for the geo coders (lower level functions)
  */
-class Geo_coder_Unit_Tests extends \PHPUnit_Framework_TestCase {
+class Geo_Coder_Unit_Test extends \PHPUnit_Framework_TestCase {
 
-	public function test_that_the_class_ReverseGeocoder_is_defined() {
-    $this->assertTrue( class_exists( 'SearchApi\Providers\ReverseGeocoder' ) );
+	public function test_that_the_class_ReverseGeocoderClass_is_defined() {
+    $this->assertTrue( class_exists( 'SearchApi\Providers\ReverseGeocoderClass' ) );
   }
 
   public function test_that_the_class_GeoCoderURLBuilder_is_defined() {

@@ -11,7 +11,7 @@ use SearchApi\Services\ReverseGeocoder as ReverseGeocoder;
  * Class ReverseGeocoder - Given a latlin or place id to find a point
  * or polygon that can represent that location via GoogleMaps.
  */
-class ReverseGeocoder implements ReverseGeocoder {
+class ReverseGeocoderClass implements ReverseGeocoder {
   private $Parser_Pick; // inject parser selection
   private $Url_Pick; // inject url builder selection
 
