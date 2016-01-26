@@ -9,9 +9,9 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * GeoParserSpec - Spec integration test for the Geo Parser Geocoder (higher level functions)
+ * GeoJsonParsersSpec - Spec integration test for the Geo Parser Geocoder (higher level functions)
  */
-class GeoParserSpec extends ObjectBehavior {
+class GeoJsonParsersSpec extends ObjectBehavior {
   function it_is_initializable() {
     $this->shouldHaveType( 'SearchApi\Support\GeoParser' );
   }
