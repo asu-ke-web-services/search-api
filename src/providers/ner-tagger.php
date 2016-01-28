@@ -28,9 +28,9 @@ class NerTagger implements Tagger {
     }
 
     // A temporary call to the tagger using direct paths
-    $tagger = new \StanfordNLP\POSTagger(
-      'usr/local/bin/english-left3words-distsim.tagger',
-      'usr/local/bin/stanford-postagger.jar'
+    $tagger = new \StanfordNLP\NERTagger(
+      '/usr/local/bin/stanford-ner-2015-04-20/classifiers/english.all.3class.distsim.crf.ser.gz',
+      '/usr/local/bin/stanford-ner-2015-04-20/stanford-ner.jar'
     );
 
     // Explode the request and push it through the tagger
