@@ -27,15 +27,14 @@ class NerTagger implements Tagger {
       return null;
     }
 
-    // This is a mock return value
-    $tagger_results = array(
-      [ 'Phoenix', 'LOCATION' ],
-      [ 'Arizona', 'LOCATION' ],
-      [ 'Jim', 'PERSON' ],
-      [ 'ASU', 'ORGANIZATION' ],
-      [ 'November', 'DATE' ],
-      [ '12:00', 'TIME' ],
+    // A temporary call to the tagger using direct paths
+    $tagger = new \StanfordNLP\POSTagger(
+      'usr/local/bin/english-left3words-distsim.tagger',
+      'usr/local/bin/stanford-postagger.jar'
     );
+
+    // Explode the request and push it through the tagger
+    $tagger_results = $tagger->tag(explode(' ', $request_string));
 
     return $tagger_results;
   }
@@ -43,7 +42,7 @@ class NerTagger implements Tagger {
   // Interpret the tagger results into Keyword objects
   public function results_to_keywords( $tagger_results ) {
     // Return null if there are no results
-    if ( $tagger_results === null ) {
+    if ( empty( $tagger_results ) ) {
       return null;
     }
 

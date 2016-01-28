@@ -24,7 +24,7 @@ class NerTaggerSpec extends ObjectBehavior {
   // The tagger service should return a nested array object
   function it_should_return_nested_array() {
     // Test a single function call instead of several
-    $test_result = $this->tagger_service( 'test' );
+    $test_result = $this->tagger_service( 'sample request phrase' );
 
     $test_result->shouldBeArray();
     foreach ( $test_result as $result ) {
@@ -35,15 +35,16 @@ class NerTaggerSpec extends ObjectBehavior {
     }
 
     // Tests only for dummy return values
-    $test_result->shouldHaveCount( 6 );
-    $test_result[0][0]->shouldReturn( 'Phoenix' );
-    $test_result[0][1]->shouldReturn( 'LOCATION' );
+    $test_result->shouldHaveCount( 3 );
+    $test_result[0][0]->shouldReturn( 'sample' );
+    $test_result[1][0]->shouldReturn( 'request' );
+    $test_result[2][0]->shouldReturn( 'phrase' );
   }
 
   // The tagger results should be converted to keywords
   function it_should_return_array_keywords() {
     // Test a single function call instead of several
-    $test_result = $this->results_to_keywords( $this->tagger_service( 'test' ) );
+    $test_result = $this->results_to_keywords( $this->tagger_service( 'sample request phrase' ) );
 
     $test_result->shouldBeArray();
     $test_result[0]->text->shouldBeString();
@@ -51,9 +52,9 @@ class NerTaggerSpec extends ObjectBehavior {
     $test_result[0]->relevance->shouldBeDouble();
 
     // Tests only for dummy return values
-    $test_result->shouldHaveCount( 6 );
-    $test_result[0]->text->shouldReturn( 'Phoenix' );
-    $test_result[0]->type->shouldReturn( 'LOCATION' );
-    $test_result[0]->relevance->shouldReturn( 1.0 );
+    $test_result->shouldHaveCount( 3 );
+    $test_result[0]->text->shouldReturn( 'sample' );
+    // $test_result[0]->type->shouldReturn( 'LOCATION' );
+    // $test_result[0]->relevance->shouldReturn( 1.0 );
   }
 }
