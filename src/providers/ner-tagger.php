@@ -4,6 +4,7 @@ namespace SearchApi\Providers;
 use SearchApi\Models\Keyword;
 use SearchApi\Services\Tagger;
 use StanfordNLP\NERTagger as StanfordNERTagger;
+use Nectary\Configuration as Configuration;
 
 /**
  * NerTagger - This is a tagger implementation that uses the Named Entity Recognizer and returns an array of keywords.
@@ -28,9 +29,12 @@ class NerTagger implements Tagger {
     }
 
     // A temporary call to the tagger using direct paths
+    $stanfordNerPath = trim(
+      Configuration::get_instance()->get( 'StanfordNerPath', '/usr/local/bin/stanford-ner-2015-04-20/' ), '\r\n'
+    );
     $tagger = new \StanfordNLP\NERTagger(
-      '/usr/local/bin/stanford-ner-2015-04-20/classifiers/english.all.3class.distsim.crf.ser.gz',
-      '/usr/local/bin/stanford-ner-2015-04-20/stanford-ner.jar'
+      $stanfordNerPath . 'classifiers/english.all.3class.distsim.crf.ser.gz',
+      $stanfordNerPath . 'stanford-ner.jar'
     );
 
     // Explode the request and push it through the tagger
