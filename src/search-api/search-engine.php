@@ -4,6 +4,7 @@ namespace SearchApi;
 use SearchApi\Models as Models;
 use SearchApi\Providers as Providers;
 use SearchApi\Services\Search as Search;
+use Nectary\Configuration as Configuration;
 
 /**
  * Class SearchEngine - This is the main entry point into this application, it takes search requests and
@@ -13,10 +14,12 @@ class SearchEngine {
   private $search;
 
   public function __construct( Search $search = null ) {
+    Configuration::set_configuration_path( 'config.conf' );
     if ( $search ) {
       $this->search = $search;
     } else {
-      $this->search = new Providers\SolrSearch();
+      $apiPath = trim( Configuration::get_instance()->get( 'SolrApiUrl' ), '\r\n' );
+      $this->search = new Providers\SolrSearch( null, null, $apiPath );
     }
   }
 
