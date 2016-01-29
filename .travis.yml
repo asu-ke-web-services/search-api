@@ -18,15 +18,17 @@ php:
   # - hhvm
 
 install:
-  - if [ ! -d "./lib/stanford-ner-2015-04-20" ]; then wget http://nlp.stanford.edu/software/stanford-ner-2015-04-20.zip; fi
-  - unzip stanford-ner-2015-04-20.zip -d lib/
+  - if [ ! -d "./lib/stanford-ner-2015-04-20" ]; then
+      wget http://nlp.stanford.edu/software/stanford-ner-2015-04-20.zip;
+      unzip stanford-ner-2015-04-20.zip -d lib/;
+    fi
   - composer install --no-interaction --prefer-source
   - composer create-project wp-coding-standards/wpcs:dev-master --no-dev -n standards/wpcs
   - ./vendor/bin/phpcs -vvv -w --config-set installed_paths '../../../standards/gios/,../../../standards/wpcs/'
 
 before_script:
   - mkdir coverage
-  - printf "SolrApiUrl=http://127.0.0.1:8983/solr/gios/select\nStanfordNerPath=./lib/stanford-ner-2015-04-20" > config.conf
+  - printf "SolrApiUrl=http://127.0.0.1:8983/solr/gios/select\nStanfordNerPath=./lib/stanford-ner-2015-04-20/" > config.conf
 
 script:
   - vendor/bin/phpunit # --coverage-clover /tmp/coverage/clover.xml
