@@ -2,10 +2,11 @@ language: php
 
 sudo: false
 
-cache: 
+cache:
   directories:
     - vendor
     - $HOME/.composer/cache
+    - lib
 
 php:
   - 5.5.9
@@ -17,6 +18,8 @@ php:
   # - hhvm
 
 install:
+  - if [ ! -d "./lib/stanford-ner-2015-04-20" ]; then wget http://nlp.stanford.edu/software/stanford-ner-2015-04-20.zip; fi
+  - unzip stanford-ner-2015-04-20.zip -d lib/
   - composer install --no-interaction --prefer-source
   - composer create-project wp-coding-standards/wpcs:dev-master --no-dev -n standards/wpcs
   - ./vendor/bin/phpcs -vvv -w --config-set installed_paths '../../../standards/gios/,../../../standards/wpcs/'
@@ -26,7 +29,7 @@ before_script:
 
 script:
   - vendor/bin/phpunit # --coverage-clover /tmp/coverage/clover.xml
-  - vendor/bin/phpspec run -c .phpspec.yml 
+  - vendor/bin/phpspec run -c .phpspec.yml
   - vendor/bin/phpcs --standard=GIOS --ignore= ./src ./test
 
 after_script:
