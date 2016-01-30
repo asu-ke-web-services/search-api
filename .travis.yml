@@ -20,7 +20,7 @@ php:
 
 before_install:
   # BEGIN requisite commands for installing Java 8 (OpenJDK)
-  - if [ ! -d "$HOME/.linuxbrew" ]; then
+  - if [ ! -d "$HOME/.linuxbrew/bin" ]; then
       yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)";
     fi
   - export PATH="$HOME/.linuxbrew/bin:$PATH"
