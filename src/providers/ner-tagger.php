@@ -31,13 +31,13 @@ class NerTagger implements Tagger {
     // Get path to Stanford NER from config.
     // TODO: Configuration path in constructor (?)
     Configuration::set_configuration_path( 'config.conf' );
-    $stanfordNerPath = rtrim(
+    $stanfordNerPath = realpath(rtrim(
       Configuration::get_instance()->get( 'StanfordNerPath', '/usr/local/bin/stanford-ner-2015-04-20/' )
-    );
+    ));
 
     $tagger = new \StanfordNLP\NERTagger(
-      $stanfordNerPath . 'classifiers/english.all.3class.distsim.crf.ser.gz',
-      $stanfordNerPath . 'stanford-ner.jar'
+      $stanfordNerPath . '/classifiers/english.all.3class.distsim.crf.ser.gz',
+      $stanfordNerPath . '/stanford-ner.jar'
     );
 
     // Explode the request and push it through the tagger
