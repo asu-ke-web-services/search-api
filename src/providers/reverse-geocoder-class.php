@@ -31,6 +31,14 @@ class ReverseGeocoderClass implements ReverseGeocoder {
     $this->Parser_Pick = $parser_pick;
   }
 
+  public function get_Url_Pick() {
+    return $this->url_pick;
+  }
+
+  public function get_Parser_Pick() {
+    return $this->Parser_pick;
+  }
+
   /**
    * Function to gather the location data for the coordinates given
    *
