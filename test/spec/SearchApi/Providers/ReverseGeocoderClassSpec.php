@@ -11,15 +11,11 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * GoogleReverseGeocoderSpec - Spec integration test for the Google Reverse Geocoder (higher level functions)
+ * ReverseGeocoderClassSpec - Spec integration test for the ReverseGeocoderClass (higher level functions)
  */
-class ReverseGeocoderspec extends ObjectBehavior {
+class ReverseGeocoderClassSpec extends ObjectBehavior {
   function it_is_initializable() {
-    $this->shouldHaveType( 'SearchApi\Providers\GoogleReverseGeocoder' );
-  }
-
-  function it_shouldnt_have_an_api_key_by_default() {
-    $this->api_key->shouldBe( null );
+    $this->shouldHaveType( 'SearchApi\Providers\ReverseGeocoderClass' );
   }
 
   function it_should_return_a_result_without_key() {
