@@ -17,6 +17,16 @@ php:
   # - nightly
   # - hhvm
 
+before_install:
+  # BEGIN requisite commands for installing Java 8 (OpenJDK)
+  - rm -rf ~/.linuxbrew
+  - yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
+  - export PATH="$HOME/.linuxbrew/bin:$PATH"
+  - export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+  - export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+  - brew install jdk
+  # END
+
 install:
   - if [ ! -d "lib/stanford-ner-2015-04-20" ]; then
       wget http://nlp.stanford.edu/software/stanford-ner-2015-04-20.zip;
