@@ -5,8 +5,9 @@ sudo: false
 cache:
   directories:
     - vendor
-    - $HOME/.composer/cache
     - lib
+    - $HOME/.composer/cache
+    - $HOME/.linuxbrew
 
 php:
   - 5.5.9
@@ -19,8 +20,9 @@ php:
 
 before_install:
   # BEGIN requisite commands for installing Java 8 (OpenJDK)
-  - rm -rf ~/.linuxbrew
-  - yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
+  - if [ ! -d "$HOME/.linuxbrew" ]; then
+      yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)";
+    fi
   - export PATH="$HOME/.linuxbrew/bin:$PATH"
   - export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
   - export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
