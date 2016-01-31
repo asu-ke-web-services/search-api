@@ -56,11 +56,7 @@ class ReverseGeocoderClass implements ReverseGeocoder {
     $geocoding_results = $curl_caller->execute();
 
     // checking if the curl was successful
-    // if ( $geocoding_results === false ) {
-    // need the curl_getinfo to do this test
-    // $info = curl_getinfo( $curl_caller );
-    // throw new Exception( 'error occured during curl exec. Additioanl info: ' . var_export( $info ) );
-    // }
+
     // end of the implementing a curl call using http-get curl call
 
     // calling json decoder
