@@ -32,11 +32,11 @@ class ReverseGeocoderClass implements ReverseGeocoder {
   }
 
   public function get_Url_Pick() {
-    return $this->url_pick;
+    return $this->Url_Pick;
   }
 
   public function get_Parser_Pick() {
-    return $this->Parser_pick;
+    return $this->Parser_Pick;
   }
 
   /**
@@ -48,11 +48,11 @@ class ReverseGeocoderClass implements ReverseGeocoder {
   public function get_locations( Models\GeoCoordinate $geo_coordinate ) {
 
     // building the url
-    $url_builder = new Support\URLBuilder( $geo_coordinate );
+    $url_builder = new Support\GeoCoderURLBuilder( $geo_coordinate );
 
     // implementing a curl call using http-get curl call
     $curl_caller = new Commands\HttpGet();
-    $curl_caller->setUrl( $url_builder->Url_Selector( $Url_Pick ) );
+    $curl_caller->setUrl( $url_builder->Url_Selector( $this->Url_Pick ) );
     $geocoding_results = $curl_caller->execute();
 
     // checking if the curl was successful

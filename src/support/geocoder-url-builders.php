@@ -1,6 +1,8 @@
 <?php
 namespace SearchApi\Support;
 
+use SearchApi\Models as Models;
+
 /**
  * Class URL_Builder - builds the urls for the curl call to the geocoders
  *
