@@ -21,20 +21,20 @@ class GeoCoderURLBuilderSpec extends ObjectBehavior {
 
   function it_should_return_a_result_without_picked_url() {
     $this->beConstructedWith( new Models\GeoCoordinate( 40.714224, -73.961452 ) );
-    $this->Url_Selector( null )
+    $this->url_selector( null )
     ->shouldBeString();
   }
 
   function it_should_return_a_result_with_google_url_picked() {
     $this->beConstructedWith( new Models\GeoCoordinate( 40.714224, -73.961452 ) );
-    $this->Url_Selector( 'Google' )
+    $this->url_selector( 'Google' )
     ->shouldBeString();
   }
 
   // specific builder tests
   function it_should_return_a_string_from_the_google_builder() {
     $this-> beConstructedWith( new Models\GeoCoordinate( 40.714224, -73.961452 ) );
-    $this->Google_URL()->shouldBeString();
+    $this->google_url()->shouldBeString();
   }
   // end of builder tests
 }

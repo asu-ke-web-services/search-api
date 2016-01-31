@@ -15,7 +15,7 @@ use Prophecy\Argument;
  */
 class ReverseGeocoderClassSpec extends ObjectBehavior {
   function it_is_initializable() {
-  	$this->beConstructedWith( null, null );
+    $this->beConstructedWith( null, null );
     $this->shouldHaveType( 'SearchApi\Providers\ReverseGeocoderClass' );
   }
 
@@ -51,9 +51,9 @@ class ReverseGeocoderClassSpec extends ObjectBehavior {
   }
 
   function it_should_return_a_result_with_google_urlbuild_and_parser() {
-  	$this->beConstructedWith( 'Google', 'Google' );
-  	$geo_cordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
-  	$this->get_locations( $geo_cordinate )
-  	->shouldBeArray();
+    $this->beConstructedWith( 'Google', 'Google' );
+    $geo_cordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
+    $this->get_locations( $geo_cordinate )
+    ->shouldBeArray();
   }
 }

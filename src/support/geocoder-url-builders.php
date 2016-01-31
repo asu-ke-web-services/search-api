@@ -6,7 +6,7 @@ use SearchApi\Models as Models;
 /**
  * Class URL_Builder - builds the urls for the curl call to the geocoders
  *
- * add more url builder functions for each geocoder
+ * Add more url builder functions for each geocoder
  */
 class GeoCoderURLBuilder {
 
@@ -25,20 +25,20 @@ class GeoCoderURLBuilder {
    *
    * @param url_pick - used to select correct url to build
    */
-  public function Url_Selector( $url_pick ) {
-    if( $url_pick == "Google" ) {
-      return $this->Google_URL();
+  public function url_selector( $url_pick ) {
+    if ( $url_pick === 'Google' ) {
+      return $this->google_url();
     }
     // default url builder
-    return $this->Google_URL();
+    return $this->google_url();
   }
 
   /**
    * Function for generating google's url for the curl call
    */
-  public function Google_URL() {
+  public function google_url() {
     $service_url = 'https://maps.googleapis.com/maps/api/geocode/json?'.
-       "latlng={$this->geo_coordinate->lat},{$this->geo_coordinate->lng}";
+    "latlng={$this->geo_coordinate->lat},{$this->geo_coordinate->lng}";
 
     // checking if api key is given, if so adding it to url
     if ( $this->Google_Key !== null ) {

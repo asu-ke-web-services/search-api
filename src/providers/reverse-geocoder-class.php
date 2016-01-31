@@ -20,13 +20,13 @@ class ReverseGeocoderClass implements ReverseGeocoder {
     // selecting the url builder
     if ( $url_pick === null ) {
       // default url builder
-      $url_pick = "Google";
+      $url_pick = 'Google';
     }
     $this->Url_Pick = $url_pick;
 
     // selecting the geo parser
     if ( $parser_pick === null ) {
-      $parser_pick = "Google";
+      $parser_pick = 'Google';
     }
     $this->Parser_Pick = $parser_pick;
   }
@@ -52,15 +52,15 @@ class ReverseGeocoderClass implements ReverseGeocoder {
 
     // implementing a curl call using http-get curl call
     $curl_caller = new Commands\HttpGet();
-    $curl_caller->setUrl( $url_builder->Url_Selector( $this->Url_Pick ) );
+    $curl_caller->setUrl( $url_builder->url_selector( $this->Url_Pick ) );
     $geocoding_results = $curl_caller->execute();
 
     // checking if the curl was successful
-    if ( $geocoding_results === false ) {
-      // need the curl_getinfo to do this test
-      // $info = curl_getinfo( $curl_caller );
-      // throw new Exception( 'error occured during curl exec. Additioanl info: ' . var_export( $info ) );
-    }
+    // if ( $geocoding_results === false ) {
+    // need the curl_getinfo to do this test
+    // $info = curl_getinfo( $curl_caller );
+    // throw new Exception( 'error occured during curl exec. Additioanl info: ' . var_export( $info ) );
+    // }
     // end of the implementing a curl call using http-get curl call
 
     // calling json decoder
@@ -69,6 +69,6 @@ class ReverseGeocoderClass implements ReverseGeocoder {
     // calling parser
     $geo_parser = new Support\GeoJsonParsers( $decoded_json );
     // returns array of search terms
-    return $geo_parser->Parser_Selector( $this->Parser_Pick );
+    return $geo_parser->parser_selector( $this->Parser_Pick );
   }
 }

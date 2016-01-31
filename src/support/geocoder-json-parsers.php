@@ -21,19 +21,19 @@ class GeoJsonParsers {
    *
    * @param parser_pick - used to pick the correct parser
    */
-  public function Parser_Selector( $parser_pick ) {
-    if( $parser_pick == "Google" ) {
-      return $this->Reverse_Geocoder_Google_Parser();
+  public function parser_selector( $parser_pick ) {
+    if ( $parser_pick === 'Google' ) {
+      return $this->reverse_geocoder_google_parser();
     }
     // default parser
-    return $this->Reverse_Geocoder_Google_Parser();
+    return $this->reverse_geocoder_google_parser();
   }
 
   /**
    * Function for parsing google's geocoder
    */
-  public function Reverse_Geocoder_Google_Parser() {
-  // creating array of search terms to return
+  public function reverse_geocoder_google_parser() {
+    // creating array of search terms to return
     $search_term_array = array();
 
     // checking for if the input is null case

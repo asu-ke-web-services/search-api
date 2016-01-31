@@ -11,7 +11,7 @@ use SearchApi;
  */
 class Geo_Coder_Unit_Test extends \PHPUnit_Framework_TestCase {
 
-	public function test_that_the_class_ReverseGeocoderClass_is_defined() {
+  public function test_that_the_class_ReverseGeocoderClass_is_defined() {
     $this->assertTrue( class_exists( 'SearchApi\Providers\ReverseGeocoderClass' ) );
   }
 
