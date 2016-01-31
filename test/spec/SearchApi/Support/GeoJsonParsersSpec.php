@@ -18,6 +18,19 @@ class GeoJsonParsersSpec extends ObjectBehavior {
   }
 
 	// ToDo: add in tests for the selector method
+  // selector tests
+  function it_should_return_an_array_with_nothing_selected() {
+    $this->beConstructedWith( null );
+    $result = $this->Parser_Selector( null );
+    $result->shouldBeArray();
+  }
+
+  function it_should_return_an_array_with_google_selected() {
+    $this->beConstructedWith( null );
+    $result = $this->Parser_Selector( 'Google' );
+    $result->shouldBeArray();
+  }
+  // end of selector tests
 
   // Reverse_Geocoder_Google_Parser tests
   function it_should_return_an_empty_array_when_passed_null() {
@@ -42,7 +55,6 @@ class GeoJsonParsersSpec extends ObjectBehavior {
   }
 
   function it_should_return_an_array_of_search_terms() {
-		// Make into a mock?
     // testing string
     $google_test_string =
     '{
@@ -105,15 +117,4 @@ class GeoJsonParsersSpec extends ObjectBehavior {
     $value_checker->count->shouldBe( 2 );
   }
   // end of reverse_geocoder_parser tests
-
-	// move to integration testing
-  // combined reverse_geocoder_json_decoder and reverse_geocoder_parser tests
-  function it_should_return_an_empty_array_after_json_decoding_and_parsing() {
-  	$this->beConstructedWith( '{"test":"test"}' );
-    $result = $this->reverse_geocoder_json_decoder( '{"test":"test"}' );
-    $result = $this->Reverse_Geocoder_Google_Parser( $result );
-    $result->shouldBeArray();
-    $result->shouldHaveCount( 0 );
-  }
-  // end of combined reverse_geocoder_json_decoder and reverse_geocoder_parser tests
 }
