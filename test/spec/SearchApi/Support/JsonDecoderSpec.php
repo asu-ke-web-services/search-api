@@ -17,9 +17,19 @@ class JsonDecoderSpec extends ObjectBehavior {
   }
 
   // reverse_geocoder_json_decoder tests
+  function it_should_return_a_string() {
+    $results = $this->reverse_geocoder_json_decoder( '{"test" : "test"}' );
+    $results->shouldBeArray();
+  }
+
   function it_should_throw_invalid_key() {
     $this->shouldThrow( new \Exception( 'Invalid Key' ) )
     ->during( 'reverse_geocoder_json_decoder', array( '{"status" : "REQUEST_DENIED"}' ) );
+  }
+
+  function it_should_throw_invalid_json_string() {
+    $this->shouldThrow( new \Exception( 'Invalid Json String' ) )
+    ->during( 'reverse_geocoder_json_decoder', array( '{"status" : "REQUEST_Apples"}' ) );
   }
 
   function it_should_throw_invalid_json_object() {
