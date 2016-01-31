@@ -17,7 +17,6 @@ class GeoJsonParsersSpec extends ObjectBehavior {
     $this->shouldHaveType( 'SearchApi\Support\GeoJsonParsers' );
   }
 
-	// ToDo: add in tests for the selector method
   // selector tests
   function it_should_return_an_array_with_nothing_selected() {
     $this->beConstructedWith( null );
