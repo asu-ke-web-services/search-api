@@ -40,14 +40,10 @@ class SearchEngine {
   }
 
   public function handle_request( Models\SearchRequest $request ) {
-
-    if ( $request->document === null) {
-      return new Models\SearchResult();
-    }
-
     // get keywords from the $request
-    $request->text = $this->tagger->tagger_service( $request->document );
-
+    if ( $request->document ) {
+      $request->text = $this->tagger->tagger_service( $request->document );
+    }
     // get coordinates if available if $text has a location
 /*    foreach ( $request->text as $item ) {
         if( $item->type === 'LOCATION' ) {
