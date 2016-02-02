@@ -59,7 +59,14 @@ class SearchEngine {
     // do stuff with $request
     $response = new Models\SearchResult();
     $response->orginialRequest = $request;
-    $response->results = $this->search->query( $request->text );
+
+    $keywords = explode(" ", $request->text);
+    $searchTerms = array();
+    foreach ($keywords as &$word) {
+      array_push($searchTerms, new Models\SearchTerm($word));
+    }
+
+    $response->results = $this->search->query( $searchTerms );
     $response->count = count( $response->results );
     return $response;
   }
