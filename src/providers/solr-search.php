@@ -70,15 +70,15 @@ class SolrSearch implements Search {
     $docs = $parsedResult->response->docs;
     foreach ( $docs as $doc ) {
       $item = new SearchResultItem();
-      $item->id = $doc->id;
+      $item->id = $doc->id[0];
       if ( property_exists( $doc, 'title' ) ) {
-        $item->title = $doc->title;
+        $item->title = $doc->title[0];
       }
       if ( property_exists( $doc, 'author' ) ) {
         $item->author = $doc->author;
       }
       if ( property_exists( $doc, 'publication_date' ) ) {
-        $item->date = $doc->publication_date;
+        $item->date = $doc->publication_date[0];
       }
       array_push( $result->results, $item );
     }
