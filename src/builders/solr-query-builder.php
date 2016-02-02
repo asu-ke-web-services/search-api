@@ -12,7 +12,12 @@ class SolrQueryBuilder implements QueryBuilder {
    * Build a query string from provided search terms and search options
    */
   function build( $keywords, $options = null ) {
-    // TODO: This is just a placeholder
-    return '?q=collector%3Aurbanization&wt=json&indent=true';
+    $keywordStrings = '';
+
+    foreach ($keywords as &$word) {
+      $keywordStrings = $keywordStrings . $word->value . '%20';
+    }
+
+    return '?q=collector%3A(' . $keywordStrings . ')&wt=json&indent=true';
   }
 }
