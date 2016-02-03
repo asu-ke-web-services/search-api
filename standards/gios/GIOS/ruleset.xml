@@ -37,6 +37,9 @@
 
     <!-- Exclude the most controversial "accepted" rule -->
     <exclude name="WordPress.PHP.YodaConditions" />
+
+    <!-- Disable snake_case -->
+    <exclude name="WordPress.NamingConventions.ValidVariableName"/>
   </rule>
 
   <!-- Force 2 spaces -->
@@ -46,6 +49,7 @@
           <property name="exact" value="true"/>
       </properties>
   </rule>
+  <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
 
   <!-- Braces on the same line -->
   <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie">

@@ -18,38 +18,38 @@ class GeoParserSpec extends ObjectBehavior {
 
   // reverse_geocoder_json_decoder tests
   function it_should_throw_invalid_key() {
-  	$this->shouldThrow( new \Exception( 'Invalid Key' ) )
-  	->during( 'reverse_geocoder_json_decoder', array( '{"status" : "REQUEST_DENIED"}' ) );
+    $this->shouldThrow( new \Exception( 'Invalid Key' ) )
+    ->during( 'reverse_geocoder_json_decoder', array( '{"status" : "REQUEST_DENIED"}' ) );
   }
 
   function it_should_throw_invalid_json_object() {
-  	$this->shouldThrow( new \Exception( 'Invalid Json Object' ) )
-  	->during( 'reverse_geocoder_json_decoder', array( '{bad_json : isbad}' ) );
+    $this->shouldThrow( new \Exception( 'Invalid Json Object' ) )
+    ->during( 'reverse_geocoder_json_decoder', array( '{bad_json : isbad}' ) );
   }
   // end of reverse_geocoder_json_decoder tests
 
   // reverse_geocoder_parser tests
   function it_should_return_an_empty_array_when_passed_null() {
-  	$result = $this->reverse_geocoder_parser( null );
-  	$result->shouldBeArray();
-  	$result->shouldHaveCount( 0 );
+    $result = $this->reverse_geocoder_parser( null );
+    $result->shouldBeArray();
+    $result->shouldHaveCount( 0 );
   }
 
   function it_should_return_an_empty_array_when_passed_empty_array() {
-  	$result = $this->reverse_geocoder_parser( array() );
-  	$result->shouldBeArray();
-  	$result->shouldHaveCount( 0 );
+    $result = $this->reverse_geocoder_parser( array() );
+    $result->shouldBeArray();
+    $result->shouldHaveCount( 0 );
   }
 
   function it_should_return_an_empty_array_when_passed_bad_formatted_array() {
-  	$result = $this->reverse_geocoder_parser( array( 'a', 'b', 'f' ) );
-  	$result->shouldBeArray();
-  	$result->shouldHaveCount( 0 );
+    $result = $this->reverse_geocoder_parser( array( 'a', 'b', 'f' ) );
+    $result->shouldBeArray();
+    $result->shouldHaveCount( 0 );
   }
 
   function it_should_return_an_array_of_search_terms() {
     // testing string
-  	$test_string =
+    $test_string =
     '{
       "results": [
         {
@@ -90,13 +90,13 @@ class GeoParserSpec extends ObjectBehavior {
   	}';
     // end of the test string
 
-  	// turning test string into json_decoder array
+    // turning test string into json_decoder array
     $test_string = json_decode( $test_string, true );
 
     // checking it is array and has 2 elements
-  	$result = $this->reverse_geocoder_parser( $test_string );
-  	$result->shouldBeArray();
-  	$result->shouldHaveCount( 2 );
+    $result = $this->reverse_geocoder_parser( $test_string );
+    $result->shouldBeArray();
+    $result->shouldHaveCount( 2 );
 
     // checking the first element value and count
     $value_checker = $result[0];
@@ -112,10 +112,10 @@ class GeoParserSpec extends ObjectBehavior {
 
   // combined reverse_geocoder_json_decoder and reverse_geocoder_parser tests
   function it_should_return_an_empty_array_after_json_decoding_and_parsing() {
-  	$result = $this->reverse_geocoder_json_decoder( '{"test":"test"}' );
-  	$result = $this->reverse_geocoder_parser( $result );
-  	$result->shouldBeArray();
-  	$result->shouldHaveCount( 0 );
+    $result = $this->reverse_geocoder_json_decoder( '{"test":"test"}' );
+    $result = $this->reverse_geocoder_parser( $result );
+    $result->shouldBeArray();
+    $result->shouldHaveCount( 0 );
   }
   // end of combined reverse_geocoder_json_decoder and reverse_geocoder_parser tests
 }
