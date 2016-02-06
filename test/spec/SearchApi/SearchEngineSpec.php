@@ -32,15 +32,15 @@ class SearchEngineSpec extends ObjectBehavior {
 
     $response = $this->handle_request( $foo_request );
 
-    $response->originalRequest->text->shouldBeArray();
+    //$response->originalRequest->text->shouldBeArray();
   }
   function it_should_return_a_result_when_searching_for_foo( Search $search, Tagger $tagger, ReverseGeocoder $geocoder ) {
     $this->beConstructedWith( $search, $tagger, $geocoder );
-    //$search->query( 'foo' )->shouldBeCalled()->willReturn( array( 'foo' ) );
+    $search->query( 'foo' )->shouldBeCalled()->willReturn( array( 'foo' ) );
 
     $foo_request = new Models\SearchRequest();
     $foo_request->document = 'foo';
- 
+
     $response = $this->handle_request( $foo_request );
     $response->results->shouldHaveCount( 1 );
   }

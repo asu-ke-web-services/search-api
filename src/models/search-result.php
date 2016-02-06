@@ -14,3 +14,4 @@ class SearchResult {
   public $count = 0;
   public $originalRequest;
 }
+

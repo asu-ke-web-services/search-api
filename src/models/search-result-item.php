@@ -16,3 +16,4 @@ class SearchResultItem {
   public $author;
   public $date;
 }
+
