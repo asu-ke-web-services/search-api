@@ -26,19 +26,30 @@ class NerTaggerSpec extends ObjectBehavior {
     // Test a single function call instead of several
     $test_result = $this->tagger_service( 'sample request phrase' );
 
+    // The results should be an array
     $test_result->shouldBeArray();
+
+    // Each item in the resulting array should have a specific structure
     foreach ( $test_result as $result ) {
       $result->shouldBeArray();
       $result->shouldHaveCount( 2 );
       $result[0]->shouldBeString();
       $result[1]->shouldBeString();
     }
+  }
 
-    // Tests only for dummy return values
-    $test_result->shouldHaveCount( 3 );
-    $test_result[0][0]->shouldReturn( 'sample' );
-    $test_result[1][0]->shouldReturn( 'request' );
-    $test_result[2][0]->shouldReturn( 'phrase' );
+  // The results should have the same count as the number of request terms
+  function its_length_should_match_term_count() {
+    $test_request = "";
+
+    // Keep adding terms and verify that the results match the request's term count
+    for( $count = 1; $count <= 5; $count++ ) {
+      $test_request .= 'term ';
+      $test_result = $this->tagger_service( $test_request );
+
+      $test_result->shouldBeArray();
+      $test_result->shouldHaveCount( $count );
+    }
   }
 
   // The tagger results should be converted to keywords
