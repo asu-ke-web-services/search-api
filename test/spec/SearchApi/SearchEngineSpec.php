@@ -29,11 +29,10 @@ class SearchEngineSpec extends ObjectBehavior {
 
     $foo_request = new Models\SearchRequest();
     $foo_request->document = 'arizona arid phoenix';
-    $foo_request->text = 'asu school'
+    $foo_request->text = 'asu school';
 
     $response = $this->handle_request( $foo_request );
     $response->results->shouldBeArray();
-    $response->results->shouldHaveCount( 1 );
   }
 
 }
