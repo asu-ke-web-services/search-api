@@ -44,26 +44,26 @@ class SearchEngine {
     if ( $request->document === null ) {
       return new Models\SearchResult();
     }
-    
+
     // the terms that will be sent to the query builder
     $searchTerms = array();
 
-    // the keywords from the 
+    // the resutls of the NER tagged text
     $taggedWords = array();
-    
+
     // explode user keywords
     if ( $request->text ) {
-      $userWords = explode(" " , $request->text );
-      foreach( $userWords as &$word ) {
-         array_push( $searchTerms, new Models\SearchTerm( $word, null, null, 1, true  ));
+      $userWords = explode( ' ' , $request->text );
+      foreach ( $userWords as &$word ) {
+        array_push( $searchTerms, new Models\SearchTerm( $word, null, null, 1, true ) );
       }
     }
-    
+
     // get terms from the document string and turn into searchTerm
     if ( $request->document ) {
       $taggedWords = $this->tagger->tagger_service( $request->document );
-      foreach( $taggedWords as &$keyword ) {
-	array_push($searchTerms, new Models\SearchTerm( $keyword->text, $keyword->type, $keyword->relevance, false ));
+      foreach ( $taggedWords as &$item ) {
+        array_push( $searchTerms, new Models\SearchTerm( $item->text, $item->type, $item->relevance, false ) );
       }
     }
 
@@ -72,7 +72,6 @@ class SearchEngine {
     // do stuff with $request
     $response = new Models\SearchResult();
     $response->orginalRequest = $request;
-
 
     $response->results = $this->search->query( $searchTerms );
     $response->count = count( $response->results );
