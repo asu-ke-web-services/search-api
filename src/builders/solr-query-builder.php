@@ -18,7 +18,7 @@ class SolrQueryBuilder implements QueryBuilder {
   function build( $searchTerms, $options = null ) {
     $keywordStrings = '';
 
-    error_log( var_dump( $options ) );
+    assert( gettype( $options ) === 'NULL' || gettype( $options ) === 'object' );
 
     foreach ( $searchTerms as &$word ) {
       $keywordStrings = $keywordStrings . $word->value . '%20';
