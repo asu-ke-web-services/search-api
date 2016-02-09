@@ -48,7 +48,7 @@ class SearchEngine {
     // the terms that will be sent to the query builder
     $searchTerms = array();
 
-    // the resutls of the NER tagged text
+    // the keywords from the
     $taggedWords = array();
 
     // explode user keywords
@@ -62,8 +62,8 @@ class SearchEngine {
     // get terms from the document string and turn into searchTerm
     if ( $request->document ) {
       $taggedWords = $this->tagger->tagger_service( $request->document );
-      foreach ( $taggedWords as &$item ) {
-        array_push( $searchTerms, new Models\SearchTerm( $item->text, $item->type, $item->relevance, false ) );
+      foreach ( $taggedWords as &$keyword ) {
+        array_push( $searchTerms, new Models\SearchTerm( $keyword->text, $keyword->type, $keyword->relevance, false ) );
       }
     }
 
@@ -78,4 +78,3 @@ class SearchEngine {
     return $response;
   }
 }
-
