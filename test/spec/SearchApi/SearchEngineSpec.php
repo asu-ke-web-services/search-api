@@ -27,10 +27,13 @@ class SearchEngineSpec extends ObjectBehavior {
   function it_should_add_keywords_to_original_request_when_searching_for_phoenix( Search $search, Tagger $tagger, ReverseGeocoder $geocoder ) {
     $this->beConstructedWith( $search, $tagger, $geocoder );
 
+    $tagger->tagger_service( 'phoenix' )->shouldBeCalled()->willReturn( array( new Models\Keyword( 'phoenix', 'LOCATION', null ) ) );
+
     $foo_request = new Models\SearchRequest();
     $foo_request->document = 'phoenix';
 
     $response = $this->handle_request( $foo_request );
+
   }
 
   function it_should_return_a_result_when_searching_for_foo( Search $search, Tagger $tagger, ReverseGeocoder $geocoder ) {
