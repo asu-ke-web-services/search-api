@@ -3,49 +3,50 @@
 namespace SearchApi\Support;
 
 
-use Exception;
 use SearchApi\Models as Models;
 
 /**
- * Class Geo_Parser - Parses the returned result from a Geocoder
+ * Class Geo_Json_Parser - Parses the returned result from a Geocoder
  */
-class GeoParser {
-  public function reverse_geocoder_json_decoder( $json_results ) {
-    // code that decodes the json object into anrray
-    // make sure utf8 format
-    $json_results = utf8_encode( $json_results );
-    // decode json into associate array
-    $geocoder_results = json_decode( $json_results, true );
+class GeoJsonParsers {
 
-    if ( $geocoder_results === null ) {
-      throw new Exception( 'Invalid Json Object' );
-    }
+  private $json_results;
 
-    // check for valid key
-    if ( array_key_exists( 'status', $geocoder_results ) &&
-            $geocoder_results['status'] === 'REQUEST_DENIED' ) {
-      throw new Exception( 'Invalid Key' );
-    }
-
-    // return decoded json
-    return $geocoder_results;
+  public function __construct( $results ) {
+    $this->json_results = $results;
   }
 
-  public function reverse_geocoder_parser( $geocoder_results ) {
+  /**
+   * Function to select the parser
+   *
+   * @param parser_pick - used to pick the correct parser
+   */
+  public function parser_selector( $parser_pick ) {
+    if ( $parser_pick === 'Google' ) {
+      return $this->reverse_geocoder_google_parser();
+    }
+    // default parser
+    return $this->reverse_geocoder_google_parser();
+  }
+
+  /**
+   * Function for parsing google's geocoder
+   */
+  public function reverse_geocoder_google_parser() {
     // creating array of search terms to return
     $search_term_array = array();
 
     // checking for if the input is null case
-    if ( $geocoder_results === null ) {
+    if ( $this->json_results === null ) {
       return $search_term_array;
     }
 
     // code that parses the array from the json object
     // making sure results is there and moving $geocoder_results to the inner array
-    if ( array_key_exists( 'results', $geocoder_results ) ) {
-      $geocoder_results = $geocoder_results['results'];
+    if ( array_key_exists( 'results', $this->json_results ) ) {
+      $this->json_results = $this->json_results['results'];
       // loopin through each address found and getting the locations
-      foreach ( $geocoder_results as $result ) {
+      foreach ( $this->json_results as $result ) {
         // checking if address_components exists
         if ( array_key_exists( 'address_components', $result ) ) {
           $result = $result['address_components'];
