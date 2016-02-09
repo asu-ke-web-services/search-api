@@ -67,7 +67,11 @@ class SearchEngine {
       }
     }
 
-    // @todo get coordinates if available when tagged words include a location
+    // get coordinates if available when tagged words include a location
+    if ( $request->coord ) {
+      $place = $this->$geocoder->get_locations( $request->coord );
+      array_push( $searchTerms, new Models\SearchTerm( $place, 'LOCATION', 1, true ) );
+    }
 
     // do stuff with $request
     $response = new Models\SearchResult();
