@@ -32,7 +32,7 @@ class NerTagger implements Tagger {
     // TODO: Configuration path in constructor (?)
     Configuration::set_configuration_path( 'config.conf' );
     $stanfordNerPath = realpath(rtrim(
-      Configuration::get_instance()->get( 'StanfordNerPath', '/usr/local/bin/stanford-ner-2015-04-20/' )
+      Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
     ));
 
     $tagger = new \StanfordNLP\NERTagger(
