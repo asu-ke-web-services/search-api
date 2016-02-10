@@ -54,12 +54,11 @@ class SolrSearch implements Search {
 
   /**
    * Create a search result from a JSON string.
-   * returns SearchResult
+   * returns SearchResultItem[]
    * @param string $responseString
    */
   function parse_query_response( $responseString ) {
-    $result = new SearchResult();
-    $result->results = array();
+    $results = array();
 
     $parsedResult = json_decode( $responseString );
 
@@ -80,17 +79,15 @@ class SolrSearch implements Search {
       if ( property_exists( $doc, 'publication_date' ) ) {
         $item->date = $doc->publication_date[0];
       }
-      array_push( $result->results, $item );
+      array_push( $results, $item );
     }
 
-    $result->count = count( $result->results );
-
-    return $result;
+    return $results;
   }
 
   /**
    * Make a query to solr server, with options for pagination, sorting, etc.
-   * Returns SearchResult
+   * Returns SearchResultItem[]
    *
    * @param SearchTerm[]|null $keywords Keywords to search
    * @param SearchApi\Models\SearchOptions|null $options Query options
