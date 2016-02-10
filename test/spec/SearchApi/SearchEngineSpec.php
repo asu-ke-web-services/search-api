@@ -24,7 +24,7 @@ class SearchEngineSpec extends ObjectBehavior {
     $this->handle_request( $empty_search_request )->shouldReturnAnInstanceOf( 'SearchApi\Models\SearchResult' );
   }
 
-  function it_should_add_keywords_to_original_request_when_searching_for_phoenix( Search $search, Tagger $tagger, ReverseGeocoder $geocoder ) {
+  function it_should_use_tagger_if_document_provided( Search $search, Tagger $tagger, ReverseGeocoder $geocoder ) {
     $this->beConstructedWith( $search, $tagger, $geocoder );
 
     $tagger->tagger_service( 'phoenix' )->shouldBeCalled()->willReturn( array( new Models\Keyword( 'phoenix', 'LOCATION', null ) ) );
@@ -33,15 +33,14 @@ class SearchEngineSpec extends ObjectBehavior {
     $foo_request->document = 'phoenix';
 
     $response = $this->handle_request( $foo_request );
-
   }
 
   function it_should_return_a_result_when_searching_for_foo( Search $search, Tagger $tagger, ReverseGeocoder $geocoder ) {
     $this->beConstructedWith( $search, $tagger, $geocoder );
-    $search->query( 'foo' )->shouldBeCalled()->willReturn( array( 'foo' ) );
+    $search->query( Argument::any() )->shouldBeCalled()->willReturn( array( new Models\SearchResultItem ) );
 
     $foo_request = new Models\SearchRequest();
-    $foo_request->document = 'foo';
+    $foo_request->text = 'foo';
 
     $response = $this->handle_request( $foo_request );
     $response->results->shouldHaveCount( 1 );
