@@ -40,11 +40,6 @@ class SearchEngine {
   }
 
   public function handle_request( Models\SearchRequest $request ) {
-
-    if ( $request->document === null ) {
-      return new Models\SearchResult();
-    }
-
     // the terms that will be sent to the query builder
     $searchTerms = array();
 
