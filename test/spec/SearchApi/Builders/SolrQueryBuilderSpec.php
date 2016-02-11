@@ -18,6 +18,8 @@ class SolrQueryBuilderSpec extends ObjectBehavior {
   }
 
   function it_returns_a_string() {
-    $this->build( 'test' )->shouldBeString();
+    $keyword = new Models\SearchTerm( 'test' );
+    $keywords = array( $keyword );
+    $this->build( $keywords )->shouldBeString();
   }
 }

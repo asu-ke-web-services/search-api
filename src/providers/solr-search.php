@@ -31,8 +31,8 @@ class SolrSearch implements Search {
    * Constructor with optional params
    *
    * @param QueryBuilder $queryBuilder Should be able to inject dependency to use any solr-specific impl. of QueryBuilder
-   * @var Command $httpGetCommand Preferred http get command for making simple GET requests.
-   * @var string $apiUrl Base URL for the solr query API
+   * @param Command $httpGetCommand Preferred http get command for making simple GET requests.
+   * @param string $apiUrl Base URL for the solr query API
    */
   function __construct( QueryBuilder $queryBuilder = null, Commands\Command $httpGetCommand = null, $apiUrl = null ) {
     if ( $queryBuilder ) {
@@ -89,16 +89,16 @@ class SolrSearch implements Search {
    * Make a query to solr server, with options for pagination, sorting, etc.
    * Returns SearchResultItem[]
    *
-   * @param SearchTerm[]|null $keywords Keywords to search
+   * @param SearchTerm[]|null $searchTerms Search terms to search
    * @param SearchApi\Models\SearchOptions|null $options Query options
    */
-  function query( $keywords, $options = null ) {
+  function query( $searchTerms, $options = null ) {
     // This is just a placeholder
-    if ( $keywords === null ) {
+    if ( $searchTerms === null ) {
       return null;
     }
 
-    $queryString = $this->queryBuilder->build( $keywords, $options );
+    $queryString = $this->queryBuilder->build( $searchTerms, $options );
 
     $this->httpGetCommand->setUrl( $this->apiUrl . $queryString );
     $queryResult = $this->httpGetCommand->execute();
