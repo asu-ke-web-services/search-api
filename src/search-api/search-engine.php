@@ -70,7 +70,7 @@ class SearchEngine {
 
     // do stuff with $request
     $response = new Models\SearchResult();
-    $response->orginalRequest = $request;
+    $response->originalRequest = $request;
 
     $response->results = $this->search->query( $searchTerms );
     $response->count = count( $response->results );
