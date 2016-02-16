@@ -5,6 +5,8 @@ namespace spec\SearchApi;
 use SearchApi;
 use SearchApi\Models;
 use SearchApi\Services\Search;
+use SearchApi\Services\Tagger;
+use SearchApi\Services\ReverseGeocoder;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -22,9 +24,20 @@ class SearchEngineSpec extends ObjectBehavior {
     $this->handle_request( $empty_search_request )->shouldReturnAnInstanceOf( 'SearchApi\Models\SearchResult' );
   }
 
-  function it_should_return_a_result_when_searching_for_foo( Search $search ) {
-    $this->beConstructedWith( $search );
-    $search->query( 'foo' )->shouldBeCalled()->willReturn( array( 'foo' ) );
+  function it_should_use_tagger_if_document_provided( Search $search, Tagger $tagger, ReverseGeocoder $geocoder ) {
+    $this->beConstructedWith( $search, $tagger, $geocoder );
+
+    $tagger->tagger_service( 'phoenix' )->shouldBeCalled()->willReturn( array( new Models\Keyword( 'phoenix', 'LOCATION', null ) ) );
+
+    $foo_request = new Models\SearchRequest();
+    $foo_request->document = 'phoenix';
+
+    $response = $this->handle_request( $foo_request );
+  }
+
+  function it_should_return_a_result_when_searching_for_foo( Search $search, Tagger $tagger, ReverseGeocoder $geocoder ) {
+    $this->beConstructedWith( $search, $tagger, $geocoder );
+    $search->query( Argument::any() )->shouldBeCalled()->willReturn( array( new Models\SearchResultItem ) );
 
     $foo_request = new Models\SearchRequest();
     $foo_request->text = 'foo';
