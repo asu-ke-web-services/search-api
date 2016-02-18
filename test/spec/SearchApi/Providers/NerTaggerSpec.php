@@ -28,6 +28,7 @@ class NerTaggerSpec extends ObjectBehavior {
 
     // The results should be an array
     $test_result->shouldBeArray();
+    $test_result->shouldHaveCount( 3 );
 
     // Each item in the resulting array should have a specific structure
     foreach ( $test_result as $result ) {
@@ -40,10 +41,10 @@ class NerTaggerSpec extends ObjectBehavior {
 
   // The results should have the same count as the number of request terms
   function its_length_should_match_term_count() {
-    $test_request = "";
+    $test_request = '';
 
     // Keep adding terms and verify that the results match the request's term count
-    for( $count = 1; $count <= 5; $count++ ) {
+    for ( $count = 1; $count <= 3; $count++ ) {
       $test_request .= 'term ';
       $test_result = $this->tagger_service( $test_request );
 
@@ -57,15 +58,16 @@ class NerTaggerSpec extends ObjectBehavior {
     // Test a single function call instead of several
     $test_result = $this->results_to_keywords( $this->tagger_service( 'sample request phrase' ) );
 
+    // The keyword type should have the correct data types
     $test_result->shouldBeArray();
     $test_result[0]->text->shouldBeString();
     $test_result[0]->type->shouldBeString();
     $test_result[0]->relevance->shouldBeDouble();
 
-    // Tests only for dummy return values
+    // 'text' data should match request string words
     $test_result->shouldHaveCount( 3 );
     $test_result[0]->text->shouldReturn( 'sample' );
-    // $test_result[0]->type->shouldReturn( 'LOCATION' );
-    // $test_result[0]->relevance->shouldReturn( 1.0 );
+    $test_result[1]->text->shouldReturn( 'request' );
+    $test_result[2]->text->shouldReturn( 'phrase' );
   }
 }

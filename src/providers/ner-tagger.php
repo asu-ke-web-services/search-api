@@ -8,6 +8,7 @@ use Nectary\Configuration as Configuration;
 
 /**
  * NerTagger - This is a tagger implementation that uses the Named Entity Recognizer and returns an array of keywords.
+
  * @seeAlso: http://nlp.stanford.edu/software/CRF-NER.shtml
  */
 class NerTagger implements Tagger {
@@ -31,17 +32,17 @@ class NerTagger implements Tagger {
     // Get path to Stanford NER from config.
     // TODO: Configuration path in constructor (?)
     Configuration::set_configuration_path( 'config.conf' );
-    $stanfordNerPath = realpath(rtrim(
-      Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
-    ));
+    $stanfordNerPath = realpath( rtrim(
+        Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
+    ) );
 
     $tagger = new \StanfordNLP\NERTagger(
-      $stanfordNerPath . '/classifiers/english.all.3class.distsim.crf.ser.gz',
-      $stanfordNerPath . '/stanford-ner.jar'
+        $stanfordNerPath . '/classifiers/english.all.3class.distsim.crf.ser.gz',
+        $stanfordNerPath . '/stanford-ner.jar'
     );
 
     // Explode the request and push it through the tagger
-    $tagger_results = $tagger->tag(explode(' ', $request_string));
+    $tagger_results = $tagger->tag( explode( ' ', $request_string ) );
 
     return $tagger_results;
   }
