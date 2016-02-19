@@ -1,1 +1,2 @@
-SolrApiUrl=http://127.0.0.1:8983/solr/gios/select
+SolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select
+TestSolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select

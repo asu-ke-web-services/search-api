@@ -20,6 +20,9 @@ composer create-project wp-coding-standards/wpcs:dev-master --no-dev -n standard
 ```
 vendor/bin/phpunit
 ```
+Make sure to add this line to your `config.conf`:
+`TestSolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select`
+This will be the url to the Solr server the test will use.
 
 ## To run the spec tests:
 ```
