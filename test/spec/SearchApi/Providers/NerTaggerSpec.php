@@ -56,7 +56,7 @@ class NerTaggerSpec extends ObjectBehavior {
   // The tagger results should be converted to keywords
   function it_should_return_array_keywords() {
     // Test a single function call instead of several
-    $test_result = $this->results_to_keywords( $this->tagger_service( 'sample request phrase' ) );
+    $test_result = $this->results_to_keywords( $this->get_tags( 'sample request phrase' ) );
 
     // The keyword type should have the correct data types
     $test_result->shouldBeArray();

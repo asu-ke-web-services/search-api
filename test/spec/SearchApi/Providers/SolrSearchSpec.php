@@ -42,12 +42,11 @@ class SolrSearchSpec extends ObjectBehavior {
     $httpGetCommand->setUrl( 'url/test_query' )->shouldBeCalled();
 
     $result = $this->query( 'test' );
-    $result->shouldHaveType( 'SearchApi\Models\SearchResult' );
-    $result->count->shouldBe( 1 );
+    $result[0]->shouldHaveType( 'SearchApi\Models\SearchResultItem' );
   }
 
   function it_should_parse_valid_query_response() {
-    $this->parse_query_response( $this->queryResponse )->shouldHaveType( 'SearchApi\Models\SearchResult' );
+    $this->parse_query_response( $this->queryResponse )[0]->shouldHaveType( 'SearchApi\Models\SearchResultItem' );
   }
 
   function it_should_have_query_response_parser_return_null_if_input_empty() {
