@@ -1,2 +1,2 @@
-SolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select
-TestSolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select
+SolrApiUrl=http://127.0.0.1:8983/solr/gios/select
+StanfordNerPath=./lib/stanford-ner-2015-04-20/

@@ -4,9 +4,11 @@ namespace SearchApi\Providers;
 use SearchApi\Models\Keyword;
 use SearchApi\Services\Tagger;
 use StanfordNLP\NERTagger as StanfordNERTagger;
+use Nectary\Configuration as Configuration;
 
 /**
  * NerTagger - This is a tagger implementation that uses the Named Entity Recognizer and returns an array of keywords.
+
  * @seeAlso: http://nlp.stanford.edu/software/CRF-NER.shtml
  */
 class NerTagger implements Tagger {
@@ -26,29 +28,36 @@ class NerTagger implements Tagger {
       return null;
     }
 
-    // This is a mock return value
-    $tagger_results = array(
-      [ 'Phoenix', 'LOCATION' ],
-      [ 'Arizona', 'LOCATION' ],
-      [ 'Jim', 'PERSON' ],
-      [ 'ASU', 'ORGANIZATION' ],
-      [ 'November', 'DATE' ],
-      [ '12:00', 'TIME' ],
+    // Get path to Stanford NER from config.
+    // TODO: Configuration path in constructor (?)
+    Configuration::set_configuration_path( 'config.conf' );
+    $stanfordNerPath = realpath( rtrim(
+        Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
+    ) );
+
+    $tagger = new \StanfordNLP\NERTagger(
+        $stanfordNerPath . '/classifiers/english.all.3class.distsim.crf.ser.gz',
+        $stanfordNerPath . '/stanford-ner.jar'
     );
+
+    // Explode the request and push it through the tagger
+    $tagger_results = $tagger->tag( explode( ' ', $request_string ) );
 
     return $tagger_results;
   }
 
-  // Interpret the XML nodes to Keyword objects
+  // Interpret the tagger results into Keyword objects
   public function results_to_keywords( $tagger_results ) {
-    if ( $tagger_results === null ) {
+    // Return null if there are no results
+    if ( empty( $tagger_results ) ) {
       return null;
     }
 
+    // This works properly, but does not handle 'relevance' yet (temporary)
     $keywords = array();
-    // This works properly, but does not handle 'relevance' yet
+
     foreach ( $tagger_results as $result ) {
-      $keywords[] = new Keyword( $result[0], $result[1], 1.0 );
+      array_push( $keywords, new Keyword( $result[0], $result[1], 1.0 ) );
     }
 
     return $keywords;
