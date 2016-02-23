@@ -39,4 +39,26 @@ class SolrSearch_Integration_test extends \PHPUnit_Framework_TestCase {
 
     $this->assertTrue( count( $results ) === 1 );
   }
+
+  public function test_solr_returns_no_result_for_nothing() {
+    $solr = $this->get_solr_search();
+
+    $user_words = array();
+    $search_terms = $this->create_searchterms_from_array( $user_words );
+
+    $results = $solr->query( $search_terms );
+
+    $this->assertTrue( count( $results ) === 0 );
+  }
+
+  public function test_solr_returns_multiple_results_for_common_words() {
+    $solr = $this->get_solr_search();
+
+    $user_words = array( 'arid', 'environment' );
+    $search_terms = $this->create_searchterms_from_array( $user_words );
+
+    $results = $solr->query( $search_terms );
+
+    $this->assertTrue( count( $results ) > 1 );
+  }
 }
