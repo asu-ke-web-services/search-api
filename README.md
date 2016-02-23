@@ -20,6 +20,9 @@ composer create-project wp-coding-standards/wpcs:dev-master --no-dev -n standard
 ```
 vendor/bin/phpunit
 ```
+Make sure to add this line to your `config.conf`:
+`TestSolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select`
+This will be the url to the Solr server the test will use.
 
 ## To run the spec tests:
 ```
@@ -44,8 +47,6 @@ This will regenerate the class auto-loader which does dependency mapping and cre
 # Configuration
 See `config.conf.example` for example configuration.
 
-For example,
-```
-SolrApiUrl=http://127.0.0.1:8983/solr/gios/select
-```
-specifies the SOLR endpoint URL.
+ * `SolrApiUrl=http://127.0.0.1:8983/solr/gios/select` specifies the SOLR endpoint URL.
+ * `TestSolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select`  specifies the SOLR endpoint URL used in tests.
+ * `StanfordNerPath=lib/stanford-ner-2015-04-20/` specifies target path for Stanford's NER library.
