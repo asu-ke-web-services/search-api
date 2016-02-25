@@ -38,13 +38,14 @@ class NerTagger implements Tagger {
     return $keywords;
   }
 
-  // Call the NER service and save results as a string containing an XML document
+  // Call the NER service and return its raw results
   public function get_tags( $request_string = '' ) {
     if ( empty( $request_string ) ) {
       return null;
     }
 
-    // Explode the request and push it through the tagger
+    // Tokenize the request and push it through the tagger
+    // TO-DO: find new ways to tokenize the search string
     $tagger_results = $this->tagger->tag( explode( ' ', $request_string ) );
 
     return $tagger_results;
@@ -57,9 +58,11 @@ class NerTagger implements Tagger {
       return null;
     }
 
-    // This works properly, but does not handle 'relevance' yet (temporary)
+    // Prepare the array of keyword objects
     $keywords = array();
 
+    // convert each term into a keyword object
+    // TO-DO: implement relevance
     foreach ( $tagger_results as $result ) {
       array_push( $keywords, new Keyword( $result[0], $result[1], 1.0 ) );
     }
