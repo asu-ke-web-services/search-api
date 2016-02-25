@@ -10,20 +10,20 @@ namespace SearchApi\Models;
  * @var $category    string      'location', 'person', 'organization', etc.
  * @var $related     string[]    Array of related keywords
  * @var $count       int         Occurences of keyword
- * @var $isUserInput bool        TRUE if term is a user-specified keyword, FALSE if it is not
+ * @var $is_user_input bool        TRUE if term is a user-specified keyword, FALSE if it is not
  */
 class SearchTerm {
   public $value;
   public $category;
   public $related;
   public $count;
-  public $isUserInput;
+  public $is_user_input;
 
-  function __construct( $value = null, $category = null, $related = null, $count = null, $isUserInput = null ) {
+  function __construct( $value = null, $category = null, $related = null, $count = null, $is_user_input = null ) {
     $this->value = $value;
     $this->category = $category;
     $this->related = $related;
     $this->count = $count;
-    $this->isUserInput = $isUserInput;
+    $this->is_user_input = $is_user_input;
   }
 }

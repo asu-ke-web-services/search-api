@@ -7,11 +7,10 @@ namespace SearchApi\Models;
  *
  * @var $results Models\SearchResultItem[]|null Should contain objects representing search results.
  * @var $count int Should contain the number of entries in $results
- * @var $originalRequest Models\SearchRequest The original search request
+ * @var $original_request Models\SearchRequest The original search request
  */
 class SearchResult {
   public $results;
   public $count = 0;
-  public $originalRequest;
+  public $original_request;
 }
-
