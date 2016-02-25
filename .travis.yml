@@ -2,10 +2,12 @@ language: php
 
 sudo: false
 
-cache: 
+cache:
   directories:
     - vendor
+    - lib
     - $HOME/.composer/cache
+    - $HOME/.linuxbrew
 
 php:
   - 5.5.9
@@ -16,17 +18,33 @@ php:
   # - nightly
   # - hhvm
 
+before_install:
+  # BEGIN requisite commands for installing Java 8 (OpenJDK)
+  - if [ ! -d "$HOME/.linuxbrew/bin" ]; then
+      yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)";
+    fi
+  - export PATH="$HOME/.linuxbrew/bin:$PATH"
+  - export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+  - export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+  - brew install jdk
+  # END
+
 install:
+  - if [ ! -d "lib/stanford-ner-2015-04-20" ]; then
+      wget http://nlp.stanford.edu/software/stanford-ner-2015-04-20.zip;
+      unzip stanford-ner-2015-04-20.zip -d lib/;
+    fi
   - composer install --no-interaction --prefer-source
   - composer create-project wp-coding-standards/wpcs:dev-master --no-dev -n standards/wpcs
   - ./vendor/bin/phpcs -vvv -w --config-set installed_paths '../../../standards/gios/,../../../standards/wpcs/'
 
 before_script:
   - mkdir coverage
+  - printf "TestSolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select\nStanfordNerPath=lib/stanford-ner-2015-04-20/\n" > config.conf
 
 script:
   - vendor/bin/phpunit # --coverage-clover /tmp/coverage/clover.xml
-  - vendor/bin/phpspec run -c .phpspec.yml 
+  - vendor/bin/phpspec run -c .phpspec.yml
   - vendor/bin/phpcs --standard=GIOS --ignore= ./src ./test
 
 after_script:
