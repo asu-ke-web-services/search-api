@@ -16,14 +16,26 @@ class Http_Get_Unit_Test extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Test to check that httpget throws an exception on bad execute
+   * Test to check that httpget throws an exception on without a url
    *
    * @expectedException Exception
    * @expectedExceptionMessage error occured during curl exec. Additioanl info:
    */
-  public function test_that_HttpGet_throws_exception_on_bad_website() {
+  public function test_that_HttpGet_throws_exception_with_no_url() {
     $http_class = new SearchApi\Commands\HttpGet();
     $http_class->setUrl( '' );
     $http_class->execute();
+  }
+
+  /**
+   * Test to check that httpget throws an exception on with bad url
+   *
+   * @expectedException Exception
+   * @expectedExceptionMessage error occured during curl exec. Additioanl info:
+   */
+  public function test_that_HttpGet_throws_exception_with_bad_website() {
+  	$http_class = new SearchApi\Commands\HttpGet();
+  	$http_class->setUrl( 'BadWebSite' );
+  	$http_class->execute();
   }
 }
