@@ -12,6 +12,22 @@ use Nectary\Configuration as Configuration;
  * @seeAlso: http://nlp.stanford.edu/software/CRF-NER.shtml
  */
 class NerTagger implements Tagger {
+  private $tagger;
+
+  public function __construct() {
+    // Get path to Stanford NER from config.
+    Configuration::set_configuration_path( 'config.conf' );
+    $stanfordNerPath = realpath( rtrim(
+        Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
+    ) );
+
+    // Instantiate the tagger object
+    $this->tagger = new \StanfordNLP\NERTagger(
+        $stanfordNerPath . '/classifiers/english.all.3class.distsim.crf.ser.gz',
+        $stanfordNerPath . '/stanford-ner.jar'
+    );
+  }
+
   // Convert a search string into an array of Keyword objects
   public function tagger_service( $request_string = '' ) {
     // Call the NER Tagger service
@@ -28,20 +44,8 @@ class NerTagger implements Tagger {
       return null;
     }
 
-    // Get path to Stanford NER from config.
-    // TODO: Configuration path in constructor (?)
-    Configuration::set_configuration_path( 'config.conf' );
-    $stanfordNerPath = realpath( rtrim(
-        Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
-    ) );
-
-    $tagger = new \StanfordNLP\NERTagger(
-        $stanfordNerPath . '/classifiers/english.all.3class.distsim.crf.ser.gz',
-        $stanfordNerPath . '/stanford-ner.jar'
-    );
-
     // Explode the request and push it through the tagger
-    $tagger_results = $tagger->tag( explode( ' ', $request_string ) );
+    $tagger_results = $this->tagger->tag( explode( ' ', $request_string ) );
 
     return $tagger_results;
   }
