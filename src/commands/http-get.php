@@ -57,6 +57,7 @@ class HttpGet implements Command {
    */
   function curl_fail( $ch ) {
     $info = curl_getinfo( $ch );
-    throw new Exception( 'error occured during curl exec. Additioanl info: ' . var_export( $info ) );
+    $excep_string = "\n" . http_build_query( $info, '', "\n" );
+    throw new Exception( 'error occured during curl exec. Additioanl info: ' . $excep_string );
   }
 }
