@@ -17,56 +17,56 @@ use SearchApi\Commands;
 /**
  * Interface to Solr server.
  *
- * @var QueryBuilder $queryBuilder Obj with implementation of QueryBuilder constructing Solr-specific query string.
- * @var string $apiUrl Base URL for the solr query API
- * @var Command $httpGetCommand Preferred http get command for making simple GET requests.
+ * @var QueryBuilder $query_builder Obj with implementation of QueryBuilder constructing Solr-specific query string.
+ * @var string $api_url Base URL for the solr query API
+ * @var Command $http_get_command Preferred http get command for making simple GET requests.
  */
 class SolrSearch implements Search {
 
-  private $queryBuilder;
-  private $apiUrl;
-  private $httpGetCommand;
+  private $query_builder;
+  private $api_url;
+  private $http_get_command;
 
   /**
    * Constructor with optional params
    *
-   * @param QueryBuilder $queryBuilder Should be able to inject dependency to use any solr-specific impl. of QueryBuilder
-   * @param Command $httpGetCommand Preferred http get command for making simple GET requests.
-   * @param string $apiUrl Base URL for the solr query API
+   * @param QueryBuilder $query_builder Should be able to inject dependency to use any solr-specific impl. of QueryBuilder
+   * @param Command $http_get_command Preferred http get command for making simple GET requests.
+   * @param string $api_url Base URL for the solr query API
    */
-  function __construct( QueryBuilder $queryBuilder = null, Commands\Command $httpGetCommand = null, $apiUrl = null ) {
-    if ( $queryBuilder ) {
-      $this->queryBuilder = $queryBuilder;
+  function __construct( QueryBuilder $query_builder = null, Commands\Command $http_get_command = null, $api_url = null ) {
+    if ( $query_builder ) {
+      $this->query_builder = $query_builder;
     } else {
-      $this->queryBuilder = new SolrQueryBuilder();
+      $this->query_builder = new SolrQueryBuilder();
     }
 
-    if ( $apiUrl ) {
-      $this->apiUrl = $apiUrl;
+    if ( $api_url ) {
+      $this->api_url = $api_url;
     }
 
-    if ( $httpGetCommand ) {
-      $this->httpGetCommand = $httpGetCommand;
+    if ( $http_get_command ) {
+      $this->http_get_command = $http_get_command;
     } else {
-      $this->httpGetCommand = new Commands\HttpGet( $this->apiUrl );
+      $this->http_get_command = new Commands\HttpGet( $this->api_url );
     }
   }
 
   /**
    * Create a search result from a JSON string.
    * returns SearchResultItem[]
-   * @param string $responseString
+   * @param string $response_string
    */
-  function parse_query_response( $responseString ) {
+  function parse_query_response( $response_string ) {
     $results = array();
 
-    $parsedResult = json_decode( $responseString );
+    $parsed_result = json_decode( $response_string );
 
-    if ( ! $parsedResult || ! property_exists( $parsedResult, 'response' ) ) {
+    if ( ! $parsed_result || ! property_exists( $parsed_result, 'response' ) ) {
       return null;
     }
 
-    $docs = $parsedResult->response->docs;
+    $docs = $parsed_result->response->docs;
     foreach ( $docs as $doc ) {
       $item = new SearchResultItem();
       $item->id = $doc->id[0];
@@ -89,22 +89,22 @@ class SolrSearch implements Search {
    * Make a query to solr server, with options for pagination, sorting, etc.
    * Returns SearchResultItem[]
    *
-   * @param SearchTerm[]|null $searchTerms Search terms to search
+   * @param SearchTerm[]|null $search_terms Search terms to search
    * @param SearchApi\Models\SearchOptions|null $options Query options
    */
-  function query( $searchTerms, $options = null ) {
+  function query( $search_terms, $options = null ) {
     // This is just a placeholder
-    if ( $searchTerms === null ) {
+    if ( $search_terms === null ) {
       return null;
     }
 
-    $queryString = $this->queryBuilder->build( $searchTerms, $options );
+    $query_string = $this->query_builder->build( $search_terms, $options );
 
-    $this->httpGetCommand->setUrl( $this->apiUrl . $queryString );
-    $queryResult = $this->httpGetCommand->execute();
+    $this->http_get_command->setUrl( $this->api_url . $query_string );
+    $query_result = $this->http_get_command->execute();
 
-    $searchResults = $this->parse_query_response( $queryResult );
+    $search_results = $this->parse_query_response( $query_result );
 
-    return $searchResults;
+    return $search_results;
   }
 }

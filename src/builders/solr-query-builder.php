@@ -12,18 +12,18 @@ class SolrQueryBuilder implements QueryBuilder {
    * Build a query string from provided search terms and search options.
    * Returns a query string for a SOLR server.
    *
-   * @param SearchTerm[]|null $searchTerms Search terms to search
+   * @param SearchTerm[]|null $search_terms Search terms to search
    * @param SearchApi\Models\SearchOptions|null $options Query options
    */
-  function build( $searchTerms, $options = null ) {
-    $keywordStrings = '';
+  function build( $search_terms, $options = null ) {
+    $keyword_strings = '';
 
     assert( gettype( $options ) === 'NULL' || gettype( $options ) === 'object' );
 
-    foreach ( $searchTerms as &$word ) {
-      $keywordStrings = $keywordStrings . $word->value . '%20';
+    foreach ( $search_terms as &$word ) {
+      $keyword_strings = $keyword_strings . $word->value . '%20';
     }
 
-    return '?q=collector%3A(' . $keywordStrings . ')&wt=json&indent=true';
+    return '?q=collector%3A(' . $keyword_strings . ')&wt=json&indent=true';
   }
 }
