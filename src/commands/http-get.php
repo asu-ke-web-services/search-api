@@ -2,6 +2,7 @@
 
 namespace SearchApi\Commands;
 use SearchApi\Commands;
+use Exception;
 
 /**
  * Command for making simple GET requests.
@@ -38,12 +39,12 @@ class HttpGet implements Command {
     $ch = $this->curl;
     curl_setopt( $ch, CURLOPT_URL, $this->url );
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-    curl_setopt($ch, CURLOPT_TIMEOUT, seconds );
+    curl_setopt( $ch, CURLOPT_TIMEOUT, $this->seconds );
     $response = curl_exec( $ch );
 
     // checking if curl failed
     if ( $response === false ) {
-      curl_fail( $ch );
+      $this->curl_fail( $ch );
     }
 
     return $response;
@@ -51,6 +52,8 @@ class HttpGet implements Command {
 
   /**
    * Throw Exception - if curl fails, get infomation and throw an exception
+   *
+   * @throws Exception - on bad curl execution: returns curl info
    */
   function curl_fail( $ch ) {
     $info = curl_getinfo( $ch );
