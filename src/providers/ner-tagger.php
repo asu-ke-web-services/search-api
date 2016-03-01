@@ -31,13 +31,13 @@ class NerTagger implements Tagger {
     // Get path to Stanford NER from config.
     // TODO: Configuration path in constructor (?)
     Configuration::set_configuration_path( 'config.conf' );
-    $stanford_ner_path = realpath( rtrim(
+    $stanfordNerPath = realpath( rtrim(
         Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
     ) );
 
     $tagger = new \StanfordNLP\NERTagger(
-        $stanford_ner_path . '/classifiers/english.all.3class.distsim.crf.ser.gz',
-        $stanford_ner_path . '/stanford-ner.jar'
+        $stanfordNerPath . '/classifiers/english.all.3class.distsim.crf.ser.gz',
+        $stanfordNerPath . '/stanford-ner.jar'
     );
 
     // Explode the request and push it through the tagger
@@ -57,9 +57,33 @@ class NerTagger implements Tagger {
     $keywords = array();
 
     foreach ( $tagger_results as $result ) {
-      array_push( $keywords, new Keyword( $result[0], $result[1], 1.0 ) );
+      array_push( $keywords, new Keyword( $result[0], $result[1], 1.0, 1 ) );
     }
 
     return $keywords;
   }
+
+  // Group the keywords which contain the same text
+  private function condense_keywords( $keywords ) {
+    // sort keywords alphabetically
+    usort( $keywords, array( $this, "compare_text" ));
+
+    // group keywords if they are the same
+    foreach( $keywords as $item ) {
+      
+    }
+
+    // sort keywords by occurences most to least
+    usort( $keywords, array( $this, "compare_occurences" );
+
+  }
+
+  private function compare_text ( $keyword1, $keyword2 ) {
+    return strcmp( $keyword1->text, $keyword2->text  );
+  }
+
+  private function compare_occurences ( $keyword1, $keyword2 ) {
+    return $keyword2->occurences - $keyword1->occurences;
+  }
+
 }
