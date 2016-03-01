@@ -17,6 +17,7 @@ php:
 
 before_install:
   - sudo apt-get install -y openjdk-7-jre
+  - java -version
 
 install:
   - if [ ! -d "lib/stanford-ner-2015-04-20" ]; then
