@@ -43,6 +43,9 @@ class NerTagger implements Tagger {
     // Explode the request and push it through the tagger
     $tagger_results = $tagger->tag( explode( ' ', $request_string ) );
 
+    $errors = $tagger->getErrors();
+    if ( !empty($errors)) print_r($tagger->getErrors());
+   
     return $tagger_results;
   }
 

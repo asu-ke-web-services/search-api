@@ -9,3 +9,4 @@ coverage.xml
 standards/wpcs
 
 ~*
+lib/stanford-ner-2015-04-20

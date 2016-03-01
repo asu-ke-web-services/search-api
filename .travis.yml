@@ -27,6 +27,7 @@ before_install:
   - export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
   - export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
   - brew install jdk
+  - java -version
   # END
 
 install:
