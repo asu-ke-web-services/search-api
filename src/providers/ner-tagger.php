@@ -64,7 +64,7 @@ class NerTagger implements Tagger {
     // convert each term into a keyword object
     // TO-DO: implement relevance
     foreach ( $tagger_results as $result ) {
-      array_push( $keywords, new Keyword( $result[0], $result[1], 1.0 ) );
+      array_push( $keywords, new Keyword( $result[0], $result[1], 0.5 ) );
     }
 
     return $keywords;
