@@ -26,6 +26,11 @@ class NerTagger implements Tagger {
         $stanfordNerPath . '/classifiers/english.all.3class.distsim.crf.ser.gz',
         $stanfordNerPath . '/stanford-ner.jar'
     );
+
+    $errors = $this->tagger->getErrors();
+    if( !empty( $errors ) ) {
+      print_r( $this->tagger->getErrors() );
+    }
   }
 
   // Convert a search string into an array of Keyword objects
@@ -34,6 +39,12 @@ class NerTagger implements Tagger {
     $tagger_results = $this->get_tags( $request_string );
     // Convert results into keywords
     $keywords = $this->results_to_keywords( $tagger_results );
+
+    // TO-DO: this gives off error messages with every use!
+    $errors = $this->tagger->getErrors();
+    if( !empty( $errors ) ) {
+      print_r( $this->tagger->getErrors() );
+    }
 
     return $keywords;
   }
