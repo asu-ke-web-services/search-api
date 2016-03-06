@@ -13,7 +13,7 @@ use Prophecy\Argument;
 /**
  * GeoCoderURLBuilderSpec - Spec integration test for the GeoCoderURLBuilder (higher level functions)
  */
-class GeoCoderURLBuilderSpec extends ObjectBehavior {
+class GoogleURLBuilderSpec extends ObjectBehavior {
   private $good_coords;
 
   function __construct() {
@@ -22,19 +22,7 @@ class GeoCoderURLBuilderSpec extends ObjectBehavior {
 
   function it_is_initializable() {
     $this->beConstructedWith( $this->good_coords );
-    $this->shouldHaveType( 'SearchApi\Support\GeoCoderURLBuilder' );
-  }
-
-  function it_should_return_a_result_without_picked_url() {
-    $this->beConstructedWith( $this->good_coords );
-    $this->url_selector( null )
-    ->shouldBeString();
-  }
-
-  function it_should_return_a_result_with_google_url_picked() {
-    $this->beConstructedWith( $this->good_coords );
-    $this->url_selector( 'Google' )
-    ->shouldBeString();
+    $this->shouldHaveType( 'SearchApi\Support\GoogleURLBuilder' );
   }
 
   // specific builder tests
