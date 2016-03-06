@@ -5,6 +5,7 @@ use SearchApi\Commands;
 
 /**
  * Command for making simple GET requests.
+ *
  * @var CurlObject $curl object returned by curl_init()
  * @var string $url Url to make a GET request to
  */
@@ -23,6 +24,7 @@ class HttpGet implements Command {
 
   /**
    * Set the Url to make a GET request to
+   *
    * @var string $url Url to make a GET request to
    */
   function setUrl( $url ) {

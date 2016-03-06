@@ -27,7 +27,7 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
   function it_should_return_a_url_for_google() {
     $geo_coordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
     $this->get_url( $geo_coordinate )
-    ->shouldContain( "https://maps.googleapis.com/maps/api/geocode/json?".
+    ->shouldContain( 'https://maps.googleapis.com/maps/api/geocode/json?'.
     "latlng={$geo_coordinate->lat},{$geo_coordinate->lng}" );
   }
 }
