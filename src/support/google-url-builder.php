@@ -6,7 +6,7 @@ use SearchApi\Models as Models;
 /**
  * Class URL_Builder - builds the url for google's curl call
  */
-class Google_URLBuilder {
+class GoogleURLBuilder {
 
   // keys
   private $Google_Key = null;

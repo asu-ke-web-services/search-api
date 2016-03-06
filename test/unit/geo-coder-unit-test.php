@@ -11,19 +11,19 @@ use SearchApi;
  */
 class Geo_Coder_Unit_Test extends \PHPUnit_Framework_TestCase {
 
-  public function test_that_the_class_ReverseGeocoderClass_is_defined() {
-    $this->assertTrue( class_exists( 'SearchApi\Providers\Google_Reverse_Geocoder' ) );
+  public function test_that_the_class_GoogleReverseGeocoder_is_defined() {
+    $this->assertTrue( class_exists( 'SearchApi\Providers\GoogleReverseGeocoder' ) );
   }
 
-  public function test_that_the_class_GeoCoderURLBuilder_is_defined() {
-    $this->assertTrue( class_exists( 'SearchApi\Support\Google_URLBuilder' ) );
+  public function test_that_the_class_GoogleURLBuilder_is_defined() {
+    $this->assertTrue( class_exists( 'SearchApi\Support\GoogleURLBuilder' ) );
   }
 
   public function test_that_the_class_JsonDecoder_is_defined() {
     $this->assertTrue( class_exists( 'SearchApi\Support\JsonDecoder' ) );
   }
 
-  public function test_that_the_class_GeoJsonParsers_is_defined() {
-    $this->assertTrue( class_exists( 'SearchApi\Support\Google_Reverse_geocoder_Parser' ) );
+  public function test_that_the_class_GoogleReverseGeocoderParser_is_defined() {
+    $this->assertTrue( class_exists( 'SearchApi\Support\GoogleReverseGeocoderParser' ) );
   }
 }
