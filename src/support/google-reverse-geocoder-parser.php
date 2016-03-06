@@ -8,7 +8,7 @@ use SearchApi\Models as Models;
 /**
  * Class Geo_Json_Parser - Parses the returned result from a Geocoder
  */
-class GeoJsonParsers {
+class Google_Reverse_geocoder_Parser {
 
   private $json_results;
 
@@ -17,22 +17,9 @@ class GeoJsonParsers {
   }
 
   /**
-   * Function to select the parser
-   *
-   * @param parser_pick - used to pick the correct parser
-   */
-  public function parser_selector( $parser_pick ) {
-    if ( $parser_pick === 'Google' ) {
-      return $this->reverse_geocoder_google_parser();
-    }
-    // default parser
-    return $this->reverse_geocoder_google_parser();
-  }
-
-  /**
    * Function for parsing google's geocoder
    */
-  public function reverse_geocoder_google_parser() {
+  public function google_reverse_geocoder_parser() {
     // creating array of search terms to return
     $search_term_array = array();
 
