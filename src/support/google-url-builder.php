@@ -4,11 +4,9 @@ namespace SearchApi\Support;
 use SearchApi\Models as Models;
 
 /**
- * Class URL_Builder - builds the urls for the curl call to the geocoders
- *
- * Add more url builder functions for each geocoder
+ * Class URL_Builder - builds the url for google's curl call
  */
-class GeoCoderURLBuilder {
+class Google_URLBuilder {
 
   // keys
   private $Google_Key = null;
@@ -18,19 +16,6 @@ class GeoCoderURLBuilder {
 
   public function __construct( Models\GeoCoordinate $coordinate ) {
     $this->geo_coordinate = $coordinate;
-  }
-
-  /**
-   * Function to select the url builder
-   *
-   * @param url_pick - used to select correct url to build
-   */
-  public function url_selector( $url_pick ) {
-    if ( $url_pick === 'Google' ) {
-      return $this->google_url();
-    }
-    // default url builder
-    return $this->google_url();
   }
 
   /**
