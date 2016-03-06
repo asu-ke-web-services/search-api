@@ -8,7 +8,7 @@ use SearchApi\Models as Models;
 /**
  * Class Geo_Json_Parser - Parses the returned result from a Geocoder
  */
-class Google_Reverse_geocoder_Parser {
+class GoogleReverseGeocoderParser {
 
   private $json_results;
 
