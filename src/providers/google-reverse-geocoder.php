@@ -16,7 +16,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
 
   public function get_url( Models\GeoCoordinate $coords ) {
     // building the url
-    $url_builder = new Support\Google_URLBuilder( $coords );
+    $url_builder = new Support\GoogleURLBuilder( $coords );
     return $url_builder->google_url();
   }
 
@@ -29,7 +29,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
   public function get_locations( Models\GeoCoordinate $coords ) {
 
     // building the url
-    $url_builder = new Support\Google_URLBuilder( $coords );
+    $url_builder = new Support\GoogleURLBuilder( $coords );
 
     // implementing a curl call using http-get curl call
     $curl_caller = new Commands\HttpGet();
@@ -40,14 +40,14 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
       $geocoding_results = $curl_caller->execute();
       // informing that the service failed is down
     } catch ( Exception $e ) {
-      throw new Exception( 'The Google Service is Unavailable:\n\t{$e}' );
+      throw new Exception( "The Google Service is Unavailable:\n\t{$e}" );
     }
 
     // calling json decoder
     $geo_json_decoder = new Support\JsonDecoder();
     $decoded_json = $geo_json_decoder->reverse_geocoder_json_decoder( $geocoding_results );
     // calling parser
-    $geo_parser = new Support\Google_Reverse_geocoder_Parser( $decoded_json );
+    $geo_parser = new Support\GoogleReverseGeocoderParser( $decoded_json );
     // returns array of search terms
     return $geo_parser->google_reverse_geocoder_parser();
   }
