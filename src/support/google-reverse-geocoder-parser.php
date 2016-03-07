@@ -41,11 +41,9 @@ class GoogleReverseGeocoderParser {
           foreach ( $result as $component ) {
             // loopin through the search_term array to see if term already exists
             $element_exists = false;
-            foreach ( $search_term_array as $term ) {
-              if ( $term !== null && $term->value === $component['long_name'] ) {
-                $term->count = $term->count + 1;
-                $element_exists = true;
-              }
+            if ( array_key_exists( $component['long_name'], $search_term_array) ) {
+              $search_term_array[$component['long_name']]->count += 1;
+              $element_exists = true;
             }
 
             // checking if element was not found
@@ -61,7 +59,7 @@ class GoogleReverseGeocoderParser {
               $new_item->isUserInput = false;
 
               // adding the search term to the term array
-              array_push( $search_term_array, $new_item );
+              $search_term_array[$new_item->value] = $new_item;
             } // checking that an element was not found
           } // loopin through address componets
         } // the check to make sure there is an "address component" section in the array
