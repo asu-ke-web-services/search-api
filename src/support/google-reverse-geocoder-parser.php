@@ -67,6 +67,7 @@ class GoogleReverseGeocoderParser {
     } // making sure results is there and moving $geocoder_results to the inner array
 
     // returning an array of SearchTerms
+    $search_term_array = array_values( $search_term_array );
     return $search_term_array;
   }
 }
