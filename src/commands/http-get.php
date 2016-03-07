@@ -12,7 +12,7 @@ use Exception;
 class HttpGet implements Command {
   private $curl;
   private $url;
-  private $seconds = 120;
+  private $timeout_seconds = 120;
 
   function __construct() {
     // create curl resource
@@ -39,7 +39,7 @@ class HttpGet implements Command {
     $ch = $this->curl;
     curl_setopt( $ch, CURLOPT_URL, $this->url );
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-    curl_setopt( $ch, CURLOPT_TIMEOUT, $this->seconds );
+    curl_setopt( $ch, CURLOPT_TIMEOUT, $this->timeout_seconds );
     $response = curl_exec( $ch );
 
     // checking if curl failed
