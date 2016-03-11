@@ -16,9 +16,9 @@ use Nectary\Configuration as Configuration;
 class SolrSearch_Integration_test extends \PHPUnit_Framework_TestCase {
   private function get_solr_search() {
     Configuration::set_configuration_path( 'config.conf' );
-    $apiPath = trim( Configuration::get_instance()->get( 'TestSolrApiUrl' ) );
+    $api_path = trim( Configuration::get_instance()->get( 'TestSolrApiUrl' ) );
 
-    return new SolrSearch( null, null, $apiPath );
+    return new SolrSearch( null, null, $api_path );
   }
 
   private function create_searchterms_from_array( $keywords_as_string ) {

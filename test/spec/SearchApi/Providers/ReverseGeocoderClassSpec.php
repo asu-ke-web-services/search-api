@@ -21,12 +21,12 @@ class ReverseGeocoderClassSpec extends ObjectBehavior {
 
   function it_should_return_google_as_default_urlbuilder() {
     $this->beConstructedWith( null, null );
-    $this->get_Url_Pick()->shouldReturn( 'Google' );
+    $this->get_url_pick()->shouldReturn( 'Google' );
   }
 
   function it_should_return_google_as_default_parser() {
     $this->beConstructedWith( null, null );
-    $this->get_Parser_Pick()->shouldReturn( 'Google' );
+    $this->get_parser_pick()->shouldReturn( 'Google' );
   }
 
   function it_should_return_a_result_without_picking_urlbuilder_or_parser() {

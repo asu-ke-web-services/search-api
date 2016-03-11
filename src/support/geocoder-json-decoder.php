@@ -23,8 +23,8 @@ class JsonDecoder {
     // make sure utf8 format
     $json_results = utf8_encode( $json_results );
     // decode json into associate array
-    $returnArrays = true;
-    $geocoder_results = json_decode( $json_results, $returnArrays );
+    $return_arrays = true;
+    $geocoder_results = json_decode( $json_results, $return_arrays );
 
     // checking if received Json was valid
     if ( $geocoder_results === null ) {

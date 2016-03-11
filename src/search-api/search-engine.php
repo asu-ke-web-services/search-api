@@ -22,8 +22,8 @@ class SearchEngine {
     if ( $search ) {
       $this->search = $search;
     } else {
-      $apiPath = trim( Configuration::get_instance()->get( 'SolrApiUrl' ), '\r\n' );
-      $this->search = new Providers\SolrSearch( null, null, $apiPath );
+      $api_path = trim( Configuration::get_instance()->get( 'SolrApiUrl' ), '\r\n' );
+      $this->search = new Providers\SolrSearch( null, null, $api_path );
     }
 
     if ( $tagger ) {
@@ -41,38 +41,38 @@ class SearchEngine {
 
   public function handle_request( Models\SearchRequest $request ) {
     // the terms that will be sent to the query builder
-    $searchTerms = array();
+    $search_terms = array();
 
     // the keywords from the
-    $taggedWords = array();
+    $tagged_words = array();
 
     // explode user keywords
     if ( $request->text ) {
-      $userWords = explode( ' ' , $request->text );
-      foreach ( $userWords as &$word ) {
-        array_push( $searchTerms, new Models\SearchTerm( $word, null, null, 1, true ) );
+      $user_words = explode( ' ' , $request->text );
+      foreach ( $user_words as &$word ) {
+        array_push( $search_terms, new Models\SearchTerm( $word, null, null, 1, true ) );
       }
     }
 
     // get terms from the document string and turn into searchTerm
     if ( $request->document ) {
-      $taggedWords = $this->tagger->tagger_service( $request->document );
-      foreach ( $taggedWords as &$keyword ) {
-        array_push( $searchTerms, new Models\SearchTerm( $keyword->text, $keyword->type, $keyword->relevance, false ) );
+      $tagged_words = $this->tagger->tagger_service( $request->document );
+      foreach ( $tagged_words as &$keyword ) {
+        array_push( $search_terms, new Models\SearchTerm( $keyword->text, $keyword->type, $keyword->relevance, false ) );
       }
     }
 
     // get coordinates if available when tagged words include a location
     if ( $request->coord ) {
       $place = $this->$geocoder->get_locations( $request->coord );
-      array_push( $searchTerms, new Models\SearchTerm( $place, 'LOCATION', 1, true ) );
+      array_push( $search_terms, new Models\SearchTerm( $place, 'LOCATION', 1, true ) );
     }
 
     // do stuff with $request
     $response = new Models\SearchResult();
-    $response->originalRequest = $request;
+    $response->original_request = $request;
 
-    $response->results = $this->search->query( $searchTerms );
+    $response->results = $this->search->query( $search_terms );
     $response->count = count( $response->results );
     return $response;
   }

@@ -37,9 +37,6 @@
 
     <!-- Exclude the most controversial "accepted" rule -->
     <exclude name="WordPress.PHP.YodaConditions" />
-
-    <!-- Disable snake_case -->
-    <exclude name="WordPress.NamingConventions.ValidVariableName"/>
   </rule>
 
   <!-- Force 2 spaces -->
