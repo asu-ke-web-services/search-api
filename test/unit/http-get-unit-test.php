@@ -36,15 +36,15 @@ class Http_Get_Unit_Test extends \PHPUnit_Framework_TestCase {
   public function test_that_http_get_throws_exception_with_bad_website() {
     $http_class = new SearchApi\Commands\HttpGet();
     $http_class->setUrl( 'BadWebSite!!^#$%' );
-    var_dump($http_class->execute());
+    $http_class->execute();
   }
 
   /**
    * Test to check that httpget execution on good url
    */
   public function test_that_http_get_executes_on_good_website() {
-  	$http_class = new SearchApi\Commands\HttpGet();
-  	$http_class->setUrl( 'google.com' );
-  	$this->assertNotFalse($http_class->execute());
+    $http_class = new SearchApi\Commands\HttpGet();
+    $http_class->setUrl( 'google.com' );
+    $this->assertNotFalse( $http_class->execute() );
   }
 }
