@@ -16,11 +16,13 @@ from os.path import isfile, join
 import json
 import sys
 
+TEST_DOC_DIR = 'test_docs'
+
 arguments = sys.argv
 
 solrApiUrl = arguments[1]
 
-filePaths = [f for f in listdir('txt') if isfile(join('txt', f))]
+filePaths = [f for f in listdir(TEST_DOC_DIR) if isfile(join(TEST_DOC_DIR, f))]
 
 TEMPLATE = """
 {
@@ -38,7 +40,7 @@ headers = {'Content-type': 'application/json'}
 
 for i, path in enumerate(filePaths):
     print str(i) + '\tProcessing ' + path
-    f = open('txt/' + path)
+    f = open(TEST_DOC_DIR + '/' + path)
     text = f.read()
 
     commandJson = TEMPLATE % (path.replace('.txt', ''), json.dumps(text))
