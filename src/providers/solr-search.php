@@ -94,7 +94,7 @@ class SolrSearch implements Search {
    */
   function query( $search_terms, $options = null ) {
     // This is just a placeholder
-    if ( $search_terms === null ) {
+    if ( $search_terms === null || empty( $search_terms ) ) {
       return null;
     }
 
