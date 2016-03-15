@@ -1,13 +1,11 @@
 language: php
 
-sudo: false
-
 cache:
+  apt: true
   directories:
     - vendor
     - lib
     - $HOME/.composer/cache
-    - $HOME/.linuxbrew
 
 php:
   - 5.5.9
@@ -19,15 +17,14 @@ php:
   # - hhvm
 
 before_install:
-  # BEGIN requisite commands for installing Java 8 (OpenJDK)
-  - if [ ! -d "$HOME/.linuxbrew/bin" ]; then
-      yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)";
-    fi
-  - export PATH="$HOME/.linuxbrew/bin:$PATH"
-  - export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-  - export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-  - brew install jdk
-  # END
+  # Install Java 8
+  - sudo add-apt-repository -y ppa:webupd8team/java
+  - sudo apt-get update
+  - sudo apt-get install -y oracle-java8-installer
+  
+  # Set and check Java version
+  - sudo update-java-alternatives --set java-8-oracle
+  - java -version
 
 install:
   - if [ ! -d "lib/stanford-ner-2015-04-20" ]; then
