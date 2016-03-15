@@ -1,0 +1,101 @@
+﻿Rangeland Ecol Manage 67:621–628 | November 2014 | DOI: 10.2111/REM-D-13-00133.1
+
+Chihuahuan Desert Grassland Responds Similarly to Fall, Spring, and Summer Fires
+During Prolonged Drought
+Laura M. Ladwig,1 Scott L. Collins,2 Paulette L. Ford,3 and Laura B. White4
+Authors are 1Graduate Student and 2Professor, Department of Biology, University of New Mexico, Albuquerque, NM 87131, USA; 3Research Ecologist,
+Rocky Mountain Research Station, USDA Forest Service, Albuquerque, NM 87102, USA; and 4High School Science Teacher, Albuquerque Public Schools,
+Albuquerque, NM 87110, USA.
+
+Abstract
+Land managers frequently use prescribed burning to help maintain grassland communities. Semiarid grassland dynamics
+following ﬁre are linked to precipitation, with increasing soil moisture accelerating the rate of recovery. Prescribed ﬁres are
+typically scheduled to follow natural ﬁre regimes, but burning outside the natural ﬁre season could be equally effective and more
+convenient for managers, depending on their management objectives. We conducted a ﬁeld experiment in desert grassland to
+determine if ﬁre seasonality inﬂuenced plant community recovery. Experimental burn treatments occurred in fall, spring, and
+summer in replicate 0.24-ha plots to determine if ﬁre seasonality affected the rate of recovery of an ungrazed Chihuahuan Desert
+grassland in central New Mexico. Plant communities were surveyed seasonally for 5 yr after the burns. Grassland community
+structure responded to ﬁre but not ﬁre seasonality. Grass cover in all burned treatments remained lower than unburned controls
+for 3 yr after the burns. Community change through time was largely inﬂuenced by low rainfall, as grass cover in burned and
+unburned communities converged during a year with severe drought. In conclusion, ﬁre seasonality did not inﬂuence rate of
+community recovery, but extended drought was possibly more inﬂuential than ﬁre on grassland dynamics.
+Key Words:
+
+black grama, Bouteloua eriopoda, ﬁre seasonality, semiarid grassland
+
+INTRODUCTION
+Grasses are a critical component of rangeland function. Both
+natural phenomena and poor management practices can
+compromise grassland integrity, and maintaining semiarid
+grassland vegetation remains a challenge for rangeland
+managers. Fire frequently shapes and maintains grass-dominated communities (Pausas and Ribeiro 2013) and is often used
+as a management tool due to its affordability, effectiveness, and
+speed of treatment (Teague et al. 2001, 2008). Prescribed ﬁres
+are effective in mesic grasslands where ﬁre stimulates productivity (Knapp and Seastedt 1986), yet in semiarid grasslands
+lower water availability leads to decreased, patchy fuel loads
+and longer ﬁre-return intervals. As aridity increases, the
+magnitude of ecosystem beneﬁts of ﬁre decrease, and often
+semiarid plant communities are neutrally or negatively
+impacted by ﬁre (Scheintaub et al. 2009). Several years might
+be necessary for semiarid vegetation recovery (Gosz and Gosz
+1996; Parmenter 2008), and many impacts of ﬁre on semiarid
+grasslands can be unpredictable (Scheintaub et al. 2009; Pastro
+et al. 2011). A better understanding of community response to
+prescribed ﬁre is needed to help managers create optimal ﬁre
+management practices within semiarid rangelands.
+Research was funded in part by an NSF grant to the University of New Mexico for LongTerm Ecological Research and by a grant from the USDA Forest Service National Fire
+Plan.
+Correspondence: Laura M. Ladwig, Dept of Biology, University of New Mexico,
+Albuquerque, NM 87131, USA. Email: LLadwig@sevilleta.unm.edu
+Manuscript received 2 September 2013; manuscript accepted 2 May 2014.
+ª 2014 The Society for Range Management
+
+RANGELAND ECOLOGY &amp; MANAGEMENT 67(6) November 2014
+
+Water availability greatly inﬂuences desert grassland recovery (Drewa and Havstad 2001; Scheintaub et al. 2009; Pastro et
+al. 2011), and higher soil moisture after ﬁre leads to faster grass
+recovery (Drewa et al. 2006). Total precipitation is low and
+variable within and between years in semiarid systems
+(Dettinger et al. 2011), therefore recovery from ﬁre is
+frequently inconsistent between years or sites. Because response
+to ﬁre is linked to variable precipitation patterns and ﬁre can
+negatively impact semiarid systems (Gosz and Gosz 1996;
+Scheintaub et al. 2009), studying the intricacies of semiarid
+community response to ﬁre is critical for effective ﬁre
+management.
+The timing of ﬁre with regard to the growing season can
+impact community response. Within semiarid grasslands of the
+southwestern United States, perennial grasses predominantly
+grow during the monsoon season (Muldavin et al. 2008) and
+natural wildﬁres generally occur in early summer before the
+monsoon, when lightning ignites dry grasses (Parmenter 2008).
+In more mesic (mean annual precipitation [MAP] 665 mm)
+southern prairie grasslands of northern Texas, species respond
+differently to the timing of ﬁre, with summer ﬁres stimulating
+long-term growth of several codominant grass species and
+winter ﬁres favoring others (Ansley et al. 2006; Ansley and
+Castellano 2007). Meanwhile, studies have found negative
+effects of ﬁres during the growing season on Bouteloua
+eriopoda (Torr.) Torr., a dominant grass of more xeric (MAP
+250 mm) Chihuahuan Desert grasslands (Cable 1965; Drewa
+and Havstad 2001; Parmenter 2008; Killgore et al. 2009).
+However, it is unclear how prescribed ﬁres during different
+times of the year affect B. eriopoda, particularly because a
+related species, Bouteloua gracilis (Willd. ex Kunth) Lag. ex
+Grifﬁths, is affected by timing of prescribed ﬁre. Cover of B.
+gracilis, a dominant grass of the shortgrass steppe, showed little
+
+621
+
+Table 1. Climate and fire conditions during experimental burns. Climate measures are from 1100 through 1400 hours.
+Mean air temp
+Season
+
+Date
+
+Relative
+
+Mean wind speed
+
+Max wind speed
+

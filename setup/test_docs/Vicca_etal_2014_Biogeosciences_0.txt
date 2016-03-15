@@ -1,0 +1,101 @@
+﻿Biogeosciences, 11, 2991–3013, 2014
+www.biogeosciences.net/11/2991/2014/
+doi:10.5194/bg-11-2991-2014
+© Author(s) 2014. CC Attribution 3.0 License.
+
+Can current moisture responses predict soil CO2 efﬂux under
+altered precipitation regimes? A synthesis of manipulation
+experiments
+S. Vicca1 , M. Bahn2 , M. Estiarte3,4 , E. E. van Loon5 , R. Vargas6 , G. Alberti7,8 , P. Ambus9 , M. A. Arain10 , C. Beier9,11 ,
+L. P. Bentley12 , W. Borken13 , N. Buchmann14 , S. L. Collins15 , G. de Dato16 , J. S. Dukes17,18,19 , C. Escolar20 , P. Fay21 ,
+G. Guidolotti16 , P. J. Hanson22 , A. Kahmen23 , G. Kröel-Dulay24 , T. Ladreiter-Knauss2 , K. S. Larsen9 ,
+E. Lellei-Kovacs24 , E. Lebrija-Trejos25 , F. T. Maestre20 , S. Marhan26 , M. Marshall27 , P. Meir28,29 , Y. Miao30 ,
+J. Muhr31 , P. A. Niklaus32 , R. Ogaya3,4 , J. Peñuelas3,4 , C. Poll26 , L. E. Rustad33 , K. Savage34 , A. Schindlbacher35 ,
+I. K. Schmidt36 , A. R. Smith27,37 , E. D. Sotta38 , V. Suseela17,39 , A. Tietema5 , N. van Gestel40 , O. van Straaten41 ,
+S. Wan30 , U. Weber42 , and I. A. Janssens1
+1 Research
+
+Group of Plant and Vegetation Ecology, Department of Biology, University of Antwerp, Universiteitsplein 1, 2610
+Wilrijk, Belgium
+2 Institute of Ecology, University of Innsbruck, Sternwartestr. 15, 6020 Innsbruck, Austria
+3 CSIC, Global Ecology Unit, CREAF-CEAB-UAB, Cerdanyola del Vallés 08913, Catalonia, Spain
+4 CREAF, Cerdanyola del Vallés 08193, Catalonia, Spain
+5 Institute for Biodiversity and Ecosystem Dynamics, University of Amsterdam, the Netherlands
+6 Department of Plant and Soil Sciences, Delaware Environmental Institute, University of Delaware, Newark, DE, USA
+7 University of Udine, via delle Scienze 206, Udine, Italy
+8 MOUNTFOR Project Centre, European Forest Institute, Via E. Mach 1, San Michele all’Adige (Trento), Italy
+9 Department of Chemical and Biochemical Engineering, Technical University of Denmark, 2800 Kgs. Lyngby, Denmark
+10 McMaster Center for Climate Change and School of Geography and Earth Sciences, McMaster University, Hamilton,
+Ontario, Canada
+11 NIVA – Norwegian Institute for Water Research, Gaustadalléen 21, 0349 Oslo, Norway
+12 Department of Biological Sciences, Texas Tech University, Lubbock, TX 79409, USA
+13 Soil Ecology, University Bayreuth, Dr.-Hans-Frisch-Str. 1–3, 95448 Bayreuth, Germany
+14 Department of Environmental Systems Science, ETH Zurich, Zurich, Switzerland
+15 Department of Biology, University of New Mexico, Albuquerque, NM 87131, USA
+16 Department for Innovation in Biological, Agro-food and Forest systems, University of Tuscia, Viterbo, Italy
+17 Department of Forestry and Natural Resources, Purdue University, 715 West State Street, West Lafayette, IN 47907-2061,
+USA
+18 Department of Biology, University of Massachusetts, Boston, MA 02125, USA
+19 Department of Biological Sciences, Purdue University, West Lafayette, IN 47907, USA
+20 Área de Biodiversidad y Conservación, Departamento de Biología y Geología, Escuela Superior de Ciencias
+Experimentales y Tecnología, Universidad Rey Juan Carlos, C/Tulipán s/n, 28933 Móstoles, Spain
+21 USDA ARS Grassland Soil and Water Research Laboratory, Temple, TX 76502, USA
+22 Oak Ridge National Laboratory, Oak Ridge, TN 37831, USA
+23 Institute of Agricultural Sciences, ETH Zurich, 8092 Zurich, Switzerland
+24 MTA Centre for Ecological Research, 2–4, Alkotmany u., 2163-Vácrátót, Hungary
+25 Department of Molecular Biology and Ecology of Plants, Tel Aviv University, Tel Aviv 69978, Israel
+26 Institute of Soil Science and Land Evaluation, Soil Biology, University of Hohenheim, Emil-Wolff-Str. 27, 70599 Stuttgart,
+Germany
+27 Centre for Ecology and Hydrology, Environment Centre Wales, Deiniol Road, Bangor LL57 2UW, UK
+28 School of Geosciences, University of Edinburgh, Edinburgh, UK
+
+Published by Copernicus Publications on behalf of the European Geosciences Union.
+
+2992
+
+S. Vicca et al.: A synthesis of manipulation experiments
+
+29 Research
+
+School of Biology, Australian National University, Canberra, Australia
+Key Laboratory of Cotton Biology, College of Life Sciences, Henan University, Kaifeng, Henan 475004, China
+31 Max Planck Institute of Biogeochemistry, Department of Biogeochemical Processes, 07701 Jena, Germany
+32 Institute of Evolutionary Biology and Environmental Studies, University of Zürich, Winterthurerstrasse 190, 8057 Zürich,
+Switzerland
+33 USFS Northern Research Station, 271 Mast Road, Durham, NH 03824, USA
+34 The Woods Hole Research Center, 149 Woods Hole Rd, Falmouth, MA 02540, USA
+35 Department of Forest Ecology, Federal Research and Training Centre for Forests, Natural Hazards and Landscape – BFW,
+A-1131 Vienna, Austria
+36 Department of Geosciences and Natural Resource Management, Copenhagen University, Denmark
+37 School of the Environment, Natural Resources, and Geography, Bangor University, Gwynedd LL57 2UW, UK
+38 Embrapa Amapá Caixa Postal 10, CEP 68906-970, Macapá AP, Brazil
+39 School of Agricultural, Forest and Environmental Sciences, Clemson University, Clemson, SC 29634, USA
+40 Department of Biological Sciences, Texas Tech University, Lubbock, TX 79409, USA
+41 Buesgen Institute, Soil Science of Tropical and Subtropical Ecosystems, Georg-August- University of Goettingen,
+Buesgenweg 2, 37077 Goettingen, Germany
+42 Department of Biogeochemical Integration (BGI), Max Planck Institute for Biogeochemistry, Hans-Knöll-Str. 10, 07745
+Jena, Germany
+30 State
+
+Correspondence to: S. Vicca (sara.vicca@uantwerpen.be)
+Received: 26 September 2013 – Published in Biogeosciences Discuss.: 14 January 2014
+Revised: 31 March 2014 – Accepted: 15 April 2014 – Published: 6 June 2014
+
+Abstract. As a key component of the carbon cycle, soil CO2
+efﬂux (SCE) is being increasingly studied to improve our
+mechanistic understanding of this important carbon ﬂux. Predicting ecosystem responses to climate change often depends
+on extrapolation of current relationships between ecosystem
+processes and their climatic drivers to conditions not yet experienced by the ecosystem. This raises the question of to
+what extent these relationships remain unaltered beyond the
+current climatic window for which observations are available to constrain the relationships. Here, we evaluate whether
+current responses of SCE to ﬂuctuations in soil temperature
+and soil water content can be used to predict SCE under altered rainfall patterns. Of the 58 experiments for which we
+gathered SCE data, 20 were discarded because either too few
+data were available or inconsistencies precluded their incorporation in the analyses. The 38 remaining experiments were
+used to test the hypothesis that a model parameterized with
+data from the control plots (using soil temperature and water content as predictor variables) could adequately predict
+SCE measured in the manipulated treatment. Only for 7 of
+these 38 experiments was this hypothesis rejected. Importantly, these were the experiments with the most reliable data
+sets, i.e., those providing high-frequency measurements of
+SCE. Regression tree analysis demonstrated that our hypothesis could be rejected only for experiments with measurement intervals of less than 11 days, and was not rejected for
+any of the 24 experiments with larger measurement intervals.

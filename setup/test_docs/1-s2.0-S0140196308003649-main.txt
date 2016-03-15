@@ -1,0 +1,101 @@
+﻿Journal of Arid Environments 73 (2009) 512–520
+
+Contents lists available at ScienceDirect
+
+Journal of Arid Environments
+journal homepage: www.elsevier.com/locate/jaridenv
+
+Urbanization alters spatiotemporal patterns of ecosystem primary production:
+A case study of the Phoenix metropolitan region, USA
+A. Buyantuyev a, b, *, J. Wu a, b
+a
+b
+
+School of Life Sciences, Arizona State University, Tempe, AZ 85287-4601, USA
+Global Institute of Sustainability, Arizona State University, Tempe, AZ 85287-4601, USA
+
+a r t i c l e i n f o
+
+a b s t r a c t
+
+Article history:
+Received 15 April 2008
+Received in revised form
+29 September 2008
+Accepted 9 December 2008
+Available online 31 January 2009
+
+Previous studies have found that urbanization often decreases net primary production (NPP), an
+important integrative measure of ecosystem functioning. In arid environments, however, urbanization
+may boost productivity by introducing highly productive plant communities and weakening the coupling
+of plant growth to naturally occurring cycles of water and nutrients. We tested these ideas by comparing
+NPP estimated for natural and anthropogenic land covers in the Phoenix metropolitan region of USA
+using MODIS NDVI data and a simpliﬁed parametric NPP model. Most anthropogenic land covers
+exhibited higher production than the natural desert. Consequently, the combined urban and agricultural
+areas contributed more to the regional primary production than the natural desert did in normal and dry
+years, whereas this pattern was reversed in wet years. Primary production of this urban landscape was
+only weakly correlated with rainfall, but strongly with socio-economic variables. Our productivity estimates agreed well with NPP predicted by a process-based ecosystem model for the area. Signiﬁcant
+uncertainties, however, remain due to extremely high heterogeneity of urban vegetation. Nevertheless,
+our results clearly show that urbanization may not only increase regional NPP and disrupt the coupling
+between vegetation and precipitation, but also increase spatial heterogeneity of NPP in this arid region.
+Ó 2008 Elsevier Ltd. All rights reserved.
+
+Keywords:
+ANPP
+MODIS NDVI
+Remote sensing
+Sonoran Desert
+
+1. Introduction
+Urban development has rapidly transformed landscapes and
+profoundly altered biodiversity and ecosystem functioning from
+local to global scales (Grimm et al., 2008; Pataki et al., 2006; Shen
+et al., 2008). Urbanization is projected to continue to intensify
+worldwide, and urban sustainability has become one of the most
+pressing issues that face humanity today (Grimm et al., 2008; Wu,
+2008). To develop sustainable urban landscapes, it is critically
+important to understand the effects of urbanization on ecosystem
+functioning – an area that has received relatively little research until
+recently (Wu and David, 2002). This is particularly the case for
+dryland areas that cover over 40% of the earth’s land surface (Warren
+et al., 1996). Net primary production (NPP), the rate at which plant
+biomass accumulates in an ecosystem, is a critically important
+ecosystem process in both natural- and human-dominated
+landscapes. Aboveground net primary production (ANPP) has been
+suggested as an integrative measure of ecosystem functioning (Lieth
+and Whittaker, 1975; McNaughton et al., 1989), and as such it is a key
+* Corresponding author. School of Life Sciences, Arizona State University, P.O. Box
+874601, Tempe, AZ 85287-4601, USA. Tel.: þ1 480 965 4975; fax: þ1 480 965 7599.
+E-mail address: Alexander.Buyantuyev@asu.edu (A. Buyantuyev).
+0140-1963/$ – see front matter Ó 2008 Elsevier Ltd. All rights reserved.
+doi:10.1016/j.jaridenv.2008.12.015
+
+variable in assessing the effects of land use changes on ecosystem
+conditions.
+As the main source of greenhouse gases and other pollutants,
+cities play an important role in the global carbon cycle (Grimm et al.,
+2008; Pataki et al., 2006). Fossil fuel combustion and elevated soil
+CO2 efﬂux in irrigated patches of desert cities like Phoenix, USA,
+produce large amounts of CO2 (Koerner and Klopatek, 2002). Studies
+in Phoenix have documented concentrations of near surface CO2 can
+be three times higher in the urban core than in the outside desert
+(Idso et al., 2002). But local and regional carbon sequestration by
+desert vegetation and soil pools may not be adequate to offset the
+CO2 increase, although the potential is still high (Lal, 2004). Wisely
+irrigated vegetation in urban areas can mitigate the rise in CO2 by
+accruing and storing carbon directly via photosynthesis or by
+decreasing energy consumption via shading and evapotranspiration
+(McPherson et al., 2005; Nowak and Crane, 2002). Quantiﬁcation of
+primary productivity on broad spatial and long time scales, its gains
+and losses due to urbanization, is critically important to our
+understanding of regional carbon dynamics.
+Traditional means of estimating ANPP by ground measurements
+are laborious (Sala and Austin, 2000) and prone to uncertainties
+when scaled up to large areas (Wu et al., 2006). Global and regional
+estimates of ANPP can be now obtained from remotely sensed data
+
+A. Buyantuyev, J. Wu / Journal of Arid Environments 73 (2009) 512–520
+
+coupled with either statistical, or parametric, or process models
+(Ruimy et al., 1994). Parametric models that utilize Monteith’s
+(1972) original idea of directly relating primary productivity to
