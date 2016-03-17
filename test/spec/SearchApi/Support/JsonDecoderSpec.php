@@ -28,7 +28,7 @@ class JsonDecoderSpec extends ObjectBehavior {
   }
 
   function it_should_throw_invalid_json_string() {
-    $this->shouldThrow( new \Exception( 'Invalid Json String' ) )
+    $this->shouldThrow( new \Exception( 'Invalid Json String: Status: REQUEST_Apples' ) )
     ->during( 'reverse_geocoder_json_decoder', array( '{"status" : "REQUEST_Apples"}' ) );
   }
 

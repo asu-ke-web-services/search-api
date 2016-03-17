@@ -8,7 +8,7 @@ use SearchApi\Models as Models;
 /**
  * Class Geo_Json_Parser - Parses the returned result from a Geocoder
  */
-class GeoJsonParsers {
+class GoogleReverseGeocoderParser {
 
   private $json_results;
 
@@ -17,22 +17,9 @@ class GeoJsonParsers {
   }
 
   /**
-   * Function to select the parser
-   *
-   * @param parser_pick - used to pick the correct parser
-   */
-  public function parser_selector( $parser_pick ) {
-    if ( $parser_pick === 'Google' ) {
-      return $this->reverse_geocoder_google_parser();
-    }
-    // default parser
-    return $this->reverse_geocoder_google_parser();
-  }
-
-  /**
    * Function for parsing google's geocoder
    */
-  public function reverse_geocoder_google_parser() {
+  public function google_reverse_geocoder_parser() {
     // creating array of search terms to return
     $search_term_array = array();
 
@@ -54,11 +41,9 @@ class GeoJsonParsers {
           foreach ( $result as $component ) {
             // loopin through the search_term array to see if term already exists
             $element_exists = false;
-            foreach ( $search_term_array as $term ) {
-              if ( $term !== null && $term->value === $component['long_name'] ) {
-                $term->count = $term->count + 1;
-                $element_exists = true;
-              }
+            if ( array_key_exists( $component['long_name'], $search_term_array ) ) {
+              $search_term_array[ $component['long_name'] ]->count += 1;
+              $element_exists = true;
             }
 
             // checking if element was not found
@@ -74,7 +59,7 @@ class GeoJsonParsers {
               $new_item->is_user_input = false;
 
               // adding the search term to the term array
-              array_push( $search_term_array, $new_item );
+              $search_term_array[ $new_item->value ] = $new_item;
             } // checking that an element was not found
           } // loopin through address componets
         } // the check to make sure there is an "address component" section in the array
@@ -82,6 +67,8 @@ class GeoJsonParsers {
     } // making sure results is there and moving $geocoder_results to the inner array
 
     // returning an array of SearchTerms
+    // resetting the array indexs to numbers
+    $search_term_array = array_values( $search_term_array );
     return $search_term_array;
   }
 }
