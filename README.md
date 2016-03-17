@@ -20,6 +20,9 @@ composer create-project wp-coding-standards/wpcs:dev-master --no-dev -n standard
 ```
 vendor/bin/phpunit
 ```
+Make sure to add this line to your `config.conf`:
+`TestSolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select`
+This will be the url to the Solr server the test will use.
 
 ## To run the spec tests:
 ```
@@ -42,10 +45,10 @@ This will regenerate the class auto-loader which does dependency mapping and cre
 
 
 # Configuration
-See `config.conf.example` for example configuration.
+See `config.conf.example` for example configuration. The following are entries for your `config.conf` file, located in the project root, that you must fill out for Search API to work properly:
 
-For example,
-```
-SolrApiUrl=http://127.0.0.1:8983/solr/gios/select
-```
-specifies the SOLR endpoint URL.
+ * `SolrApiUrl=http://127.0.0.1:8983/solr/gios/select` specifies the SOLR endpoint URL.
+ * `TestSolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select`  specifies the SOLR endpoint URL used in tests.
+ * `StanfordNerPath=lib/stanford-ner-2015-04-20/` specifies target path for Stanford's NER library.
+
+The Stanford NER library is required for for the Search API to function. This is available [here](http://nlp.stanford.edu/software/CRF-NER.shtml). Unpack it anywhere you choose, but be sure to include the root path of the Stanford NER library in your configuration file.

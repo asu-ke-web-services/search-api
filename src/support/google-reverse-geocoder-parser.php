@@ -56,7 +56,7 @@ class GoogleReverseGeocoderParser {
                 $new_item->related = array( $component['short_name'] );
               }
               $new_item->count = 1;
-              $new_item->isUserInput = false;
+              $new_item->is_user_input = false;
 
               // adding the search term to the term array
               $search_term_array[ $new_item->value ] = $new_item;

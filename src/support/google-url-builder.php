@@ -9,7 +9,7 @@ use SearchApi\Models as Models;
 class GoogleURLBuilder {
 
   // keys
-  private $Google_Key = null;
+  private $google_key = null;
   // end of keys
 
   private $geo_coordinate;
@@ -26,8 +26,8 @@ class GoogleURLBuilder {
     "latlng={$this->geo_coordinate->lat},{$this->geo_coordinate->lng}";
 
     // checking if api key is given, if so adding it to url
-    if ( $this->Google_Key !== null ) {
-      $service_url = $service_url."&key={$this->Google_Key}";
+    if ( $this->google_key !== null ) {
+      $service_url = $service_url."&key={$this->google_key}";
     }
 
     return $service_url;
