@@ -9,46 +9,32 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * GeoJsonParsersSpec - Spec test for the GeoJsonParsers (higher level functions)
+ * GoogleReverseGeocoderParserSpec - Spec test for the GoogleReverseGeocoderParser (higher level functions)
  */
-class GeoJsonParsersSpec extends ObjectBehavior {
+class GoogleReverseGeocoderParserSpec extends ObjectBehavior {
   function it_is_initializable() {
     $this->beConstructedWith( 'Results String' );
-    $this->shouldHaveType( 'SearchApi\Support\GeoJsonParsers' );
+    $this->shouldHaveType( 'SearchApi\Support\GoogleReverseGeocoderParser' );
   }
-
-  // selector tests
-  function it_should_return_an_array_with_nothing_selected() {
-    $this->beConstructedWith( null );
-    $result = $this->parser_selector( null );
-    $result->shouldBeArray();
-  }
-
-  function it_should_return_an_array_with_google_selected() {
-    $this->beConstructedWith( null );
-    $result = $this->parser_selector( 'Google' );
-    $result->shouldBeArray();
-  }
-  // end of selector tests
 
   // Reverse_Geocoder_Google_Parser tests
   function it_should_return_an_empty_array_when_passed_null() {
     $this->beConstructedWith( null );
-    $result = $this->reverse_geocoder_google_parser();
+    $result = $this->google_reverse_geocoder_parser();
     $result->shouldBeArray();
     $result->shouldHaveCount( 0 );
   }
 
   function it_should_return_an_empty_array_when_passed_empty_array() {
     $this->beConstructedWith( null );
-    $result = $this->reverse_geocoder_google_parser( array() );
+    $result = $this->google_reverse_geocoder_parser( array() );
     $result->shouldBeArray();
     $result->shouldHaveCount( 0 );
   }
 
   function it_should_return_an_empty_array_when_passed_bad_formatted_array() {
     $this->beConstructedWith( null );
-    $result = $this->reverse_geocoder_google_parser( array( 'a', 'b', 'f' ) );
+    $result = $this->google_reverse_geocoder_parser( array( 'a', 'b', 'f' ) );
     $result->shouldBeArray();
     $result->shouldHaveCount( 0 );
   }
@@ -101,7 +87,7 @@ class GeoJsonParsersSpec extends ObjectBehavior {
 
     // checking it is array and has 2 elements
     $this->beConstructedWith( $google_test_string );
-    $result = $this->reverse_geocoder_google_parser();
+    $result = $this->google_reverse_geocoder_parser();
     $result->shouldBeArray();
     $result->shouldHaveCount( 2 );
 

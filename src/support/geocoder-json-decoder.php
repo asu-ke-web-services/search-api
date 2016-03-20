@@ -38,7 +38,7 @@ class JsonDecoder {
       if ( $geocoder_results['status'] === 'REQUEST_DENIED' ) {
         throw new Exception( 'Invalid Key' );
       }
-      throw new Exception( 'Invalid Json String' );
+      throw new Exception( "Invalid Json String: Status: {$geocoder_results['status']}" );
     }
 
     // return decoded json
