@@ -38,6 +38,8 @@ TEMPLATE = """
 
 headers = {'Content-type': 'application/json'}
 
+# os.system("curl " + solrApiUrl + "update?stream.body=<delete><query>*:*</query></delete>&commit=true")
+
 for i, path in enumerate(filePaths):
     print str(i) + '\tProcessing ' + path
     f = open(TEST_DOC_DIR + '/' + path)
