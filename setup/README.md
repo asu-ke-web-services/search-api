@@ -1,6 +1,11 @@
-# Setup Scripts
+# Setup Instructions
 
-## setup-test-docs.py
+## Solr Test Server
+
+### Solr Configuration
+See `solr_conf` directory for example configuration files for the Solr core.
+
+### setup-test-docs.py
 
 This is used to populate a SOLR core with a collection of documents. All of the documents will be in the form:
 
