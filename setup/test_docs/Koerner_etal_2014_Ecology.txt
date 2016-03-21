@@ -1,0 +1,101 @@
+﻿Ecology, 95(4), 2014, pp. 808–816
+Ó 2014 by the Ecological Society of America
+
+Plant community response to loss of large herbivores differs
+between North American and South African savanna grasslands
+SALLY E. KOERNER,1,9 DERON E. BURKEPILE,2 RICHARD W. S. FYNN,3 CATHERINE E. BURNS,4 STEPHANIE EBY,1
+NAVASHNI GOVENDER,5 NICOLE HAGENAH,6 KATHERINE J. MATCHETT,6 DAVE I. THOMPSON,6,7 KEVIN R. WILCOX,1
+SCOTT L. COLLINS,8 KEVIN P. KIRKMAN,6 ALAN K. KNAPP,1 AND MELINDA D. SMITH1
+1
+
+Reports
+
+Department of Biology and Graduate Degree Program in Ecology, Colorado State University, Fort Collins, Colorado 80523 USA
+2
+Marine Sciences Program, Department of Biological Sciences, Florida International University, 3000 NE 151st St,
+North Miami, Florida 33181 USA
+3
+Okavango Research Institute, Private Bag 285, Maun, Botswana
+4
+San Francisco Bay Bird Observatory, 524 Valley Way, Milpitas, California 95035 USA
+5
+Scientiﬁc Services, Kruger National Park, Private Bag X402, Skukuza 1350 South Africa
+6
+School of Life Sciences, University of KwaZulu-Natal, Private Bag X01, Scottsville, Pietermaritzburg 3209 South Africa
+7
+South African Environmental Observation Network (SAEON), Ndlovu Node, Scientiﬁc Services, Kruger National Park,
+Private Bag X1021, Phalaborwa 1390 South Africa
+8
+Department of Biology, MSC03-2020, University of New Mexico, Albuquerque, New Mexico 87131 USA
+
+Abstract. Herbivory and ﬁre shape plant community structure in grass-dominated
+ecosystems, but these disturbance regimes are being altered around the world. To assess the
+consequences of such alterations, we excluded large herbivores for seven years from mesic
+savanna grasslands sites burned at different frequencies in North America (Konza Prairie
+Biological Station, Kansas, USA) and South Africa (Kruger National Park). We hypothesized
+that the removal of a single grass-feeding herbivore from Konza would decrease plant
+community richness and shift community composition due to increased dominance by grasses.
+Similarly, we expected grass dominance to increase at Kruger when removing large herbivores,
+but because large herbivores are more diverse, targeting both grasses and forbs, at this study
+site, the changes due to herbivore removal would be muted. After seven years of largeherbivore exclusion, richness strongly decreased and community composition changed at
+Konza, whereas little change was evident at Kruger. We found that this divergence in response
+was largely due to differences in the traits and numbers of dominant grasses between the study
+sites rather than the predicted differences in herbivore assemblages. Thus, the diversity of large
+herbivores lost may be less important in determining plant community dynamics than the
+functional traits of the grasses that dominate mesic, disturbance-maintained savanna
+grasslands.
+Key words: disturbance; diversity; ﬁre; forb; grass; grazing; herbaceous community; herbivory; Konza
+Prairie, Kansas, USA; Kruger National Park, South Africa; large-herbivore exclusion; richness.
+
+INTRODUCTION
+Multiple disturbances shape herbaceous plant community composition and dynamics of mesic (.500 mm
+MAP [mean annual precipitation] in the tropics and
+.600 mm MAP outside the tropics; Bond et al. 2003)
+grasslands and savannas globally, hereafter referred to
+as savanna grasslands (sensu Scholes and Walker 1993),
+with ﬁre and grazing considered key, shared drivers of
+these systems (Knapp et al. 2004). Moderate grazing by
+large herbivores generally increases plant community
+diversity in mesic savanna grasslands, subject to various
+contingencies, such as climate, productivity, grazing
+intensity, and herbivore diversity (Milchunas et al. 1988,
+Olff and Ritchie 1998, Bakker et al. 2006). Furthermore,
+Manuscript received 21 November 2013; accepted 26
+November 2013. Corresponding Editor: G. A. Fox.
+9 E-mail: sally.koerner@colostate.edu
+808
+
+the effects of grazing may interact with ﬁre to create
+higher levels of plant diversity and heterogeneity than
+under either disturbance alone (Collins and Smith 2006,
+Koerner and Collins 2013).
+Human activities are altering these key disturbances in
+savanna grasslands worldwide (Reid and Ellis 1995,
+Fuhlendorf and Engle 2001), with important consequences for ecosystem diversity, structure, and function.
+Indeed, nearly half of the world’s large herbivores are
+threatened with extinction (IUCN 2013), with local,
+often diverse, native herbivore fauna eliminated and, in
+many regions, replaced by a single domesticated grazer.
+In addition, most savanna grasslands have experienced
+substantial alterations in natural ﬁre frequency, ranging
+from complete ﬁre suppression to annual burning and
+changes in the seasonality of ﬁres, all with corresponding effects on ﬁre intensity (e.g., Smith et al. 2012).
+Comparative studies focusing on the implications of
+large-herbivore loss and how these impacts vary with
+
+April 2014
+
+PLANT COMMUNITIES AND HERBIVORE LOSS
+
+809
+
+PLATE 1. Exclosure located at Konza Praire, Kansas, USA, in annually burned grassland. The vegetation difference inside and
+outside the exclosure is evident with the tall dominant C4 grass, Andropogon gerardii, ﬂowering inside the exclosure and higher forb
+cover outside. Photo credit: A. K. Knapp.
+
+forbs, 50% and 80%, respectively (du Toit 2003).
+Presumably, like bison, grass-eating herbivores reduce
+grass dominance and increase diversity; however, the
+presence of forb-eating herbivores simultaneously decreases diversity (Skinner and Chimimba 2005).
+To assess the impacts on herbaceous plant communities of losing native large herbivores and to determine if
+these impacts vary with herbivore diversity and ﬁre

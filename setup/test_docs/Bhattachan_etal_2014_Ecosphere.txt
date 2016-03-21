@@ -1,0 +1,101 @@
+﻿Resilience and recovery potential of duneland vegetation
+in the southern Kalahari
+ABINASH BHATTACHAN,1,  PAOLO D’ODORICO,1 KEBONYETHATA DINTWE,2 GREGORY S. OKIN,2
+AND
+1
+
+SCOTT L. COLLINS3
+
+Department of Environmental Sciences, University of Virginia, Box 400123, Charlottesville, Virginia 22904-4123 USA
+2
+Department of Geography, University of California, Los Angeles, California 90095 USA
+3
+Department of Biology, University of New Mexico, Albuquerque, New Mexico 87131 USA
+
+Citation: Bhattachan, A., P. D’Odorico, K. Dintwe, G. S. Okin, and S. L. Collins. 2014. Resilience and recovery potential of
+duneland vegetation in the southern Kalahari. Ecosphere 5(1):2. http://dx.doi.org/10.1890/ES13-00268.1
+
+Abstract. Many dune fields around the world have undergone alternating periods of mobilization and
+stabilization in response to changes in wind power and rainfall. However, in modern times disturbances
+associated with land use are believed to be a dominant factor contributing to the activation of stabilized
+vegetated dunes in drylands, while the reduction in human activities such as grazing and farming may
+lead to stabilization of once active dune fields. The Kalahari region of southern Africa has recently begun to
+exhibit visible signs of dune mobilization, a process that could lead to an activation of aeolian transport in
+the region with important implications for the biogeochemistry of downwind terrestrial and marine
+ecosystems. It is still unclear whether the region is poised at a tipping point between its current state (i.e.,
+vegetated fixed linear dunes), and a ‘‘degraded’’ state (i.e., barren and active dunes). Here we investigate
+the ability of the landscape to recover from the degraded state by assessing the resilience of duneland
+vegetation and evaluating the vegetation and soil characteristics. Using field observations and soil seed
+bank experiments, we show that palatable perennial grass cover is reduced while the seedbank is depleted
+on grazed dunefields. Conversely, the interdunes generally exhibit relatively rich seed banks. Soils from
+grazed and ungrazed sites show that plant available nutrient contents are not significantly different;
+therefore, soil nutrients are likely not a major factor limiting the recovery of perennial vegetation in this
+region. It is observed that the perennial grasses reestablish on the recovering dunes after grazers have been
+excluded, indicating that the landscape is still able to recover after years of denudation and that any
+irreversible shift to a stable degraded state is likely during extended periods of disturbance and/or climatic
+shifts that promote the degraded state. We also find that changes in grass cover, grass community
+composition, and seed bank can serve as indicators of whether the system has irreversibly shifted from a
+vegetated to a bare dune state.
+Key words: dune reactivation; feedbacks; overgrazing; seed bank; southern Kalahari; vegetation recovery.
+Received 26 August 2013; revised 15 November 2013; accepted 19 November 2013; published 10 January 2014.
+Corresponding Editor: S. Ravi.
+Copyright: Ó 2014 Bhattachan et al. This is an open-access article distributed under the terms of the Creative Commons
+Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the
+original author and source are credited. http://creativecommons.org/licenses/by/3.0/
+  E-mail: ab2vb@virginia.edu
+
+INTRODUCTION
+
+Tsoar 2005) but water availability also plays an
+important role (e.g., Sarnthein 1978, Lancaster
+1988, Forman et al. 1995, Thomas et al. 2005,
+Telfer and Thomas 2007). Dunes transform from
+stable (vegetated, immobilized) to active (bare,
+
+Aeolian activity is a major factor limiting
+vegetation establishment and growth on sand
+dunes (Tsoar 1990, Tsoar and Blumberg 2002,
+v www.esajournals.org
+
+1
+
+January 2014 v Volume 5(1) v Article 2
+
+BHATTACHAN ET AL.
+
+mobile) form after vegetation cover is reduced
+beyond a critical percentage vegetation cover.
+This process is called ‘‘reactivation’’; the reverse
+is known as ‘‘stabilization’’. It has been suggested
+that disturbances associated with land use can
+also reactivate dunes in places with low wind
+power (Yizhaq et al. 2007, 2009). In many cases,
+the reactivation of dunefields occurs over shorter
+temporal scales and is attributed to anthropogenic pressure, especially from grazing and
+farming. For instance, in the Negev Desert, along
+the Israel - Egypt border, the Israeli side now has
+dunes that are stabilized by vegetation while on
+the Egyptian side dunes are mobile because of
+overgrazing. Since the establishment of the
+border in 1982, wood gathering and grazing
+stopped in the Israeli side and dunes were
+restabilized within two years (Yizhaq et al.
+2007). Similar management practices were introduced in the coastal dunes of Israel in 1949, and
+the dunes became stable and vegetation cover
+increased from 4.3% to 17% between 1944 and
+1995 (Tsoar and Blumberg 2002).
+Vegetation establishment and growth appear
+to be limited by a number of factors, including
+loss of soil resources resulting from the intensification of wind erosion and dust emissions from
+reactivated dunefields (Tsoar 1990, 2005, Duran
+and Herrmann 2006, Barchyn and Hugenholtz
+2012a). Most of these factors could act in a
+positive feedback with the loss of vegetation
+(e.g., D’Odorico et al. 2013). For instance, the
+decrease in vegetation cover causes an intensification of soil erosion; the associated loss of soil
+resources may impede vegetation recovery (Okin
+et al. 2006, Turnbull et al. 2008). Moreover,
+recovery of vegetation may also be seed- or
+propagule- (e.g., bud bank) limited. Dune vegetation can mitigate against negative effects of
+erosion through vegetative propagation (Liu et
+al. 2012, 2013). Likewise, the feedbacks between
