@@ -22,7 +22,7 @@ class SearchEngine {
     if ( $search ) {
       $this->search = $search;
     } else {
-      $api_path = trim( Configuration::get_instance()->get( 'SolrApiUrl' ), '\r\n' );
+      $api_path = preg_replace('~[\r\n]+~', '', Configuration::get_instance()->get( 'SolrApiUrl' ));
       $this->search = new Providers\SolrSearch( null, null, $api_path );
     }
 
