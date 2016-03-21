@@ -15,14 +15,14 @@ use Prophecy\Argument;
  * ReverseGeocoderClassSpec - Spec integration test for the ReverseGeocoderClass (higher level functions)
  */
 class GoogleReverseGeocoderSpec extends ObjectBehavior {
-	private $geo_response = '{"results": [{"address_components": 
+  private $geo_response = '{"results": [{"address_components": 
 			[{"long_name": "Bedford Avenue","short_name": "Bedford Ave","types": 
 			["route"]},{"long_name": "Williamsburg","short_name": "Williamsburg","types": 
 			["neighborhood","political"]}],"place_id": "ChIJd8BlQ2BZwokRAFUEcm_qrcA"},
 			{"address_components": [{"long_name": "Williamsburg","short_name": 
 			"Williamsburg","types": ["neighborhood","political"]}],"place_id": 
 			"ChIJi27VXGBZwokRM8ErPyB91yk"}],"status": "OK"}';
-	
+
   function it_is_initializable() {
     $this->shouldHaveType( 'SearchApi\Providers\GoogleReverseGeocoder' );
   }
@@ -39,12 +39,12 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
     $result = $this->get_locations( $geo_coordinate );
     $result->shouldBeArray();
     $result->shouldHaveCount( 2 );
-    
+
     // checking the first element value and count
     $value_checker = $result[0];
     $value_checker->value->shouldBe( 'Bedford Avenue' );
     $value_checker->count->shouldBe( 1 );
-    
+
     // checking the second element value and count
     $value_checker = $result[1];
     $value_checker->value->shouldBe( 'Williamsburg' );
