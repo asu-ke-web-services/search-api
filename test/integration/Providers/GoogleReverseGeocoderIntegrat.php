@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\SearchApi\Providers;
+namespace integration\Providers;
 
 use SearchApi;
 use SearchApi\Models as Models;
