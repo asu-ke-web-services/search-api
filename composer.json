@@ -11,10 +11,16 @@
     "autoload": {
         "classmap" : [ "src/" ]
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/kenprice/PHP-Stanford-NLP"
+        }
+    ],
     "require": {
         "gios-asu/nectary": "^0.1.0",
         "xamin/handlebars.php": "dev-master",
-        "kenprice/php-stanford-nlp": "dev-master"
+        "agentile/PHP-Stanford-NLP": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.*",
