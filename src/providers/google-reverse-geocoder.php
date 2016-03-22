@@ -15,6 +15,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
   private $geo_coords;
   private $curl_caller;
   private $url_builder;
+  private $geo_json_decoder;
 
   /**
    * Constructor with optional params
@@ -22,9 +23,11 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
    * @param $coords coordinates for the reverse geocoding
    * @param $url_builder builds the url
    * @param $http_get_command Preferred http get command for making simple GET requests.
+   * @param $decoder init the decoder var
    */
   function __construct( Support\GoogleURLBuilder $url_builder = null,
-    Commands\HttpGet $curl_caller = null ) {
+    Commands\HttpGet $curl_caller = null,
+  	Support\JsonDecoder $decoder = null ) {
     // building the url
     if ( $url_builder ) {
       $this->url_builder = $url_builder;
@@ -36,6 +39,12 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
       $this->curl_caller = $curl_caller;
     } else {
       $this->curl_caller = new Commands\HttpGet();
+    }
+
+    if ( $decoder ) {
+    	$this->geo_json_decoder = $decoder;
+    } else {
+    	$this->geo_json_decoder = new Support\JsonDecoder();
     }
   }
 
@@ -65,8 +74,8 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     }
 
     // calling json decoder
-    $geo_json_decoder = new Support\JsonDecoder();
-    $decoded_json = $geo_json_decoder->reverse_geocoder_json_decoder( $geocoding_results );
+    $this->geo_json_decoder = new Support\JsonDecoder();
+    $decoded_json = $this->geo_json_decoder->reverse_geocoder_json_decoder( $geocoding_results );
     // calling parser
     $geo_parser = new Support\GoogleReverseGeocoderParser( $decoded_json );
     // returns array of search terms
