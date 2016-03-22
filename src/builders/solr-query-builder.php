@@ -21,9 +21,9 @@ class SolrQueryBuilder implements QueryBuilder {
     assert( gettype( $options ) === 'NULL' || gettype( $options ) === 'object' );
 
     foreach ( $search_terms as &$word ) {
-      $keyword_strings = $keyword_strings . $word->value . '%20';
+      $keyword_strings = $keyword_strings . urlencode($word->value) . ' ';
     }
 
-    return '?q=collector%3A(' . $keyword_strings . ')&wt=json&indent=true';
+    return '?df=collector&indent=on&q=' . $keyword_strings . '&wt=json';
   }
 }
