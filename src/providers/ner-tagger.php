@@ -28,8 +28,9 @@ class NerTagger implements Tagger {
     );
 
     $errors = $this->tagger->getErrors();
-    if( !empty( $errors ) ) {
-      print_r( $this->tagger->getErrors() );
+    // getErrors() shows more than just errors, so only display if 'exception' is found in text
+    if ( strpos( $errors, 'Exception' ) || strpos( $errors, 'exception' ) ) {
+      print_r( $errors );
     }
   }
 
@@ -40,10 +41,10 @@ class NerTagger implements Tagger {
     // Convert results into keywords
     $keywords = $this->results_to_keywords( $tagger_results );
 
-    // TO-DO: this gives off error messages with every use!
     $errors = $this->tagger->getErrors();
-    if( !empty( $errors ) ) {
-      print_r( $this->tagger->getErrors() );
+    // getErrors() shows more than just errors, so only display if 'exception' is found in text
+    if ( strpos( $errors, 'Exception' ) || strpos( $errors, 'exception' ) ) {
+      print_r( $errors );
     }
 
     return $keywords;
