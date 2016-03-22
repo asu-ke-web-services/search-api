@@ -23,20 +23,20 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
    * @param $url_builder builds the url
    * @param $http_get_command Preferred http get command for making simple GET requests.
    */
-  function __construct( Support\GoogleURLBuilder $url_builder = null, 
-  		Commands\HttpGet $curl_caller = null ) {
+  function __construct( Support\GoogleURLBuilder $url_builder = null,
+    Commands\HttpGet $curl_caller = null ) {
     // building the url
-  	if ( $url_builder ) {
-  		$this->url_builder = $url_builder;
-  	} else {
-  		$this->url_builder = new Support\GoogleURLBuilder();
-  	}
+    if ( $url_builder ) {
+      $this->url_builder = $url_builder;
+    } else {
+      $this->url_builder = new Support\GoogleURLBuilder();
+    }
 
-  	if ( $curl_caller ) {
-  		$this->curl_caller = $curl_caller;
-  	} else {
-  		$this->curl_caller = new Commands\HttpGet();
-  	}
+    if ( $curl_caller ) {
+      $this->curl_caller = $curl_caller;
+    } else {
+      $this->curl_caller = new Commands\HttpGet();
+    }
   }
 
   public function get_url( Models\GeoCoordinate $coords ) {
@@ -52,8 +52,8 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
    * @throws Exception - error in curl call
    */
   public function get_locations( Models\GeoCoordinate $coords ) {
-  	// setting url coords
-  	$this->url_builder->set_coords( $coords );
+    // setting url coords
+    $this->url_builder->set_coords( $coords );
 
     // attempting to call google's service
     try {
