@@ -42,7 +42,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
   public function get_url( Models\GeoCoordinate $coords ) {
     // building the url and returning
     $this->url_builder->set_coords( $coords );
-    return $url_builder->google_url();
+    return $this->url_builder->google_url();
   }
 
   /**
