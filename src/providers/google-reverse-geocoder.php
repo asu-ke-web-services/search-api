@@ -40,11 +40,8 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
   }
 
   public function get_url( Models\GeoCoordinate $coords ) {
-    // if coords are given update urlbuilder
-  	if( $coords ) {
-      // building the url
-      $this->url_builder->set_coords( $coords );
-  	}
+    // building the url and returning
+    $this->url_builder->set_coords( $coords );
     return $url_builder->google_url();
   }
 
@@ -55,11 +52,8 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
    * @throws Exception - error in curl call
    */
   public function get_locations( Models\GeoCoordinate $coords ) {
-    // if coords are given update urlbuilder
-    if( $coords ) {
-  	  // building the url
-  	  $this->url_builder->set_coords( $coords );
-    }
+  	// setting url coords
+  	$this->url_builder->set_coords( $coords );
 
     // attempting to call google's service
     try {
