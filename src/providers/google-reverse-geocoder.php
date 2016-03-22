@@ -27,7 +27,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
    */
   function __construct( Support\GoogleURLBuilder $url_builder = null,
     Commands\HttpGet $curl_caller = null,
-  	Support\JsonDecoder $decoder = null ) {
+  	Support\JsonDecoder $geo_json_decoder = null ) {
     // building the url
     if ( $url_builder ) {
       $this->url_builder = $url_builder;
@@ -41,8 +41,8 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
       $this->curl_caller = new Commands\HttpGet();
     }
 
-    if ( $decoder ) {
-    	$this->geo_json_decoder = $decoder;
+    if ( $geo_json_decoder ) {
+    	$this->geo_json_decoder = $geo_json_decoder;
     } else {
     	$this->geo_json_decoder = new Support\JsonDecoder();
     }
@@ -74,7 +74,6 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     }
 
     // calling json decoder
-    $this->geo_json_decoder = new Support\JsonDecoder();
     $decoded_json = $this->geo_json_decoder->reverse_geocoder_json_decoder( $geocoding_results );
     // calling parser
     $geo_parser = new Support\GoogleReverseGeocoderParser( $decoded_json );
