@@ -28,10 +28,11 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
   }
 
   function it_should_return_a_result_for_a_coord( Support\GoogleURLBuilder $url_builder,
-    Commands\HttpGet $http_get_command ) {
+    Commands\HttpGet $http_get_command,
+  	Support\JsonDecoder $geo_json_decoder ) {
     // setting up the class variables
     $geo_coordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
-    $this->beConstructedWith( $url_builder, $http_get_command );
+    $this->beConstructedWith( $url_builder, $http_get_command, $geo_json_decoder );
 
     // setting up predictions
     // url_builder predictions
@@ -40,6 +41,8 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
     // curl call predictions
     $http_get_command->setUrl( Argument::type( 'string' ) )->shouldBeCalled();
     $http_get_command->execute()->shouldBeCalled()->willReturn( $this->geo_response );
+    // decoder predictions
+    $geo_json_decoder->reverse_geocoder_json_decoder( Argument::type( 'string' ) )->shouldBeCalled();
 
     // calling the function
     $result = $this->get_locations( $geo_coordinate );
