@@ -27,14 +27,18 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
     $this->shouldHaveType( 'SearchApi\Providers\GoogleReverseGeocoder' );
   }
 
-  function it_should_return_a_result_for_a_coord( Support\GoogleURLBuilder $url_builder, Commands\HttpGet $http_get_command ) {
-    // setting up the class
+  function it_should_return_a_result_for_a_coord( Support\GoogleURLBuilder $url_builder, 
+  		Commands\HttpGet $http_get_command ) {
+    // setting up the class variables
   	$geo_coordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
-    $this->beConstructedWith( $geo_coordinate, $url_builder, $http_get_command );
+    $this->beConstructedWith( $url_builder, $http_get_command );
 
     // setting up predictions
+    // url_builder predictions
+    $url_builder->set_coords( Argument::type( 'SearchApi\Models\GeoCoordinate' ) )->shouldBeCalled();
     $url_builder->google_url()->shouldBeCalled()->willReturn( 'https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452' );
-    $http_get_command->setUrl( Argument::type('string') )->shouldBeCalled();
+    // curl call predictions
+    $http_get_command->setUrl( Argument::type( 'string' ) )->shouldBeCalled();
     $http_get_command->execute()->shouldBeCalled()->willReturn( $this->geo_response );
 
     // calling the function
