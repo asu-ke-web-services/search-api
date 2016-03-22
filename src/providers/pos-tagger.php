@@ -42,7 +42,8 @@ class PosTagger implements Tagger {
     // Next, let's make a list of unique words found.
     $found_words = array();
     array_walk_recursive( $tagger_results, function( $a ) use ( &$found_words ) {
-          $found_words[] = $a;
+        if ( strlen( $a ) > 1 )
+            $found_words[] = $a;
     } );
     $found_words = array_unique( $found_words );
 
