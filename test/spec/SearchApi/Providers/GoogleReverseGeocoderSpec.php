@@ -14,7 +14,7 @@ use Prophecy\Argument;
 /**
  * ReverseGeocoderClassSpec - Spec integration test for the ReverseGeocoderClass (higher level functions)
  */
-class GoogleReverseGeocoderSpec extends ObjectBehavior {
+class GoogleReverseGeocoderSpec extends ObjectBehavior { 
   private $geo_response = '{"results": [{"address_components": 
 			[{"long_name": "Bedford Avenue","short_name": "Bedford Ave","types": 
 			["route"]},{"long_name": "Williamsburg","short_name": "Williamsburg","types": 
@@ -28,11 +28,13 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
   }
 
   function it_should_return_a_result_for_a_coord( Support\GoogleURLBuilder $url_builder, Commands\HttpGet $http_get_command ) {
-    $geo_coordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
+    // setting up the class
+  	$geo_coordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
+    $this->beConstructedWith( $geo_coordinate, $url_builder, $http_get_command );
 
     // setting up predictions
     $url_builder->google_url()->shouldBeCalled()->willReturn( 'https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452' );
-    $http_get_command->setUrl()->shouldBeCalled();
+    $http_get_command->setUrl( Argument::type('string') )->shouldBeCalled();
     $http_get_command->execute()->shouldBeCalled()->willReturn( $this->geo_response );
 
     // calling the function

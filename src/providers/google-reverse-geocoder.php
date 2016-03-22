@@ -13,6 +13,37 @@ use SearchApi\Services\ReverseGeocoder as ReverseGeocoder;
  */
 class GoogleReverseGeocoder implements ReverseGeocoder {
   private $geo_coords;
+  private $curl_caller;
+  private $url_builder;
+
+  /**
+   * Constructor with optional params
+   *
+   * @param $coords coordinates for the reverse geocoding
+   * @param $url_builder builds the url
+   * @param $http_get_command Preferred http get command for making simple GET requests.
+   */
+  function __construct( Models\GeoCoordinate $coords = null, 
+  		Support\GoogleURLBuilder $url_builder = null, 
+  		Commands\HttpGet $curl_caller = null ) {
+  	if ( $coords ) {
+  	  $this->geo_coords = $coords;
+    } else {
+      $this->geo_coords = new Models\GeoCoordinate( 0, 0 );
+    }
+
+  	if ( $url_builder ) {
+  		$this->url_builder = $url_builder;
+  	} else {
+  		$this->url_builder = new Support\GoogleURLBuilder($this->geo_coords);
+  	}
+
+  	if ( $curl_caller ) {
+  		$this->curl_caller = $curl_caller;
+  	} else {
+  		$this->curl_caller = new Commands\HttpGet();
+  	}
+  }
 
   public function get_url( Models\GeoCoordinate $coords ) {
     // building the url
@@ -29,15 +60,15 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
   public function get_locations( Models\GeoCoordinate $coords ) {
 
     // building the url
-    $url_builder = new Support\GoogleURLBuilder( $coords );
+    //$url_builder = new Support\GoogleURLBuilder( $coords );
 
     // implementing a curl call using http-get curl call
-    $curl_caller = new Commands\HttpGet();
+    //$curl_caller = new Commands\HttpGet();
 
     // attempting to call google's service
     try {
-      $curl_caller->setUrl( $url_builder->google_url() );
-      $geocoding_results = $curl_caller->execute();
+      $this->curl_caller->setUrl( $this->url_builder->google_url() );
+      $geocoding_results = $this->curl_caller->execute();
       // informing that the service failed is down
     } catch ( Exception $e ) {
       throw new Exception( "The Google Service is Unavailable:\n\t{$e}" );
