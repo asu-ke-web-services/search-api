@@ -1,0 +1,101 @@
+﻿Ecological Modelling 250 (2013) 81–100
+
+Contents lists available at SciVerse ScienceDirect
+
+Ecological Modelling
+journal homepage: www.elsevier.com/locate/ecolmodel
+
+A hierarchical patch mosaic ecosystem model for urban landscapes:
+Model development and evaluation
+Chi Zhang a,b,∗ , Jianguo Wu b,c,d , Nancy B. Grimm b,d , Melissa McHale b,e , Alexander Buyantuyev c,d
+a
+
+State Key Laboratory of Desert and Oasis Ecology, Xinjiang Institute of Ecology and Geography, Chinese Academy of Sciences, Urumqi, Xinjiang, China
+Global Institute of Sustainability, Arizona State University, AZ, United States
+Sino-US Center for Conservation, Energy and Sustainability Science (SUCCESS), Inner Mongolia University, Hohhot 010021, China
+d
+School of Life Sciences, Arizona State University, Tempe, AZ, United States
+e
+College of Natural Resources, North Carolina State University, NC, United States
+b
+c
+
+a r t i c l e
+
+i n f o
+
+Article history:
+Received 20 May 2012
+Received in revised form
+23 September 2012
+Accepted 25 September 2012
+Available online 5 December 2012
+Keywords:
+Process-based model
+Urban ecosystem
+Carbon cycle
+Hierarchical patch dynamics paradigm
+Phoenix metropolitan area
+LTER
+
+a b s t r a c t
+Urbanization effects on ecosystem functions are both important and complex, characterized by scale multiplicity, spatial heterogeneity, and intensive human disturbances. Integrating the hierarchical structure
+of urban landscape pattern with ecosystem processes through simulation modeling can facilitate our
+understanding of human–environment interactions in urban environment. Current ecosystem models
+often focus on plant physiological and biogeochemical processes in homogeneous land covers, incapable
+of addressing the structural complexity in urban landscapes with multiple anthropogenic drivers across
+a range of spatial scales. Here we present the Hierarchical Patch Mosaic-Urban Ecosystem Model (HPMUEM), a multi-scaled model that explicitly treats spatial pattern and hierarchical structure of urban
+landscape by incorporating both top-down controls and bottom-up mechanisms in urban environment.
+By addressing six hierarchical levels from individual plant to the urbanized region, HPM-UEM provides
+a “hierarchical ladder” to scale up local ecosystem functions across the nested urban land hierarchies
+(i.e., land cover, land use, landscape, and the urbanized region), and facilitate linking ecosystem processes and socioeconomic drivers. By organizing human inﬂuences in a spatially nested hierarchical
+patch mosaic structure, HPM-UEM models the complex spatiotemporal pattern of multiple environmental constraints on urban ecosystem functions. The model was evaluated based on extensive datasets
+developed by the Long-Term Ecological Research (LTER) network, especially the Central Arizona-Phoenix
+(CAP) LTER. Model testing results showed that HPM-UEM predicted both C ﬂuxes and spatial pattern of
+C stocks with reasonable accuracy. HPM-UEM enabled us to assess spatial patterns and multiple-scaled
+dynamics of C cycle of the urban landscape, revealing the distinct productivities and C densities of different
+urban land types across different spatial scales. Sensitivity analyses indicated that future environmental changes and landscape modiﬁcations could have strong and complex effects on urban ecosystem
+functions. By matching ecological processes, anthropogenic environmental controls, and land and socioeconomic dynamics based on hierarchical levels, HPM-UEM could be coupled to multiple-scaled urban
+land-use models, climate models, and socioeconomic models to gain a comprehensive understanding of
+urban biogeochemical cycles.
+© 2012 Elsevier B.V. All rights reserved.
+
+1. Introduction
+Humans have transformed about one-third to one-half of the
+earth’s land surface, substantially altering the global biogeochemical cycle (Vitousek et al., 1997). Of different forms of land
+transformation, urbanization is arguably the most profound and
+complex, and has dominated land-use changes since the mid-20th
+century. In the United States, for example, urban and developed
+areas increased from 3.9% in 1982 to 5.2% in 1997 and were
+
+∗ Corresponding author. Tel.: +86 18690321105; fax: +86 9917885320.
+E-mail address: zhchbob@gmail.com (C. Zhang).
+0304-3800/$ – see front matter © 2012 Elsevier B.V. All rights reserved.
+http://dx.doi.org/10.1016/j.ecolmodel.2012.09.020
+
+projected to reach 9.2% in 2025 (Alig et al., 2004). Globally, urbanized land is expected to increase by about one million km2 over
+the next 25 years (McDonald, 2008). Numerous studies have indicated that urbanization has profound impacts on the productivity
+and C balance of terrestrial ecosystems from regional to continental
+scales (Imhoff et al., 2004; Pataki et al., 2006; Schaldach and Alcamo,
+2007; Churkina, 2008; Svirejeva-Hopkins et al., 2004; Buyantuyev
+and Wu, 2009). Zhang et al. (2012) estimated that urban and developed land accounts for about 6.7–7.6% of total ecosystem C storage
+within the southern United States (US), larger than the pool size of
+shrubland.
+Using urban vegetation to offset fossil C emissions has been
+proposed as a strategy to mitigate some of the negative impacts
+
+82
+
+C. Zhang et al. / Ecological Modelling 250 (2013) 81–100
+
+of urbanization (McPherson 1998; Nowak, 2006; Young, 2010;
+Zhao et al., 2010). Such projects require multi-disciplinary cooperation between ecologists, urban geologists, social scientists, and
+policy makers. However, urban ecologists frequently ﬁnd communication between disciplines difﬁcult due to the differences in
+terminologies. For example, when ecologists mention land types,
+they usually mean lands of homogeneous vegetation such as grassland or broadleaf forests. In contrast, when land-use modelers or
+economists mention land types, they often refer to the usage of
+the land in relation to certain socioeconomic functions (i.e., landuse), such as residential or commercial areas that consist of both
+impervious surfaces and green-space. For urban management, the
+C storage of an urban park is more meaningful to policy makers
+than the C density of a turfgrass ecosystem. The dilemma reﬂects
+the fact that ecologists work on a different research scale from the

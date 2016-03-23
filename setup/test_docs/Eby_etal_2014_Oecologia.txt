@@ -1,0 +1,101 @@
+﻿Oecologia (2014) 175:293–303
+DOI 10.1007/s00442-014-2895-9
+
+Community ecology - Original research
+
+Loss of a large grazer impacts savanna grassland plant
+communities similarly in North America and South Africa
+Stephanie Eby · Deron E. Burkepile · Richard W. S. Fynn · Catherine E. Burns · Navashni Govender ·
+Nicole Hagenah · Sally E. Koerner · Katherine J. Matchett · Dave I. Thompson · Kevin R. Wilcox ·
+Scott L. Collins · Kevin P. Kirkman · Alan K. Knapp · Melinda D. Smith 
+
+Received: 26 July 2013 / Accepted: 22 January 2014 / Published online: 20 February 2014
+© Springer-Verlag Berlin Heidelberg 2014
+
+Abstract Large herbivore grazing is a widespread disturbance in mesic savanna grasslands which increases herbaceous plant community richness and diversity. However,
+humans are modifying the impacts of grazing on these
+ecosystems by removing grazers. A more general understanding of how grazer loss will impact these ecosystems is
+hampered by differences in the diversity of large herbivore
+assemblages among savanna grasslands, which can affect
+the way that grazing influences plant communities. To
+avoid this we used two unique enclosures each containing
+a single, functionally similar large herbivore species. Specifically, we studied a bison (Bos bison) enclosure at Konza
+Prairie Biological Station, USA and an African buffalo
+(Syncerus caffer) enclosure in Kruger National Park, South
+Africa. Within these enclosures we erected exclosures
+in annually burned and unburned sites to determine how
+
+grazer loss would impact herbaceous plant communities,
+while controlling for potential fire-grazing interactions. At
+both sites, removal of the only grazer decreased grass and
+forb richness, evenness and diversity, over time. However,
+in Kruger these changes only occurred with burning. At
+both sites, changes in plant communities were driven by
+increased dominance with herbivore exclusion. At Konza,
+this was caused by increased abundance of one grass species, Andropogon gerardii, while at Kruger, three grasses,
+Themeda triandra, Panicum coloratum, and Digitaria eriantha increased in abundance.
+Keywords  Disturbance · Fire · Grazing · Plant
+community richness · Species diversity
+
+Introduction
+Communicated by Truman Young.
+Electronic supplementary material The online version of this
+article (doi:10.1007/s00442-014-2895-9) contains supplementary
+material, which is available to authorized users.
+S. Eby (*) · S. E. Koerner · K. R. Wilcox · A. K. Knapp ·
+M. D. Smith 
+Graduate Degree Program in Ecology, Department of Biology,
+Colorado State University, Fort Collins, CO, USA
+e-mail: Sleby@syr.edu
+D. E. Burkepile 
+Marine Sciences Program, Department of Biological Sciences,
+Florida International University, Miami, FL, USA
+R. W. S. Fynn 
+Okavango Research Institute, Maun, Botswana
+C. E. Burns 
+San Francisco Bay Bird Observatory, Milpitas, CA, USA
+
+Grazing by large herbivores is recognized as an integral
+disturbance in mesic (&gt;500 mm) grassland and savanna
+ecosystems (hereafter referred to as savanna grasslands,
+
+N. Govender 
+Scientific Services, Kruger National Park, Skukuza, South Africa
+N. Hagenah · K. J. Matchett · D. I. Thompson · K. P. Kirkman 
+School of Life Sciences, University of KwaZulu-Natal,
+Pietermaritzburg, South Africa
+D. I. Thompson 
+South African Environmental Observation Network, Ndlovu
+Node, Scientific Services, Kruger National Park, Phalaborwa,
+South Africa
+S. L. Collins 
+Department of Biology, University of New Mexico, Albuquerque,
+NM, USA
+
+13
+
+	
+294
+
+sensu Scholes and Archer 1997). Mesic savanna grasslands
+are found in both the northern and southern hemispheres,
+and irrespective of location, large herbivore grazing has
+been shown to increase plant community diversity and
+heterogeneity (McNaughton 1976; Collins 1987; Hartnett et al. 1996; Titshall et al. 2000; Frank 2005; Anderson
+et al. 2007; Collins and Calabrese 2012). Large herbivore
+grazing in mesic savanna grasslands has been altered in a
+number of ways by human activities, including the replacement of diverse native herbivore assemblages with a small
+number of herbivore species (domesticated livestock) or the
+removal of large herbivores altogether (Sinclair and Fryxell 1985; Archer 1989). Comparative studies are critical in
+order to gain a more general understanding of the impacts
+of these herbivore losses on ecosystems worldwide.
+However, generalizations about the impact of herbivore
+loss on plant community structure (diversity, richness,
+evenness) are hampered by the fact that mesic savanna
+grasslands differ in evolutionary history, soil fertility,
+plant community composition and most importantly, large
+herbivore assemblages. While both North American and
+Southern African mesic savanna grasslands were historically grazed by multiple large herbivore species, currently
+grazing by a diversity of species occurs only in Southern
+African protected savanna grasslands. Studies suggest that
+different herbivore assemblages affect plant community

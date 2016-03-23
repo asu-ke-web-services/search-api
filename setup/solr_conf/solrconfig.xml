@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+  <luceneMatchVersion>LUCENE_43</luceneMatchVersion>
+  <requestDispatcher handleSelect="false">
+    <httpCaching never304="true" />
+  </requestDispatcher>
+  <requestHandler name="/select" class="solr.SearchHandler" />
+  <requestHandler name="/update" class="solr.UpdateRequestHandler" />
+  <requestHandler name="/admin" class="solr.admin.AdminHandlers" />
+  <requestHandler name="/analysis/field" class="solr.FieldAnalysisRequestHandler" startup="lazy" />
+  <requestHandler name="/autophrase" class="solr.SearchHandler">
+    <lst name="defaults">
+      <str name="echoParams">explicit</str>
+      <int name="rows">10</int>
+      <str name="df">collector</str>
+    </lst>
+    <lst name="invariants">
+      <str name="defType">autophrasingParser</str>
+    </lst>
+  </requestHandler>
+
+  <updateRequestProcessorChain>
+   <processor class="solr.UUIDUpdateProcessorFactory">
+     <str name="fieldName">id</str>
+   </processor>
+   <processor class="solr.LogUpdateProcessorFactory" />
+   <processor class="solr.RunUpdateProcessorFactory" />
+  </updateRequestProcessorChain>
+
+  <autoCommit>
+    <maxDocs>50</maxDocs>   <!-- maximum uncommited docs before autocommit triggered -->
+    <maxTime>1000</maxTime> <!-- maximum time (in MS) after adding a doc before an autocommit is triggered -->
+  </autoCommit>
+
+  <lib dir="/opt/solr/contrib/autophrasing" regex=".*\.jar" />
+
+  <!-- multi-term synonym expansion -->
+  <queryParser name="autophrasingParser" class="com.lucidworks.analysis.AutoPhrasingQParserPlugin" >
+    <str name="phrases">autophrases.txt</str>
+    <str name="replaceWhitespaceWith">_</str>
+  </queryParser>
+</config>
