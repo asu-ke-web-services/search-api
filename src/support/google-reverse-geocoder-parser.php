@@ -20,16 +20,16 @@ class GoogleReverseGeocoderParser {
     $search_term_array = array();
 
     // checking for if the input is null case
-    if ( $this->json_results === null ) {
+    if ( $json_results === null ) {
       return $search_term_array;
     }
 
     // code that parses the array from the json object
     // making sure results is there and moving $geocoder_results to the inner array
-    if ( array_key_exists( 'results', $this->json_results ) ) {
-      $this->json_results = $this->json_results['results'];
+    if ( array_key_exists( 'results', $json_results ) ) {
+      $json_results = $json_results['results'];
       // loopin through each address found and getting the locations
-      foreach ( $this->json_results as $result ) {
+      foreach ( $json_results as $result ) {
         // checking if address_components exists
         if ( array_key_exists( 'address_components', $result ) ) {
           $result = $result['address_components'];
