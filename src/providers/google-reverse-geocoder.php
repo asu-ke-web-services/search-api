@@ -16,6 +16,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
   private $curl_caller;
   private $url_builder;
   private $geo_json_decoder;
+  private $geo_parser;
 
   /**
    * Constructor with optional params
@@ -27,24 +28,34 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
    */
   function __construct( Support\GoogleURLBuilder $url_builder = null,
     Commands\HttpGet $curl_caller = null,
-  	Support\JsonDecoder $geo_json_decoder = null ) {
-    // building the url
+  	Support\JsonDecoder $geo_json_decoder = null,
+    Support\GoogleReverseGeocoderParser $geo_parser = null ) {
+    // building the url initalization
     if ( $url_builder ) {
       $this->url_builder = $url_builder;
     } else {
       $this->url_builder = new Support\GoogleURLBuilder();
     }
 
+    // curl caller initalization
     if ( $curl_caller ) {
       $this->curl_caller = $curl_caller;
     } else {
       $this->curl_caller = new Commands\HttpGet();
     }
 
+    // decoder initalization
     if ( $geo_json_decoder ) {
     	$this->geo_json_decoder = $geo_json_decoder;
     } else {
     	$this->geo_json_decoder = new Support\JsonDecoder();
+    }
+    
+    // parser initalization
+    if ( $geo_parser ) {
+    	$this->geo_parser = $geo_parser;
+    } else {
+    	$this->geo_parser = new Support\GoogleReverseGeocoderParser();
     }
   }
 
@@ -76,8 +87,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     // calling json decoder
     $decoded_json = $this->geo_json_decoder->reverse_geocoder_json_decoder( $geocoding_results );
     // calling parser
-    $geo_parser = new Support\GoogleReverseGeocoderParser( $decoded_json );
     // returns array of search terms
-    return $geo_parser->google_reverse_geocoder_parser();
+    return $this->geo_parser->google_reverse_geocoder_parser( $decoded_json );
   }
 }
