@@ -10,16 +10,12 @@ use SearchApi\Models as Models;
  */
 class GoogleReverseGeocoderParser {
 
-  private $json_results;
-
-  public function __construct( $results ) {
-    $this->json_results = $results;
-  }
-
   /**
    * Function for parsing google's geocoder
+   *
+   * @param $json_results array of decoded json
    */
-  public function google_reverse_geocoder_parser() {
+  public function google_reverse_geocoder_parser( $json_results ) {
     // creating array of search terms to return
     $search_term_array = array();
 
