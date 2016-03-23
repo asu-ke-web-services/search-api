@@ -14,7 +14,15 @@ class GoogleURLBuilder {
 
   private $geo_coordinate;
 
-  public function __construct( Models\GeoCoordinate $coordinate ) {
+  public function __construct() {
+    $this->geo_coordinate = new Models\GeoCoordinate( 0, 0 );
+  }
+
+  public function set_key( $key ) {
+    $this->google_key = $key;
+  }
+
+  public function set_coords( Models\GeoCoordinate $coordinate ) {
     $this->geo_coordinate = $coordinate;
   }
 
