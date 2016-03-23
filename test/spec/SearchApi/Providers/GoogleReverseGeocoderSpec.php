@@ -42,7 +42,8 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
     $http_get_command->setUrl( Argument::type( 'string' ) )->shouldBeCalled();
     $http_get_command->execute()->shouldBeCalled()->willReturn( $this->geo_response );
     // decoder predictions
-    $geo_json_decoder->reverse_geocoder_json_decoder( Argument::type( 'string' ) )->shouldBeCalled();
+    $geo_json_decoder->reverse_geocoder_json_decoder( Argument::type( 'string' ) )->shouldBeCalled()
+    ->willReturn( json_decode( $this->geo_response, true ) );
 
     // calling the function
     $result = $this->get_locations( $geo_coordinate );
