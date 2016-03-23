@@ -22,7 +22,7 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
 			{"address_components": [{"long_name": "Williamsburg","short_name": 
 			"Williamsburg","types": ["neighborhood","political"]}],"place_id": 
 			"ChIJi27VXGBZwokRM8ErPyB91yk"}],"status": "OK"}';
-  
+
 
   function it_is_initializable() {
     $this->shouldHaveType( 'SearchApi\Providers\GoogleReverseGeocoder' );
@@ -30,8 +30,8 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
 
   function it_should_return_a_result_for_a_coord( Support\GoogleURLBuilder $url_builder,
     Commands\HttpGet $http_get_command,
-  	Support\JsonDecoder $geo_json_decoder,
-  	Support\GoogleReverseGeocoderParser $geo_parser ) {
+    Support\JsonDecoder $geo_json_decoder,
+    Support\GoogleReverseGeocoderParser $geo_parser ) {
 
     // setting up the class variables
     $geo_coordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );

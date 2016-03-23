@@ -28,7 +28,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
    */
   function __construct( Support\GoogleURLBuilder $url_builder = null,
     Commands\HttpGet $curl_caller = null,
-  	Support\JsonDecoder $geo_json_decoder = null,
+    Support\JsonDecoder $geo_json_decoder = null,
     Support\GoogleReverseGeocoderParser $geo_parser = null ) {
     // building the url initalization
     if ( $url_builder ) {
@@ -46,16 +46,16 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
 
     // decoder initalization
     if ( $geo_json_decoder ) {
-    	$this->geo_json_decoder = $geo_json_decoder;
+      $this->geo_json_decoder = $geo_json_decoder;
     } else {
-    	$this->geo_json_decoder = new Support\JsonDecoder();
+      $this->geo_json_decoder = new Support\JsonDecoder();
     }
-    
+
     // parser initalization
     if ( $geo_parser ) {
-    	$this->geo_parser = $geo_parser;
+      $this->geo_parser = $geo_parser;
     } else {
-    	$this->geo_parser = new Support\GoogleReverseGeocoderParser();
+      $this->geo_parser = new Support\GoogleReverseGeocoderParser();
     }
   }
 
