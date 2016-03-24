@@ -30,7 +30,7 @@ class NerTagger implements Tagger {
     $errors = $this->tagger->getErrors();
     // getErrors() shows more than just errors, so only display if 'exception' is found in text
     if ( strpos( $errors, 'Exception' ) || strpos( $errors, 'exception' ) ) {
-      print_r( $errors );
+      error_log( $errors );
     }
   }
 
@@ -44,7 +44,7 @@ class NerTagger implements Tagger {
     $errors = $this->tagger->getErrors();
     // getErrors() shows more than just errors, so only display if 'exception' is found in text
     if ( strpos( $errors, 'Exception' ) || strpos( $errors, 'exception' ) ) {
-      print_r( $errors );
+      error_log( $errors );
     }
 
     return $keywords;
