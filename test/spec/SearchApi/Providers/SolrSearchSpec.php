@@ -15,16 +15,16 @@ use PhpSpec\ObjectBehavior;
  */
 class SolrSearchSpec extends ObjectBehavior {
 
-  private $queryResponse = '{"response":{"numFound":1,"start":0,"docs":[{"id":"testid","author":"testauthor","date":"testdate","content":"testcontent"}]}}';
+  private $query_response = '{"response":{"numFound":1,"start":0,"docs":[{"id":"testid","author":"testauthor","date":"testdate","content":"testcontent"}]}}';
 
   function it_is_initializable() {
     $this->shouldHaveType( 'SearchApi\Providers\SolrSearch' );
   }
 
-  function it_should_call_query_builder( QueryBuilder $queryBuilder ) {
-    $this->beConstructedWith( $queryBuilder );
+  function it_should_call_query_builder( QueryBuilder $query_builder, Commands\HttpGet $http_get_command ) {
+    $this->beConstructedWith( $query_builder, $http_get_command );
 
-    $queryBuilder->build( 'test', null )->shouldBeCalled();
+    $query_builder->build( 'test', null )->shouldBeCalled();
 
     $this->query( 'test' );
   }
@@ -35,18 +35,18 @@ class SolrSearchSpec extends ObjectBehavior {
     $result->shouldBeNull();
   }
 
-  function it_should_return_search_result_when_keywords_not_empty( QueryBuilder $queryBuilder, Commands\HttpGet $httpGetCommand ) {
-    $this->beConstructedWith( $queryBuilder, $httpGetCommand, 'url/' );
-    $queryBuilder->build( 'test', null )->willReturn( 'test_query' );
-    $httpGetCommand->execute()->shouldBeCalled()->willReturn( $this->queryResponse );
-    $httpGetCommand->setUrl( 'url/test_query' )->shouldBeCalled();
+  function it_should_return_search_result_when_keywords_not_empty( QueryBuilder $query_builder, Commands\HttpGet $http_get_command ) {
+    $this->beConstructedWith( $query_builder, $http_get_command, 'url/' );
+    $query_builder->build( 'test', null )->willReturn( 'test_query' );
+    $http_get_command->execute()->shouldBeCalled()->willReturn( $this->query_response );
+    $http_get_command->setUrl( 'url/test_query' )->shouldBeCalled();
 
     $result = $this->query( 'test' );
     $result[0]->shouldHaveType( 'SearchApi\Models\SearchResultItem' );
   }
 
   function it_should_parse_valid_query_response() {
-    $this->parse_query_response( $this->queryResponse )[0]->shouldHaveType( 'SearchApi\Models\SearchResultItem' );
+    $this->parse_query_response( $this->query_response )[0]->shouldHaveType( 'SearchApi\Models\SearchResultItem' );
   }
 
   function it_should_have_query_response_parser_return_null_if_input_empty() {

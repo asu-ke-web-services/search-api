@@ -1,0 +1,101 @@
+﻿Agric Hum Values (2008) 25:555–566
+DOI 10.1007/s10460-008-9140-2
+
+Livelihood change, farming, and managing ﬂood risk
+in the Lerma Valley, Mexico
+Hallie Eakin Æ Kirsten Appendini
+
+Accepted: 9 February 2008 / Published online: 17 April 2008
+Ó Springer Science+Business Media B.V. 2008
+
+Abstract In face of rising ﬂood losses globally, the
+approach of ‘‘living with ﬂoods,’’ rather than relying on
+structural measures for ﬂood control and prevention, is
+acquiring greater resonance in diverse socioeconomic
+contexts. In the Lerma Valley in the state of Mexico, rapid
+industrialization, population growth, and the declining
+value of agricultural products are driving livelihood and
+land use change, exposing increasing numbers of people to
+ﬂooding. However, data collected in two case studies of
+farm communities affected by ﬂooding in 2003 illustrate
+that the concept of ﬂood as agricultural ‘‘hazard’’ has been
+relatively recently constructed through public intervention
+in river management and disaster compensation. While
+farming still represents subsistence value to rural households, increasingly rural communities are relying on nonfarm income and alternative livelihood strategies. In this
+context, deﬁning ﬂooding in rural areas as a private hazard
+for which individuals are entitled to public protection may
+be counterproductive. A different approach, in which
+farmers’ long acceptance of periodic ﬂooding is combined
+with valuing agricultural land for ecoservices, may enable
+a more sustainable future for the region’s population.
+Keywords Vulnerability Á Flood Á Livelihoods Á
+Agriculture Á Mexico
+
+H. Eakin (&amp;)
+Department of Geography, University of California,
+Santa Barbara, CA 93106-4060, USA
+e-mail: eakin@geog.ucsb.edu
+K. Appendini
+´
+´
+Centro de Estudios Economicos, Colegio de Mexico, Mexico,
+DF 10740, Mexico
+
+Introduction
+The frequency of ﬂood disasters around the world is rising
+(Douben 2006). Hypotheses for this phenomenon are
+numerous: increased climatic variability, the expansion of
+human settlement in ﬂood plains, and land cover and land use
+changes together are believed to be increasing human exposure and sensitivity to ﬂood impacts (Kundzewicz and
+Kaczmarek 2000). The persistence of loss in face of increased
+knowledge about the dynamics, drivers, and outcomes of
+hazards may well signal a signiﬁcant lack of sustainability in
+social-environmental relations, as well as a need to reconsider
+the underlying principles of ﬂood management.
+In Mexico’s Lerma River valley—one of the most densely
+populated regions in Mexico—rural land and urban settlement
+patterns are rapidly evolving, institutions are in ﬂux, and
+consequently perceptions of ﬂood loss are also changing. To
+date, Mexico’s approach to ﬂooding on the Lerma has been
+almost exclusively structural, relying on a series of dams, river
+straightening, and dredging and dike construction. Now that
+the valley’s population of 2.3 million is rapidly encroaching
+on what remains of the valley’s undeveloped ﬂoodplain, the
+incidence of ﬂood damages is rising.
+This article will illustrate how these processes are not only
+altering the impacts of ﬂooding but also are changing the way
+farmers value the use of their land, thus transforming their
+perceptions of risk and the subjective meaning of ﬂooding in
+rural areas. We draw from the rich history of hazards
+research to explore how evolving livelihood strategies and
+the consequent shift in the role of agriculture in the Upper
+Lerma Valley may provide insights into the meaning of ﬂood
+losses to rural populations, and thus new opportunities for
+ﬂood management. Hazards—or events with the potential to
+create harm—are very real phenomenon of the natural and
+built environment. Nevertheless, the meaning of harm and
+
+123
+
+556
+
+loss has a signiﬁcant subjective component and thus varies
+among individuals and from place to place (Hewitt 1997).
+Understanding this subjective experience is not only necessary to ensure that policy effectively addresses the needs of
+vulnerable populations, but also, as we argue here, is necessary to enable more effective and ﬂexible policy solutions
+to evolving risk.1
+Building on the tradition of political ecology in hazard
+research, we illustrate the implications of livelihood change,
+agricultural policy reforms, and urbanization for the experience of ﬂooding in two rural communities in central
+Mexico. The current policy framework in the region presents
+an un-nuanced view of ﬂooding as a rural hazard producing
+losses in need of compensation. This relatively narrow perspective misses the policy opportunities that might emerge
+from a more subtle understanding of the changing relationship of farmers to ﬂood risk. Acting on such opportunities is
+not only critical in the context of the current high frequency
+of ﬂooding in the Lerma River valley, but also important in
+light of the possibility of increased rainfall intensity with
+˜
+global warming (Magana et al. 2005).
+In the next section, we describe insights into ﬂood
+vulnerability and management that have emerged from
+political ecology and hazards literatures. We follow this
