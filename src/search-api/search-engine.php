@@ -18,6 +18,10 @@ class SearchEngine {
   private $geocoder; // GeoCdoder Implementation to use
 
   public function __construct( Search $search = null, Tagger $tagger = null, GeoCoder $geocoder = null ) {
+    // Set user-defined error handler function
+    //set_error_handler(function(){self::exception_error_handler("exception_error_handler");});
+    set_error_handler(array("\SearchApi\SearchEngine", "exception_error_handler"));
+
     Configuration::set_configuration_path( 'config.conf' );
     if ( $search ) {
       $this->search = $search;
@@ -39,7 +43,16 @@ class SearchEngine {
     }
   }
 
+  static function exception_error_handler( $errno, $errstr, $errfile, $errline, $errcontext ) {
+    if ( $errno == E_USER_ERROR ) {
+      return False;
+    }
+  }
+
   public function handle_request( Models\SearchRequest $request ) {
+    $response = new Models\SearchResult();
+
+try {
     // the terms that will be sent to the query builder
     $search_terms = array();
 
@@ -68,12 +81,15 @@ class SearchEngine {
       array_push( $search_terms, new Models\SearchTerm( $place, 'LOCATION', 1, true ) );
     }
 
-    // do stuff with $request
-    $response = new Models\SearchResult();
     $response->original_request = $request;
 
     $response->results = $this->search->query( $search_terms );
     $response->count = count( $response->results );
+
+} catch (\Exception $e){
+  $response->error_message = $e->getMessage();
+}
+
     return $response;
   }
 }
