@@ -18,10 +18,6 @@ class SearchEngine {
   private $geocoder; // GeoCdoder Implementation to use
 
   public function __construct( Search $search = null, Tagger $tagger = null, GeoCoder $geocoder = null ) {
-    // Set user-defined error handler function
-    //set_error_handler(function(){self::exception_error_handler("exception_error_handler");});
-    set_error_handler(array("\SearchApi\SearchEngine", "exception_error_handler"));
-
     Configuration::set_configuration_path( 'config.conf' );
     if ( $search ) {
       $this->search = $search;
@@ -43,53 +39,45 @@ class SearchEngine {
     }
   }
 
-  static function exception_error_handler( $errno, $errstr, $errfile, $errline, $errcontext ) {
-    if ( $errno == E_USER_ERROR ) {
-      return False;
-    }
-  }
-
   public function handle_request( Models\SearchRequest $request ) {
     $response = new Models\SearchResult();
 
-try {
-    // the terms that will be sent to the query builder
-    $search_terms = array();
+    try {
+      // the terms that will be sent to the query builder
+      $search_terms = array();
 
-    // the keywords from the
-    $tagged_words = array();
+      // the keywords from the
+      $tagged_words = array();
 
-    // explode user keywords
-    if ( $request->text ) {
-      $user_words = explode( ' ' , $request->text );
-      foreach ( $user_words as &$word ) {
-        array_push( $search_terms, new Models\SearchTerm( $word, null, null, 1, true ) );
+      // explode user keywords
+      if ( $request->text ) {
+        $user_words = explode( ' ' , $request->text );
+        foreach ( $user_words as &$word ) {
+          array_push( $search_terms, new Models\SearchTerm( $word, null, null, 1, true ) );
+        }
       }
-    }
 
-    // get terms from the document string and turn into searchTerm
-    if ( $request->document ) {
-      $tagged_words = $this->tagger->tagger_service( $request->document );
-      foreach ( $tagged_words as &$keyword ) {
-        array_push( $search_terms, new Models\SearchTerm( $keyword->text, $keyword->type, $keyword->relevance, false ) );
+      // get terms from the document string and turn into searchTerm
+      if ( $request->document ) {
+        $tagged_words = $this->tagger->tagger_service( $request->document );
+        foreach ( $tagged_words as &$keyword ) {
+          array_push( $search_terms, new Models\SearchTerm( $keyword->text, $keyword->type, $keyword->relevance, false ) );
+        }
       }
+
+      // get coordinates if available when tagged words include a location
+      if ( $request->coord ) {
+        $place = $this->$geocoder->get_locations( $request->coord );
+        array_push( $search_terms, new Models\SearchTerm( $place, 'LOCATION', 1, true ) );
+      }
+
+      $response->original_request = $request;
+
+      $response->results = $this->search->query( $search_terms );
+      $response->count = count( $response->results );
+    } catch (\Exception $e){
+      $response->error_message = $e->getMessage();
     }
-
-    // get coordinates if available when tagged words include a location
-    if ( $request->coord ) {
-      $place = $this->$geocoder->get_locations( $request->coord );
-      array_push( $search_terms, new Models\SearchTerm( $place, 'LOCATION', 1, true ) );
-    }
-
-    $response->original_request = $request;
-
-    $response->results = $this->search->query( $search_terms );
-    $response->count = count( $response->results );
-
-} catch (\Exception $e){
-  $response->error_message = $e->getMessage();
-}
-
     return $response;
   }
 }
