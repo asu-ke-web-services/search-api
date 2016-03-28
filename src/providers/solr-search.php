@@ -55,6 +55,7 @@ class SolrSearch implements Search {
   /**
    * Create a search result from a JSON string.
    * returns SearchResultItem[]
+   *
    * @param string $response_string
    */
   function parse_query_response( $response_string ) {

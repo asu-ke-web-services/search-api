@@ -17,14 +17,14 @@ class NerTagger implements Tagger {
   public function __construct() {
     // Get path to Stanford NER from config.
     Configuration::set_configuration_path( 'config.conf' );
-    $stanfordNerPath = realpath( rtrim(
+    $stanford_ner_path = realpath( rtrim(
         Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
     ) );
 
     // Instantiate the tagger object
     $this->tagger = new \StanfordNLP\NERTagger(
-        $stanfordNerPath . '/classifiers/english.all.3class.distsim.crf.ser.gz',
-        $stanfordNerPath . '/stanford-ner.jar'
+        $stanford_ner_path . '/classifiers/english.all.3class.distsim.crf.ser.gz',
+        $stanford_ner_path . '/stanford-ner.jar'
     );
 
     $errors = $this->tagger->getErrors();
