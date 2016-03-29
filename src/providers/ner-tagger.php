@@ -43,7 +43,14 @@ class NerTagger implements Tagger {
     // Explode the request and push it through the tagger
     $tagger_results = $tagger->tag( explode( ' ', $request_string ) );
 
-    return $tagger_results;
+    // Output of tagger -> tag is a nested array. Output is split by sentences, so let's
+    // flatten the array because we only care about the tagged words, not the sentences.
+    $flattened_results = array();
+    foreach ( $tagger_results as $result ) {
+      $flattened_results = array_merge( $flattened_results, $result );
+    }
+
+    return $flattened_results;
   }
 
   // Interpret the tagger results into Keyword objects
