@@ -32,8 +32,8 @@ install:
       unzip stanford-ner-2015-04-20.zip -d lib/;
     fi
   - if [ ! -d "lib/stanford-postagger-2015-04-20" ]; then
-      wget http://nlp.stanford.edu/software/stanford-postagger-full-2015-04-20.zip;
-      unzip stanford-postagger-full-2015-04-20.zip -d lib/;
+      wget http://nlp.stanford.edu/software/stanford-postagger-2015-04-20.zip;
+      unzip stanford-postagger-2015-04-20.zip -d lib/;
     fi
   - composer install --no-interaction --prefer-source
   - composer create-project wp-coding-standards/wpcs:dev-master --no-dev -n standards/wpcs
