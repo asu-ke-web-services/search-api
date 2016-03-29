@@ -12,6 +12,28 @@ use Nectary\Configuration as Configuration;
  * @seeAlso: http://nlp.stanford.edu/software/CRF-NER.shtml
  */
 class NerTagger implements Tagger {
+  private $tagger;
+
+  public function __construct() {
+    // Get path to Stanford NER from config.
+    Configuration::set_configuration_path( 'config.conf' );
+    $stanford_ner_path = realpath( rtrim(
+        Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
+    ) );
+
+    // Instantiate the tagger object
+    $this->tagger = new \StanfordNLP\NERTagger(
+        $stanford_ner_path . '/classifiers/english.all.3class.distsim.crf.ser.gz',
+        $stanford_ner_path . '/stanford-ner.jar'
+    );
+
+    $errors = $this->tagger->getErrors();
+    // getErrors() shows more than just errors, so only display if 'exception' is found in text
+    if ( strpos( $errors, 'Exception' ) || strpos( $errors, 'exception' ) ) {
+      error_log( $errors );
+    }
+  }
+
   // Convert a search string into an array of Keyword objects
   public function tagger_service( $request_string = '' ) {
     // Call the NER Tagger service
@@ -19,29 +41,24 @@ class NerTagger implements Tagger {
     // Convert results into keywords
     $keywords = $this->results_to_keywords( $tagger_results );
 
+    $errors = $this->tagger->getErrors();
+    // getErrors() shows more than just errors, so only display if 'exception' is found in text
+    if ( strpos( $errors, 'Exception' ) || strpos( $errors, 'exception' ) ) {
+      error_log( $errors );
+    }
+
     return $keywords;
   }
 
-  // Call the NER service and save results as a string containing an XML document
+  // Call the NER service and return its raw results
   public function get_tags( $request_string = '' ) {
     if ( empty( $request_string ) ) {
       return null;
     }
 
-    // Get path to Stanford NER from config.
-    // TODO: Configuration path in constructor (?)
-    Configuration::set_configuration_path( 'config.conf' );
-    $stanford_ner_path = realpath( rtrim(
-        Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
-    ) );
-
-    $tagger = new \StanfordNLP\NERTagger(
-        $stanford_ner_path . '/classifiers/english.all.3class.distsim.crf.ser.gz',
-        $stanford_ner_path . '/stanford-ner.jar'
-    );
-
-    // Explode the request and push it through the tagger
-    $tagger_results = $tagger->tag( explode( ' ', $request_string ) );
+    // Tokenize the request and push it through the tagger
+    // TO-DO: find new ways to tokenize the search string
+    $tagger_results = $this->tagger->tag( explode( ' ', $request_string ) );
 
     return $tagger_results;
   }
@@ -53,11 +70,13 @@ class NerTagger implements Tagger {
       return null;
     }
 
-    // This works properly, but does not handle 'relevance' yet (temporary)
+    // Prepare the array of keyword objects
     $keywords = array();
 
+    // convert each term into a keyword object
+    // TO-DO: implement relevance
     foreach ( $tagger_results as $result ) {
-      array_push( $keywords, new Keyword( $result[0], $result[1], 1.0 ) );
+      array_push( $keywords, new Keyword( $result[0], $result[1], 0.5 ) );
     }
 
     return $keywords;
