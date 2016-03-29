@@ -63,7 +63,7 @@ class NerTagger implements Tagger {
     // This works properly, but does not handle 'relevance' yet (temporary)
     $keywords = array();
 
-    foreach ( $tagger_results as $result ) {
+    foreach ( $tagger_results as &$result ) {
       array_push( $keywords, new Keyword( $result[0], $result[1], 1.0 ) );
     }
 

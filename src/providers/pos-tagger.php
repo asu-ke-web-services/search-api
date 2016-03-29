@@ -63,7 +63,7 @@ class PosTagger implements Tagger {
 
     $keywords = array();
 
-    foreach ( $tagged_words as $result ) {
+    foreach ( $tagged_words as &$result ) {
       array_push( $keywords, new Keyword( $result[0], 'NOUN', null ) );
     }
 
