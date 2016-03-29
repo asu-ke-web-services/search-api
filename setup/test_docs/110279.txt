@@ -1,0 +1,101 @@
+﻿REVIEWS REVIEWS REVIEWS
+
+Coordinated distributed experiments: an
+emerging tool for testing global hypotheses
+in ecology and environmental science
+Lauchlan H Fraser1*, Hugh AL Henry2, Cameron N Carlyle1,3, Shannon R White4, Carl Beierkuhnlein5,
+James F Cahill Jr4, Brenda B Casper6, Elsa Cleland7, Scott L Collins8, Jeffrey S Dukes9, Alan K Knapp10,
+Eric Lind11, Ruijun Long12, Yiqi Luo13, Peter B Reich14,15, Melinda D Smith16, Marcelo Sternberg17, and
+Roy Turkington3
+There is a growing realization among scientists and policy makers that an increased understanding of today’s
+environmental issues requires international collaboration and data synthesis. Meta-analyses have served this
+role in ecology for more than a decade, but the different experimental methodologies researchers use can limit
+the strength of the meta-analytic approach. Considering the global nature of many environmental issues, a
+new collaborative approach, which we call coordinated distributed experiments (CDEs), is needed that will
+control for both spatial and temporal scale, and that encompasses large geographic ranges. Ecological CDEs,
+involving standardized, controlled protocols, have the potential to advance our understanding of general
+principles in ecology and environmental science.
+Front Ecol Environ 2013; 11(3): 147–155, doi:10.1890/110279 (published online 14 Dec 2012)
+
+E
+
+cology as a science began well over a century ago,
+when it was based primarily on observational studies
+(McIntosh 1985). Toward the end of the 20th century,
+this led to a more experimental, reductionist approach,
+focused on testing hypotheses and developing theories.
+Controlled manipulative experiments have shaped our
+understanding of ecological principles considerably over
+the past few decades. However, although suitable for testing and developing theories, individual studies yield sitespecific information that is difficult to extrapolate to provide broad generalizations. Today, emerging globally
+relevant questions in basic and applied ecology require a
+reconsideration of what approaches would be best for
+understanding large-scale patterns and processes. It is no
+
+In a nutshell:
+• Many environmental issues have become global problems that
+require collaborative experimental research at an international
+scale
+• We recommend the use of coordinated distributed experiments (CDEs), standardized experiments to control for spatial
+and temporal scales across a wide geographic range
+• The use of CDEs will lead to more efficient international collaborations, addressing fundamental basic and applied questions in ecology and environmental science
+
+1
+
+Department of Biological Sciences and Natural Resource Sciences,
+Thompson Rivers University, Kamloops, Canada *(lfraser@tru.ca);
+2
+Department of Biology, University of Western Ontario, London,
+Canada; 3Department of Botany and Biodiversity Research Centre,
+University of British Columbia, Vancouver, Canada (continued on
+p155)
+© The Ecological Society of America
+
+longer sufficient to ask whether global warming can alter
+plant or animal growth, whether acid rain has impacts on
+aquatic trophic structure, or whether habitat fragmentation reduces biodiversity. Society requires more than theory; it requires an understanding of “how, how much, and
+when”. Our ability to extrapolate the results from experimental approaches has been chiefly limited by the scopes
+and scales of the studies that are practically and logistically feasible. For this reason, there have been shifts in
+methodologies in ecology and the environmental sciences; for example, we have seen a return to observational studies through the use of technological advances
+in the monitoring and analysis of data (Collins et al.
+2006; Sagarin and Pauchard 2010). Another technique
+that has become widely used is meta-analysis, a quantitative approach to reviewing, integrating, and summarizing
+large numbers of independent studies (Gurevitch and
+Hedges 2001).
+During the past two decades, a progressive increase in
+the use of meta-analysis has advanced most academic disciplines, including ecology and the environmental sciences. The strength of the meta-analytic approach lies in
+the objective and quantitative statistical methodology
+that allows the synthesis of large numbers of studies
+(Gurevitch et al. 1992; Arnqvist and Wooster 1995;
+Harrison 2011). A few examples of ecological topics that
+have been ideally suited to the meta-analytic approach
+include the question of whether amphibian declines are a
+worldwide phenomenon (Houlahan et al. 2000), the
+effect of dispersal on species diversity (Cadotte 2006), the
+response of ecosystem nitrogen (N) cycles to N addition
+(Lu et al. 2011), the effects of grazing on plant traits (Díaz
+et al. 2007), the relationship between plant species richwww.frontiersinecology.org
+
+147
+
+Coordinated distributed experiments
+
+148
+
+(a)
+
+LH Fraser et al.
+(b)
+
+(c)
+
+Figure 1. Examples of different rainfall manipulation methods conducted on grasslands with corresponding map locations in Figure 3:
+(a) Germany (30), (b) Israel (31), and (c) Canada (15).
+
+ness and productivity (Mittelbach et al. 2001), the
+effects of controlling plant traits on litter decomposition
+rates (Cornwell et al. 2008), and grassland biomass
+responses to carbon dioxide (CO2) and N enrichment
+(Lee et al. 2010). While there has been an increasing use
+of meta-analysis, there is also a growing literature that is
+critical, or at least cautionary, of this quantitative
+approach. Indeed, Whittaker (2010) referred to metaanalyses as “mega-mistakes”, not necessarily to discourage the use of meta-analysis but to urge a more rigorous

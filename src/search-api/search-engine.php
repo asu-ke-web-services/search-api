@@ -35,7 +35,7 @@ class SearchEngine {
     if ( $geocoder ) {
       $this->geocoder = $geocoder;
     } else {
-      $this->geocoder = new Providers\ReverseGeocoderClass();
+      $this->geocoder = new Providers\GoogleReverseGeocoder();
     }
   }
 

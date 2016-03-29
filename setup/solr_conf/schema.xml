@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<schema name="gios-asu" version="0.1">
+
+  <fields>
+    <field name="id" type="text" indexed="true" stored="true" required="true"/>
+    <field name="title" type="textgen" indexed="true" stored="true"/>
+
+    <!-- ATTRIBUTION -->
+    <!-- textgen tokenizes at whilespace, will catenate words and split on case change when
+                   indexed and queried. So a query for "Augustus DeMorgan" and "Augustus De-Morgan"
+          will both be a match for Augustus De Morgan
+    -->
+    <field name="authors" type="textgen" indexed="true" stored="true" multiValued="true"/>
+    <field name="contributors" type="textgen" indexed="true" stored="true" multiValued="true"/>
+    <field name="organizations" type="textgen" indexed="true" stored="true" multiValued="true"/>
+
+    <!-- SPATIAL AND TEMPORAL COVERAGE -->
+    <field name="dates" type="DateRangeField" indexed="true" stored="true" multiValued="true"/>
+    <field name="locations" type="location" indexed="true" stored="true" multiValued="true"/>
+    <field name="location_names" type="textgen" indexed="true" stored="true" multiValued="true"/>
+
+    <!-- document body should use a special type of class solr.TextField so analyzers can
+                be used -->
+    <field name="body" type="textgen" indexed="true" stored="true"/>
+
+    <field name="publication_date" type="DateRangeField" indexed="true" stored="true"/>
+
+    <!-- collection of all fields; not stored. may be useful for querying -->
+    <field name="collector" type="textgen" indexed="true" stored="false" multiValued="true"/>
+  </fields>
+
+  <!-- may simplify some queries to combine fields into one -->
+  <copyField source="title"               dest="collector"/>
+  <copyField source="authors"             dest="collector"/>
+  <copyField source="contributors"        dest="collector"/>
+  <copyField source="body"                dest="collector"/>
+  <copyField source="organizations"        dest="collector"/>
+  <copyField source="location_names"    dest="collector"/>
+
+  <fieldType name="text" class="solr.TextField" sortMissingLast="true" omitNorms="true"/>
+
+  <!-- SPATIAL AND TEMPORAL COVERAGE -->
+  <fieldType name="DateRangeField" class="solr.DateRangeField"/>
+  <fieldType name="location" class="solr.LatLonType" subFieldSuffix="_coordinate"/>
+
+  <!-- custom type for document body -->
+  <fieldType name="textgen" class="solr.TextField" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory" />
+      <filter class="solr.LowerCaseFilterFactory" />
+      <filter class="com.lucidworks.analysis.AutoPhrasingTokenFilterFactory"
+              phrases="autophrases.txt" includeTokens="true"
+              replaceWhitespaceWith="_" />
+      <filter class="solr.StopFilterFactory" ignoreCase="true"
+              words="stopwords.txt" enablePositionIncrements="true" />
+      <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt"
+              ignoreCase="true" expand="true" />
+      <filter class="solr.KStemFilterFactory" />
+    </analyzer>
+
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory"
+              ignoreCase="true"
+              words="stopwords.txt"
+              enablePositionIncrements="true"
+              />
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.KStemFilterFactory" />
+    </analyzer>
+  </fieldType>
+</schema>

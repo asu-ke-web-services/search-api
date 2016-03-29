@@ -21,8 +21,8 @@ class SolrSearchSpec extends ObjectBehavior {
     $this->shouldHaveType( 'SearchApi\Providers\SolrSearch' );
   }
 
-  function it_should_call_query_builder( QueryBuilder $query_builder ) {
-    $this->beConstructedWith( $query_builder );
+  function it_should_call_query_builder( QueryBuilder $query_builder, Commands\HttpGet $http_get_command ) {
+    $this->beConstructedWith( $query_builder, $http_get_command );
 
     $query_builder->build( 'test', null )->shouldBeCalled();
 

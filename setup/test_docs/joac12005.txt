@@ -1,0 +1,101 @@
+﻿bs_bs_banner
+
+Journal of Agrarian Change, Vol. 14 No. 1, January 2014, pp. 26–51.
+
+Agrarian Winners of Neoliberal Reform:
+The ‘Maize Boom’ of Sinaloa, Mexico
+HALLIE EAKIN, JULIA C. BAUSCH AND STUART SWEENEY
+
+While the detrimental impact of neoliberal policy on Mexico’s maize smallholders is well
+researched, little attention has been paid to the rise of maize in the northern state of
+Sinaloa. Sinaloa’s entry into maize has restructured the geography of national supply, and
+generated a new national conﬁdence in white maize self-sufﬁciency. Using semi-structured
+interviews and secondary data, we document the primary social and political drivers of
+Sinaloa’s maize boom. Local actors trumpet Sinaloa’s response as a success story of
+entrepreneurship and technological innovation, while simultaneously appropriating the language of food sovereignty to justify preferential entitlements in public investment. Our
+analysis conﬁrms interpretations of neoliberalism as a political project, illustrating how
+existing natural, social and political capital held by speciﬁc interest groups can be leveraged
+and reinforced through private–public partnerships to mould national policy and investment,
+and the potential vulnerabilities that may emerge from this process.
+Keywords: agriculture, maize, Mexico, neoliberalism
+
+INTRODUCTION
+The past two decades of research on neoliberalism and associated ‘free-market’ reform programmes in Latin America have repeatedly conﬁrmed that ‘actual existing neoliberalism’
+(Brenner and Theodore 2002) often looks quite different from the policy ideals articulated in
+the Washington Consensus (Williamson 1993), or by Milton Friedman or other prominent
+theorists associated with the dissemination of neoliberal thought in approaches to Latin
+American governance. Broadly speaking, neoliberal economic and political thought focuses on
+deregulation and decentralization of decision-making, and privatization and the ‘unfettering’ of
+market transactions and the promotion of free trade in order to generate growth and prosperity
+(Harvey 2005; Liverman and Vilas 2006).
+For agricultural policy in Latin America, the embrace of neoliberalism has typically entailed
+restructuring and reconciling sector programmes to be reﬂective of macroeconomic neoliberal
+
+Hallie Eakin, Associate Professor, School of Sustainability, Arizona State University, 800 S. Cady Mall, PO Box
+875502, Mail code 5502, Tempe, AZ 85287, USA. E-mail: Hallie.Eakin@asu.edu. Julia C. Bausch, Ph.D. student,
+School of Sustainability, Arizona State University, 800 S. Cady Mall, PO Box 875502, Mail code 5402, Tempe,
+AZ 85287, USA. E-mail: jcbausch@asu.edu. Stuart Sweeney, Associate Professor, Department of Geography,
+University of California, Santa Barbara, CA 93106-4060, USA. E-mail: Sweeney@geog.ucsb.edu
+The research presented in this manuscript was funded by a grant from the National Science Foundation Grant
+No. 0826871. Any opinions, ﬁndings and conclusions or recommendations expressed in this material are those of
+the authors and do not necessarily reﬂect the views of the National Science Foundation (NSF). The authors are
+very appreciative of the detailed comments of the anonymous reviewers, which signiﬁcantly improved the
+manuscript.We are also grateful for the time and assistance provided to us in Sinaloa by the number of individuals
+we interviewed in this project, and by Maria Guadalupe Quijada and Jose Luis Armenta who supported the data
+collection process.
+© 2013 John Wiley &amp; Sons Ltd
+
+doi: 10.1111/joac.12005
+
+Neoliberal Reform: The ‘Maize Boom’ of Sinaloa, Mexico 27
+principles and objectives, rather than the development of a separate ‘neoliberal’ agenda for
+agricultural growth and productivity (de Janvry et al. 1997b). This effort of restructuring has
+meant signiﬁcant reform in the role of the state in farm and rural policy across Latin America:
+from a relatively activist role in setting prices, promoting speciﬁc product growth, and subsidizing access to ﬁnance and inputs to one in which the state is primarily focused on facilitating
+market transactions and intervening where markets fail (de Janvry et al. 1997b). Thus, in
+practice, the era of neoliberalism has not necessarily been characterized by less government
+(although state retrenchment has widely occurred) but, rather, the ‘re-invention’ of public-sector
+relationships to private actors and civil society through diverse and often complex processes of
+‘re-regulation’ (Snyder 1999, 2001; Martin 2005; Radcliffe 2005). The reorientation of agricultural policy has had distributive implications: some populations have found new opportunities to prosper and excel, while others have struggled to maintain relevance and position in
+changing domestic and international markets (Thorpe 1997; Spoor 2000; Liverman and Vilas
+2006). Neoliberalism was in its heyday in the 1990s. Nevertheless, the legacy of the institutional
+reforms of that decade continue to shape development processes today – particularly in relation
+to which actors have been able to use the opportunity of structural reform to actively
+participate in and shape the evolution of policy processes, and which actors have not.
+Maize (Zea mays) has been the key protagonist in Mexico’s three-decade engagement
+with neoliberal ideas, policy and processes. Maize is an iconic crop in Mexico, traditionally
+valued for its cultural, political and social symbolism and history as much as an economic
+commodity (Warman 2002). By all accounts, the decade of the 1990s was pivotal in Mexican
+agrarian history, as Mexico moved rapidly to dismantle some of the entitlements and interventions that had long characterized the agricultural sector, in favour of an explicit emphasis
+on trade, commercialization and agroindustry (Rello and Pérez 1996). The scope and implications of the overtly neoliberal shift in the orientation of macroeconomic policy, and the
+implications for the agricultural sector and for rural populations, have been the subject of
+continual discussion and analysis (e.g. Liverman and Vilas 2006), with the vast majority of
+accounts documenting the negative impacts that the policy reforms have had on smallholder
+livelihoods and prospects for smallholder maize production (e.g. Hewitt de Alcántara 1994;
+de Janvry et al. 1997a; Cornelius and Myhre 1998). Much of the literature has speciﬁcally
+focused on the combined impact of domestic policy restructuring, the North American Free
+Trade Agreement (NAFTA) and increased maize imports from the United States (USA) on
+Mexico’s maize system, documenting the input/output ‘price squeeze’ that many smallholder
+producers faced in the 1990s as federal input subsidies were redesigned, and the government
+reduced credit and marketing opportunities for small-scale grain farmers (de Janvry et al.
+1995; Eakin 2006). Increased migration and ‘feminization’ of the countryside (Preibisch et al.
+2002; Appendini 2010), land abandonment and forest transition (Klooster 2003), enhanced
+livelihood sensitivity to environmental shocks (Eakin 2006) and erosion of agrobiodiversity
+and cultural practice (e.g. Nadal 2000) have all been associated with this era of policy
+reform.
+Nevertheless, over the same era (1990–present) the volume of maize grown in Mexico has
+increased by 67 per cent and the national area planted in maize has been relatively constant
+(Sweeney et al. 2012). According to the most recent census data, approximately 27.6 per cent of
+agricultural land in Mexico is farmed in maize, and nearly 2.8 million farmers – largely
+smallholders with less than 5 ha – are dedicated to the crop (INEGI 2011;Appendini 2012). From
+negligible maize production in the 1980s, the north-western coastal state of Sinaloa (Figure 1)
+now supplies nearly a quarter of the country’s white maize (SIAP 2010). High-yielding maize is
+now a monoculture in the state, occupying as much as 90 per cent of the planted area in some
+© 2013 John Wiley &amp; Sons Ltd
+
+28 Hallie Eakin, Julia C. Bausch and Stuart Sweeney
+Figure 1 Average annual maize production in Sinaloa from 2005 to 2009, by municipio
+
+Source: Authors’ calculations based on data from INEGI (2011) and SIAP (2010).
+Note: The greyscale colours shown in the ﬁgure vary continuously with the maximum of 1.2 million
+metric tons shaded pure black and 0 output as pure white. Intermediate values of output as

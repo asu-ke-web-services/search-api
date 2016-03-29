@@ -1,0 +1,101 @@
+﻿Ecology Letters, (2013) 16: 513–521
+
+LETTER
+
+Life-history constraints in grassland plant species:
+a growth-defence trade-off is the norm
+
+Eric M. Lind,1* Elizabeth Borer,1
+Eric Seabloom,1 Peter Adler,2
+Jonathan D. Bakker,3
+Dana M. Blumenthal,4
+Mick Crawley,5 Kendi Davies,6
+Jennifer Firn,7 Daniel S. Gruner,8
+W. Stanley Harpole,9
+Yann Hautier,1,10
+Helmut Hillebrand,11
+Johannes Knops,12
+Brett Melbourne,6
+Brent Mortensen,9
+Anita C. Risch,13 Martin Schuetz,13
+14
+
+Carly Stevens
+
+doi: 10.1111/ele.12078
+
+and
+
+Peter D. Wragg1
+
+Abstract
+Plant growth can be limited by resource acquisition and defence against consumers, leading to contrasting
+trade-off possibilities. The competition-defence hypothesis posits a trade-off between competitive ability
+and defence against enemies (e.g. herbivores and pathogens). The growth-defence hypothesis suggests that
+strong competitors for nutrients are also defended against enemies, at a cost to growth rate. We tested
+these hypotheses using observations of 706 plant populations of over 500 species before and following
+identical fertilisation and fencing treatments at 39 grassland sites worldwide. Strong positive covariance in
+species responses to both treatments provided support for a growth-defence trade-off: populations that
+increased with the removal of nutrient limitation (poor competitors) also increased following removal of
+consumers. This result held globally across 4 years within plant life-history groups and within the majority
+of individual sites. Thus, a growth-defence trade-off appears to be the norm, and mechanisms maintaining
+grassland biodiversity may operate within this constraint.
+Keywords
+Coexistence, competition-defence hypothesis, life history, mammalian herbivory, Nutrient Network (NutNet), resource limitation, tolerance, top-down bottom-up, trade-offs..
+Ecology Letters (2013) 16: 513–521
+
+Plants use different strategies to maximise ﬁtness in the face of limits to available resources and attack by consumers. Heterogeneity of
+both resource supply and herbivory rates in ecological communities
+may prevent convergence of plant strategies into a single optimal
+combination (Grime 1977; Tilman 1982; Herms &amp; Mattson 1992;
+Wise &amp; Abrahamson 2005). Plant strategies also reﬂect environmental pressures underlying the evolutionary history of existing taxa
+(Coley et al. 1985; Herms &amp; Mattson 1992; Antonelli et al. 2011).
+Plant life history includes variance in adaptive traits, such as competitive ability for limiting resources (tolerance of low-resource levels), ability to disperse into new habitats and resistance to or
+tolerance of pathogens and herbivores. Predicting the constraints
+on, and trade-offs among, these strategies remains an active area of
+theoretical debate (Stamp 2003; Wright et al. 2004; Craine 2005;
+Grime 2007; Tilman 2007; Wise &amp; Abrahamson 2007) and empirical
+investigation (Siemens et al. 2002; Ridenour et al. 2008; Viola et al.
+2010; Agrawal 2011; Kempel et al. 2011).
+
+The hypothesis that defence against herbivory, inclusive of resistance and tolerance, is costly has been largely borne out by experimental work, establishing one axis of a potential trade-off (reviewed
+in Bergelson &amp; Purrington 1996 and Strauss et al. 2002; Fine et al.
+2006; see Siemens et al. 2002 for an exception). Yet, while documentation of among-species trade-offs with defensive investment
+may be common and widespread (Kneitel &amp; Chase 2004), there is a
+lack of generality in terms of which morphological traits or physiological processes are predicted to beneﬁt from lower investment in
+defence. On one hand, increased investment in defence may come
+at the cost of competitive ability (Baldwin &amp; Hamilton 2000; Chase
+et al. 2002; Viola et al. 2010). Strategies promoting competitive success vary with environment, but superior competitors are often
+those more thoroughly able to exploit a limiting resource, such as
+soil nutrients, and which can persist at the lowest levels of availability of that resource (Tilman 1982). On the other hand, increased
+investment in defence may result in reduced growth rate, leading to
+differential investment into growth or defence by species based on
+the environmental conditions experienced through evolutionary his-
+
+1
+
+9
+
+INTRODUCTION
+
+Department of Ecology, Evolution, and Behavior, University of Minnesota,
+
+Department of Ecology, Evolution and Organismal Biology, Iowa State
+
+St. Paul, MN, 55108, USA
+
+University, Ames, IA, 50011, USA
+
+2
+
+10
+
+Department of Wildland Resources and the Ecology Center, Utah State
+
+Institute of Evolutionary Biology and Environmental Studies, University of
+
+University, Logan, UT, 84322, USA
+
+Zurich, CH-8057, Zurich, Switzerland
+
+3
