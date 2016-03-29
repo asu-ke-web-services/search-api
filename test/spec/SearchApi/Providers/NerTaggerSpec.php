@@ -40,20 +40,6 @@ class NerTaggerSpec extends ObjectBehavior {
     }
   }
 
-  // The results should have the same count as the number of request terms
-  function its_length_should_match_term_count() {
-    $test_request = '';
-
-    // Keep adding terms and verify that the results match the request's term count
-    for ( $count = 1; $count <= 3; $count++ ) {
-      $test_request .= 'term ';
-      $test_result = $this->tagger_service( $test_request );
-
-      $test_result->shouldBeArray();
-      $test_result->shouldHaveCount( $count );
-    }
-  }
-
   // The tagger results should be converted to keywords
   function it_should_return_array_keywords() {
     // Test a single function call instead of several
