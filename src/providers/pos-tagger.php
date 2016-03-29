@@ -18,8 +18,12 @@ class PosTagger implements Tagger {
    *
    * @param string $stanfordPosTaggerPath Root path of Stanford POS tagger library
    */
-  function __construct( $stanford_pos_tagger_path ) {
-    $path = realpath( rtrim( $stanford_pos_tagger_path ) );
+  function __construct( $stanford_pos_tagger_path = null ) {
+    if ( ! $stanford_pos_tagger_path ) {
+      $path = 'lib/stanford-postagger-2015-04-20';
+    } else {
+      $path = realpath( rtrim( $stanford_pos_tagger_path ) );
+    }
     $this->pos = new \StanfordNLP\POSTagger(
         $path . '/models/english-left3words-distsim.tagger',
         $path . '/stanford-postagger.jar'

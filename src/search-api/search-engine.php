@@ -30,7 +30,8 @@ class SearchEngine {
     if ( $ner_tagger ) {
       $this->ner_tagger = $ner_tagger;
     } else {
-      $this->ner_tagger = new Providers\NerTagger();
+      $ner_tagger_path = preg_replace( '~[\r\n]+~', '', Configuration::get_instance()->get( 'StanfordNerPath' ) );
+      $this->ner_tagger = new Providers\NerTagger( $ner_tagger_path );
     }
 
     if ( $pos_tagger ) {
