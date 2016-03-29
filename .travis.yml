@@ -21,7 +21,7 @@ before_install:
   - sudo add-apt-repository -y ppa:webupd8team/java
   - sudo apt-get update
   - sudo apt-get install -y oracle-java8-installer
-  
+
   # Set and check Java version
   - sudo update-java-alternatives --set java-8-oracle
   - java -version
@@ -37,7 +37,7 @@ install:
 
 before_script:
   - mkdir coverage
-  - printf "TestSolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select\nStanfordNerPath=lib/stanford-ner-2015-04-20/\n" > config.conf
+  - printf "TestSolrApiUrl=http://jilliantessa.me:8983/solr/gios-dev/select\nStanfordNerPath=lib/stanford-ner-2015-04-20/\nStanfordPosTaggerPath=lib/stanford-postagger-2015-04-20/\n" > config.conf
 
 script:
   - vendor/bin/phpunit # --coverage-clover /tmp/coverage/clover.xml
