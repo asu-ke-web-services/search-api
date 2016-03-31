@@ -95,7 +95,7 @@ class NerTagger implements Tagger {
     usort( $keywords, array( $this, 'compare_text' ) );
 
     // group keywords if they are the same
-    num_keywords = count ( $keywords );
+    $num_keywords = count( $keywords );
     for ( $i = 0; $i < $num_keywords -1 ; $i++ ) {
       if ( strcmp( $keywords[ $i ]->text, $keywords[ $i + 1 ]->text ) === 0 ) {
         $keywords[ $i ]->occurences++;
