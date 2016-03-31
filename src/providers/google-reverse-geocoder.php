@@ -62,7 +62,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
   public function get_url( Models\GeoCoordinate $coords ) {
     // building the url and returning
     $this->url_builder->set_coords( $coords );
-    return $this->url_builder->google_url();
+    return $this->url_builder->reverse_google_url();
   }
 
   /**
@@ -77,7 +77,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
 
     // attempting to call google's service
     try {
-      $this->curl_caller->setUrl( $this->url_builder->google_url() );
+      $this->curl_caller->setUrl( $this->url_builder->reverse_google_url() );
       $geocoding_results = $this->curl_caller->execute();
       // informing that the service failed is down
     } catch ( Exception $e ) {

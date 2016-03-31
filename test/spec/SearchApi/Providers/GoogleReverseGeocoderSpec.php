@@ -40,7 +40,7 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
     // setting up predictions
     // url_builder predictions
     $url_builder->set_coords( Argument::type( 'SearchApi\Models\GeoCoordinate' ) )->shouldBeCalled();
-    $url_builder->google_url()->shouldBeCalled()->willReturn( 'https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452' );
+    $url_builder->reverse_google_url()->shouldBeCalled()->willReturn( 'https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452' );
     // curl call predictions
     $http_get_command->setUrl( Argument::type( 'string' ) )->shouldBeCalled();
     $http_get_command->execute()->shouldBeCalled()->willReturn( $this->geo_response );
