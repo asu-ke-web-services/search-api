@@ -54,9 +54,9 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
     $result = $this->get_locations( $geo_coordinate );
   }
 
-  function it_should_return_a_url_for_google() {
+  function it_should_return_a_url_for_reverse_google() {
     $geo_coordinate = new Models\GeoCoordinate( 40.714224, -73.961452 );
-    $this->get_url( $geo_coordinate )
+    $this->get_reverse_url( $geo_coordinate )
     ->shouldBe( 'https://maps.googleapis.com/maps/api/geocode/json?'.
     "latlng={$geo_coordinate->lat},{$geo_coordinate->lng}" );
   }

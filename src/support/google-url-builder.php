@@ -28,7 +28,7 @@ class GoogleURLBuilder {
     $this->geo_coordinate = $coordinate;
   }
   
-  public function set_address( String $address ) {
+  public function set_address( $address ) {
   	$this->geo_address = urlencode( $address );
   }
 
