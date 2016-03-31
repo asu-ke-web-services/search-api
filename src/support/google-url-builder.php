@@ -27,9 +27,9 @@ class GoogleURLBuilder {
   public function set_coords( Models\GeoCoordinate $coordinate ) {
     $this->geo_coordinate = $coordinate;
   }
-  
+
   public function set_address( $address ) {
-  	$this->geo_address = urlencode( $address );
+    $this->geo_address = urlencode( $address );
   }
 
   /**
@@ -51,14 +51,14 @@ class GoogleURLBuilder {
    * Function for generating google's url for the "forward" geo coder
    */
   public function forward_google_url() {
-  	$service_url = 'https://maps.googleapis.com/maps/api/geocode/json?'.
-  			"address={$this->geo_address}";
-  
-  	// checking if api key is given, if so adding it to url
-  	if ( $this->google_key !== null ) {
-  		$service_url = $service_url."&key={$this->google_key}";
-  	}
-  
-  	return $service_url;
+    $service_url = 'https://maps.googleapis.com/maps/api/geocode/json?'.
+    "address={$this->geo_address}";
+
+    // checking if api key is given, if so adding it to url
+    if ( $this->google_key !== null ) {
+      $service_url = $service_url."&key={$this->google_key}";
+    }
+
+    return $service_url;
   }
 }
