@@ -119,7 +119,8 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     $decoded_json = $this->get_data( $this->url_builder->forward_google_url() );
 
     // calling parser
-    // returns array of search terms
-    return $this->geo_parser->google_reverse_geocoder_parser( $decoded_json );
+    // returns array of coordinates
+    $this->geo_parser = new Support\GoogleForwardGeocoderParser();
+    return $this->geo_parser->google_forward_geocoder_parser( $decoded_json );
   }
 }
