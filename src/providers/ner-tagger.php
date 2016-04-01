@@ -8,7 +8,7 @@ use Nectary\Configuration as Configuration;
 
 /**
  * NerTagger - This is a tagger implementation that uses the Named Entity Recognizer and returns an array of keywords.
-
+ *
  * @seeAlso: http://nlp.stanford.edu/software/CRF-NER.shtml
  */
 class NerTagger implements Tagger {
@@ -47,6 +47,8 @@ class NerTagger implements Tagger {
       error_log( $errors );
     }
 
+    $keywords = $this->condense_keywords( $keywords );
+
     return $keywords;
   }
 
@@ -76,9 +78,44 @@ class NerTagger implements Tagger {
     // convert each term into a keyword object
     // TO-DO: implement relevance
     foreach ( $tagger_results as $result ) {
-      array_push( $keywords, new Keyword( $result[0], $result[1], 0.5 ) );
+      array_push( $keywords, new Keyword( $result[0], $result[1], 0.5, 1 ) );
     }
 
     return $keywords;
+  }
+
+  // Group the keywords which contain the same text
+  public function condense_keywords( $keywords ) {
+    // Return null if there are no results
+    if ( empty( $keywords ) ) {
+      return null;
+    }
+
+    // sort keywords alphabetically
+    usort( $keywords, array( $this, 'compare_text' ) );
+
+    // group keywords if they are the same
+    $num_keywords = count( $keywords );
+    for ( $i = 0; $i < $num_keywords -1 ; $i++ ) {
+      if ( strcmp( $keywords[ $i ]->text, $keywords[ $i + 1 ]->text ) === 0 ) {
+        $keywords[ $i ]->occurences++;
+        unset( $keywords[ $i + 1 ] );
+        $keywords = array_values( $keywords );
+        $i--;
+        $num_keywords--;
+      }
+    }
+
+    // sort keywords by occurences most to least
+    usort( $keywords, array( $this, 'compare_occurences' ) );
+    return $keywords;
+  }
+
+  public function compare_text( $keyword1, $keyword2 ) {
+    return strcmp( $keyword1->text, $keyword2->text );
+  }
+
+  public function compare_occurences( $keyword1, $keyword2 ) {
+    return $keyword2->occurences - $keyword1->occurences;
   }
 }

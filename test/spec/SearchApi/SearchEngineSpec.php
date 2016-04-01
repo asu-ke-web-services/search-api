@@ -27,7 +27,7 @@ class SearchEngineSpec extends ObjectBehavior {
   function it_should_use_tagger_if_document_provided( Search $search, Tagger $tagger, ReverseGeocoder $geocoder ) {
     $this->beConstructedWith( $search, $tagger, $geocoder );
 
-    $tagger->tagger_service( 'phoenix' )->shouldBeCalled()->willReturn( array( new Models\Keyword( 'phoenix', 'LOCATION', null ) ) );
+    $tagger->tagger_service( 'phoenix' )->shouldBeCalled()->willReturn( array( new Models\Keyword( 'phoenix', 'LOCATION', null,1 ) ) );
 
     $foo_request = new Models\SearchRequest();
     $foo_request->document = 'phoenix';
