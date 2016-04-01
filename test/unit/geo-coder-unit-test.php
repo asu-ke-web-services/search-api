@@ -26,8 +26,8 @@ class Geo_Coder_Unit_Test extends \PHPUnit_Framework_TestCase {
   public function test_that_the_class_GoogleReverseGeocoderParser_is_defined() {
     $this->assertTrue( class_exists( 'SearchApi\Support\GoogleReverseGeocoderParser' ) );
   }
-  
+
   public function test_that_the_class_GoogleForwardGeocoderParser_is_defined() {
-  	$this->assertTrue( class_exists( 'SearchApi\Support\GoogleForwardGeocoderParser' ) );
+    $this->assertTrue( class_exists( 'SearchApi\Support\GoogleForwardGeocoderParser' ) );
   }
 }

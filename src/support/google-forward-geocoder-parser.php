@@ -5,7 +5,7 @@ namespace SearchApi\Support;
 
 use SearchApi\Models as Models;
 
-/**	
+/**
  * Class Geo_Json_Parser - Parses the returned result from a forward Geocoder
  */
 class GoogleForwardGeocoderParser {
@@ -35,24 +35,24 @@ class GoogleForwardGeocoderParser {
           $result = $result['geometry'];
           // checking if location exists (the coordinates)
           if ( array_key_exists( 'location', $result ) ) {
-          	$result = $result['location'];
+            $result = $result['location'];
             // making sure that coordinates exist
-          	if ( array_key_exists( 'lat', $result ) && array_key_exists( 'lng', $result ) ) {
+            if ( array_key_exists( 'lat', $result ) && array_key_exists( 'lng', $result ) ) {
               // checking if the coordinates already exist in the array
               $element_exists = false;
-              if ( array_key_exists( (string)$result['lat'], $geo_coordinates ) ) {
+              if ( array_key_exists( (string) $result['lat'], $geo_coordinates ) ) {
                 $element_exists = true;
               }
 
               // checking if element was not found
               if ( ! $element_exists ) {
                 // createing new geocoordinate
-                $new_item = new Models\GeoCoordinate( $result['lat'], $result['lng']);
+                $new_item = new Models\GeoCoordinate( $result['lat'], $result['lng'] );
 
                 // adding the coordinates to the array
                 $geo_coordinates[ $new_item->lat ] = $new_item;
               } // checking that an element was not found
-          	}
+            }
           } // loopin through location
         } // the check to make sure there is an "geometry" section in the array
       } // results array foreach loop

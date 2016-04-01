@@ -30,7 +30,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     Commands\HttpGet $curl_caller = null,
     Support\JsonDecoder $geo_json_decoder = null,
     Support\GoogleReverseGeocoderParser $geo_parser = null,
-  	Support\GoogleForwardGeocoderParser $geo_parser2 = null ) {
+    Support\GoogleForwardGeocoderParser $geo_parser2 = null ) {
     // building the url initalization
     if ( $url_builder ) {
       $this->url_builder = $url_builder;
@@ -56,7 +56,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     if ( $geo_parser ) {
       $this->geo_parser = $geo_parser;
     } else if ( $geo_parser2 ) {
-    	$this->geo_parser = $geo_parser2;
+      $this->geo_parser = $geo_parser2;
     } else {
       $this->geo_parser = null;
     }
@@ -107,8 +107,8 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
 
     // calling parser
     // returns array of search terms
-    if( $this->geo_parser === null ) {
-    	$this->geo_parser = new Support\GoogleReverseGeocoderParser();
+    if ( $this->geo_parser === null ) {
+      $this->geo_parser = new Support\GoogleReverseGeocoderParser();
     }
     return $this->geo_parser->google_reverse_geocoder_parser( $decoded_json );
   }
@@ -126,7 +126,7 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
 
     // calling parser
     // returns array of coordinates
-    if( $this->geo_parser === null ) {
+    if ( $this->geo_parser === null ) {
       $this->geo_parser = new Support\GoogleForwardGeocoderParser();
     }
     return $this->geo_parser->google_forward_geocoder_parser( $decoded_json );

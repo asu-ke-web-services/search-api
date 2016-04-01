@@ -72,36 +72,36 @@ class GoogleReverseGeocoderSpec extends ObjectBehavior {
 
   // forward geo coding tests
   function it_should_return_a_result_for_a_address( Support\GoogleURLBuilder $url_builder,
-  		Commands\HttpGet $http_get_command,
-  		Support\JsonDecoder $geo_json_decoder,
-  		Support\GoogleForwardGeocoderParser $geo_parser ) {
-  
-  			// setting up the class variables
-  			$address = 'Arizona';
-  			$this->beConstructedWith( $url_builder, $http_get_command, $geo_json_decoder, null, $geo_parser );
-  
-  			// setting up predictions
-  			// url_builder predictions
-  			$url_builder->set_address( Argument::type( 'string' ) )->shouldBeCalled();
-  			$url_builder->forward_google_url()->shouldBeCalled()->willReturn( 'https://maps.googleapis.com/maps/api/geocode/json?address=Arizona' );
-  			// curl call predictions
-  			$http_get_command->setUrl( Argument::type( 'string' ) )->shouldBeCalled();
-  			$http_get_command->execute()->shouldBeCalled()->willReturn( $this->geo_coord_response );
-  			// decoder predictions
-  			$geo_json_decoder->reverse_geocoder_json_decoder( Argument::type( 'string' ) )->shouldBeCalled()
-  			->willReturn( json_decode( $this->geo_coord_response, true ) );
-  			// parser predictions
-  			$geo_parser->google_forward_geocoder_parser( Argument::type( 'Array' ) )->shouldBeCalled();
-  
-  			// calling the function
-  			$result = $this->get_coordinates( $address );
+    Commands\HttpGet $http_get_command,
+    Support\JsonDecoder $geo_json_decoder,
+    Support\GoogleForwardGeocoderParser $geo_parser ) {
+
+    // setting up the class variables
+    $address = 'Arizona';
+    $this->beConstructedWith( $url_builder, $http_get_command, $geo_json_decoder, null, $geo_parser );
+
+    // setting up predictions
+    // url_builder predictions
+    $url_builder->set_address( Argument::type( 'string' ) )->shouldBeCalled();
+    $url_builder->forward_google_url()->shouldBeCalled()->willReturn( 'https://maps.googleapis.com/maps/api/geocode/json?address=Arizona' );
+    // curl call predictions
+    $http_get_command->setUrl( Argument::type( 'string' ) )->shouldBeCalled();
+    $http_get_command->execute()->shouldBeCalled()->willReturn( $this->geo_coord_response );
+    // decoder predictions
+    $geo_json_decoder->reverse_geocoder_json_decoder( Argument::type( 'string' ) )->shouldBeCalled()
+    ->willReturn( json_decode( $this->geo_coord_response, true ) );
+    // parser predictions
+    $geo_parser->google_forward_geocoder_parser( Argument::type( 'Array' ) )->shouldBeCalled();
+
+    // calling the function
+    $result = $this->get_coordinates( $address );
   }
 
   function it_should_return_a_url_for_forward_google() {
-  	$address = 'Arizona';
-  	$this->get_forward_url( $address )
-  	->shouldBe( 'https://maps.googleapis.com/maps/api/geocode/json?'.
-  			"address={$address}" );
+    $address = 'Arizona';
+    $this->get_forward_url( $address )
+    ->shouldBe( 'https://maps.googleapis.com/maps/api/geocode/json?'.
+    "address={$address}" );
   }
   // end of the forward geo coding tests
 }

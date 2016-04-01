@@ -12,7 +12,7 @@ use Prophecy\Argument;
  * GoogleForwardGeocoderParserSpec - Spec test for the GoogleReverseGeocoderParser (higher level functions)
  */
 class GoogleForwardGeocoderParserSpec extends ObjectBehavior {
-	private $geo_coord_response = '{"results": [{"formatted_address": "Arizona, USA",
+  private $geo_coord_response = '{"results": [{"formatted_address": "Arizona, USA",
       "geometry": {"bounds": {"northeast": {"lat": 37.0042599,"lng": -109.0452231
       },"southwest": {"lat": 31.3321771,"lng": -114.8165909}},"location": {
       "lat": 34.0489281,"lng": -111.0937311},"location_type": "APPROXIMATE",
