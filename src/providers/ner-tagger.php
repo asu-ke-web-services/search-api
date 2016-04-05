@@ -4,6 +4,7 @@ namespace SearchApi\Providers;
 use SearchApi\Models\Keyword;
 use SearchApi\Services\Tagger;
 use StanfordNLP\NERTagger as StanfordNERTagger;
+use StanfordNLP\POSTagger as StanfordPOSTagger;
 use Nectary\Configuration as Configuration;
 
 /**
@@ -12,22 +13,30 @@ use Nectary\Configuration as Configuration;
  * @seeAlso: http://nlp.stanford.edu/software/CRF-NER.shtml
  */
 class NerTagger implements Tagger {
-  private $tagger;
+  private $nerTagger;
+  private $posTagger;
 
   public function __construct() {
-    // Get path to Stanford NER from config.
+    // Get path to Stanford NER & POS taggers from config.
     Configuration::set_configuration_path( 'config.conf' );
     $stanford_ner_path = realpath( rtrim(
         Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
     ) );
+    $stanford_pos_path = realpath( rtrim(
+        Configuration::get_instance()->get( 'StanfordPosPath', 'lib/stanford-ner/' )
+    ) );
 
-    // Instantiate the tagger object
-    $this->tagger = new \StanfordNLP\NERTagger(
+    // Instantiate the tagger objects
+    $this->nerTagger = new \StanfordNLP\NERTagger(
         $stanford_ner_path . '/classifiers/english.all.3class.distsim.crf.ser.gz',
         $stanford_ner_path . '/stanford-ner.jar'
     );
+    $this->posTagger = new \StanfordNLP\POSTagger(
+        $stanford_pos_path . '/classifiers/english-left3words-distsim.tagger',
+        $stanford_pos_path . '/stanford-pos.jar'
+    );
 
-    $errors = $this->tagger->getErrors();
+    $errors = $this->nerTagger->getErrors() + ' ' + $this->posTagger->getErrors();
     // getErrors() shows more than just errors, so only display if 'exception' is found in text
     if ( strpos( $errors, 'Exception' ) || strpos( $errors, 'exception' ) ) {
       error_log( $errors );
@@ -41,7 +50,7 @@ class NerTagger implements Tagger {
     // Convert results into keywords
     $keywords = $this->results_to_keywords( $tagger_results );
 
-    $errors = $this->tagger->getErrors();
+    $errors = $this->nerTagger->getErrors() + ' ' + $this->posTagger->getErrors();
     // getErrors() shows more than just errors, so only display if 'exception' is found in text
     if ( strpos( $errors, 'Exception' ) || strpos( $errors, 'exception' ) ) {
       error_log( $errors );
@@ -57,10 +66,10 @@ class NerTagger implements Tagger {
     }
 
     // Tokenize the request and push it through the tagger
-    // TO-DO: find new ways to tokenize the search string
-    $tagger_results = $this->tagger->tag( explode( ' ', $request_string ) );
+    $ner_tagger_results = $this->nerTagger->tag( explode( ' ', $request_string ) );
+    $pos_tagger_results = $this->posTagger->tag( explode( ' ', $request_string ) );
 
-    return $tagger_results;
+    return $ner_tagger_results;
   }
 
   // Interpret the tagger results into Keyword objects
