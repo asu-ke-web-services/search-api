@@ -13,27 +13,23 @@ use Prophecy\Argument;
  */
 class GoogleReverseGeocoderParserSpec extends ObjectBehavior {
   function it_is_initializable() {
-    $this->beConstructedWith( 'Results String' );
     $this->shouldHaveType( 'SearchApi\Support\GoogleReverseGeocoderParser' );
   }
 
   // Reverse_Geocoder_Google_Parser tests
   function it_should_return_an_empty_array_when_passed_null() {
-    $this->beConstructedWith( null );
-    $result = $this->google_reverse_geocoder_parser();
+    $result = $this->google_reverse_geocoder_parser( null );
     $result->shouldBeArray();
     $result->shouldHaveCount( 0 );
   }
 
   function it_should_return_an_empty_array_when_passed_empty_array() {
-    $this->beConstructedWith( null );
     $result = $this->google_reverse_geocoder_parser( array() );
     $result->shouldBeArray();
     $result->shouldHaveCount( 0 );
   }
 
   function it_should_return_an_empty_array_when_passed_bad_formatted_array() {
-    $this->beConstructedWith( null );
     $result = $this->google_reverse_geocoder_parser( array( 'a', 'b', 'f' ) );
     $result->shouldBeArray();
     $result->shouldHaveCount( 0 );
@@ -86,8 +82,7 @@ class GoogleReverseGeocoderParserSpec extends ObjectBehavior {
     $google_test_string = json_decode( $google_test_string, true );
 
     // checking it is array and has 2 elements
-    $this->beConstructedWith( $google_test_string );
-    $result = $this->google_reverse_geocoder_parser();
+    $result = $this->google_reverse_geocoder_parser( $google_test_string );
     $result->shouldBeArray();
     $result->shouldHaveCount( 2 );
 

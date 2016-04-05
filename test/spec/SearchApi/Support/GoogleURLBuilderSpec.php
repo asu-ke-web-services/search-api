@@ -21,14 +21,17 @@ class GoogleURLBuilderSpec extends ObjectBehavior {
   }
 
   function it_is_initializable() {
-    $this->beConstructedWith( $this->good_coords );
+    $this->beConstructedWith();
     $this->shouldHaveType( 'SearchApi\Support\GoogleURLBuilder' );
   }
 
   // specific builder tests
   function it_should_return_a_string_from_the_google_builder() {
-    $this-> beConstructedWith( $this->good_coords );
-    $this->google_url()->shouldBeString();
+    $this-> beConstructedWith();
+    $this->set_coords( $this->good_coords );
+    $result = $this->google_url();
+    $result->shouldBeString();
+    $result->shouldBe( 'https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452' );
   }
   // end of builder tests
 }

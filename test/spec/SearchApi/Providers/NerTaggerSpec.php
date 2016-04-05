@@ -2,6 +2,7 @@
 
 namespace spec\SearchApi\Providers;
 
+use SearchApi\Models\Keyword;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -39,20 +40,6 @@ class NerTaggerSpec extends ObjectBehavior {
     }
   }
 
-  // The results should have the same count as the number of request terms
-  function its_length_should_match_term_count() {
-    $test_request = '';
-
-    // Keep adding terms and verify that the results match the request's term count
-    for ( $count = 1; $count <= 3; $count++ ) {
-      $test_request .= 'term ';
-      $test_result = $this->tagger_service( $test_request );
-
-      $test_result->shouldBeArray();
-      $test_result->shouldHaveCount( $count );
-    }
-  }
-
   // The tagger results should be converted to keywords
   function it_should_return_array_keywords() {
     // Test a single function call instead of several
@@ -63,11 +50,58 @@ class NerTaggerSpec extends ObjectBehavior {
     $test_result[0]->text->shouldBeString();
     $test_result[0]->type->shouldBeString();
     $test_result[0]->relevance->shouldBeDouble();
+    $test_result[0]->occurences->shouldBeInt();
 
     // 'text' data should match request string words
     $test_result->shouldHaveCount( 3 );
     $test_result[0]->text->shouldReturn( 'sample' );
     $test_result[1]->text->shouldReturn( 'request' );
     $test_result[2]->text->shouldReturn( 'phrase' );
+  }
+
+  function it_should_return_keywords_match() {
+    $keyword1 = new Keyword( 'Arizona', 'place', 1.0, 1 );
+
+    $result = $this->compare_text( $keyword1, $keyword1 );
+
+    $result->shouldBeInt();
+    $result->shouldEqual( 0 );
+  }
+
+  function it_should_return_keywords_not_match() {
+    $keyword1 = new Keyword( 'Arizona', 'place', 1.0, 1 );
+    $keyword2 = new Keyword( 'Texas', 'place', 1.0, 1 );
+
+    $result = $this->compare_text( $keyword1, $keyword2 );
+
+    $result->shouldBeInt();
+    $result->shouldNotEqual( 0 );
+  }
+
+  function it_should_condense_keywords_to_one() {
+    $keywords = array();
+    array_push( $keywords, new Keyword( 'Arizona', 'place', 1.0, 1 ) );
+    array_push( $keywords, new Keyword( 'Texas', 'place', 1.0, 1 ) );
+    array_push( $keywords, new Keyword( 'Arizona', 'place', 1.0, 1 ) );
+    array_push( $keywords, new Keyword( 'Texas', 'place', 1.0, 1 ) );
+    array_push( $keywords, new Keyword( 'Arizona', 'place', 1.0, 1 ) );
+
+    $result = $this->condense_keywords( $keywords );
+    $result->shouldBeArray();
+    $result->shouldHaveCount( 2 );
+    $result[0]->text->shouldBeString( 'Arizona' );
+    $result[0]->occurences->shouldEqual( 3 );
+    $result[1]->occurences->shouldEqual( 2 );
+  }
+
+  function it_should_not_condense_unique_keywords() {
+    $keywords = array();
+    array_push( $keywords, new Keyword( 'Arizona', 'place', 1.0, 1 ) );
+    array_push( $keywords, new Keyword( 'Texas', 'place', 1.0, 1 ) );
+    array_push( $keywords, new Keyword( 'California', 'place', 1.0, 1 ) );
+
+    $result = $this->condense_keywords( $keywords );
+    $result->shouldBeArray();
+    $result->shouldHaveCount( 3 );
   }
 }
