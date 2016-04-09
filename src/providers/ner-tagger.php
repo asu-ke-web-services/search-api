@@ -64,7 +64,7 @@ class NerTagger implements Tagger {
     // Output of tagger -> tag is a nested array. Output is split by sentences, so let's
     // flatten the array because we only care about the tagged words, not the sentences.
     $flattened_results = array();
-    foreach ( $tagger_results as $result ) {
+    foreach ( $tagger_results as &$result ) {
       $flattened_results = array_merge( $flattened_results, $result );
     }
 
@@ -82,7 +82,7 @@ class NerTagger implements Tagger {
     $keywords = array();
 
     // convert each term into a keyword object
-    foreach ( $tagger_results as $result ) {
+    foreach ( $tagger_results as &$result ) {
       array_push( $keywords, new Keyword( $result[0], $result[1], 0.5, 1 ) );
     }
 
