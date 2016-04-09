@@ -19,7 +19,7 @@ class NerTagger implements Tagger {
    */
   function __construct( $stanford_ner_path = null ) {
     if ( ! $stanford_ner_path ) {
-      $path = 'lib/stanford-ner-2015-04-20';
+      $path = realpath( 'lib/stanford-ner-2015-04-20' );
     } else {
       $path = realpath( rtrim( $stanford_ner_path ) );
     }

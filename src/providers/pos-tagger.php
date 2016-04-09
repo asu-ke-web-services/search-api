@@ -20,7 +20,7 @@ class PosTagger implements Tagger {
    */
   function __construct( $stanford_pos_tagger_path = null ) {
     if ( ! $stanford_pos_tagger_path ) {
-      $path = 'lib/stanford-postagger-2015-04-20';
+      $path = realpath( 'lib/stanford-postagger-2015-04-20' );
     } else {
       $path = realpath( rtrim( $stanford_pos_tagger_path ) );
     }
