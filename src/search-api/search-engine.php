@@ -75,7 +75,7 @@ class SearchEngine {
 
       $response->results = $this->search->query( $search_terms );
       $response->count = count( $response->results );
-    } catch (\Exception $e){
+    } catch ( \Exception $e ) {
       $response->error_message = $e->getMessage();
     }
     return $response;
