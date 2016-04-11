@@ -13,23 +13,32 @@ use Nectary\Configuration as Configuration;
  * returns search results.
  */
 class SearchEngine {
-  private $search; // Search Implemenation to use
-  private $tagger; // Tagger Implemenation to use
-  private $geocoder; // GeoCdoder Implementation to use
+  private $search;
+  private $ner_tagger;
+  private $geocoder;
+  private $pos_tagger;
 
-  public function __construct( Search $search = null, Tagger $tagger = null, GeoCoder $geocoder = null ) {
+  public function __construct( Search $search = null, Tagger $ner_tagger = null, GeoCoder $geocoder = null, Tagger $pos_tagger = null ) {
     Configuration::set_configuration_path( 'config.conf' );
     if ( $search ) {
       $this->search = $search;
     } else {
-      $api_path = trim( Configuration::get_instance()->get( 'SolrApiUrl' ), '\r\n' );
+      $api_path = preg_replace( '~[\r\n]+~', '', Configuration::get_instance()->get( 'SolrApiUrl' ) );
       $this->search = new Providers\SolrSearch( null, null, $api_path );
     }
 
-    if ( $tagger ) {
-      $this->tagger = $tagger;
+    if ( $ner_tagger ) {
+      $this->ner_tagger = $ner_tagger;
     } else {
-      $this->tagger = new Providers\NerTagger();
+      $ner_tagger_path = preg_replace( '~[\r\n]+~', '', Configuration::get_instance()->get( 'StanfordNerPath' ) );
+      $this->ner_tagger = new Providers\NerTagger( $ner_tagger_path );
+    }
+
+    if ( $pos_tagger ) {
+      $this->pos_tagger = $pos_tagger;
+    } else {
+      $pos_tagger_path = preg_replace( '~[\r\n]+~', '', Configuration::get_instance()->get( 'StanfordPosTaggerPath' ) );
+      $this->pos_tagger = new Providers\PosTagger( $pos_tagger_path );
     }
 
     if ( $geocoder ) {
@@ -56,9 +65,14 @@ class SearchEngine {
 
     // get terms from the document string and turn into searchTerm
     if ( $request->document ) {
-      $tagged_words = $this->tagger->tagger_service( $request->document );
+      $tagged_words = $this->ner_tagger->tagger_service( $request->document );
       foreach ( $tagged_words as &$keyword ) {
-        array_push( $search_terms, new Models\SearchTerm( $keyword->text, $keyword->type, $keyword->relevance, false ) );
+        $search_terms[] = new Models\SearchTerm( $keyword->text, $keyword->type, $keyword->relevance, false );
+      }
+
+      $tagged_words = $this->pos_tagger->tagger_service( $request->document );
+      foreach ( $tagged_words as &$keyword ) {
+        $search_terms[] = new Models\SearchTerm( $keyword->text, $keyword->type, $keyword->relevance, false );
       }
     }
 

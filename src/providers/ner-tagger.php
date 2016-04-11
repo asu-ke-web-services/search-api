@@ -12,19 +12,20 @@ use Nectary\Configuration as Configuration;
  * @seeAlso: http://nlp.stanford.edu/software/CRF-NER.shtml
  */
 class NerTagger implements Tagger {
-  private $tagger;
-
-  public function __construct() {
-    // Get path to Stanford NER from config.
-    Configuration::set_configuration_path( 'config.conf' );
-    $stanford_ner_path = realpath( rtrim(
-        Configuration::get_instance()->get( 'StanfordNerPath', 'lib/stanford-ner/' )
-    ) );
-
-    // Instantiate the tagger object
+  /**
+   * Constructor with required param
+   *
+   * @param string $stanfordPosTaggerPath Root path of Stanford POS tagger library
+   */
+  function __construct( $stanford_ner_path = null ) {
+    if ( ! $stanford_ner_path ) {
+      $path = realpath( 'lib/stanford-ner-2015-04-20' );
+    } else {
+      $path = realpath( rtrim( $stanford_ner_path ) );
+    }
     $this->tagger = new \StanfordNLP\NERTagger(
-        $stanford_ner_path . '/classifiers/english.all.3class.distsim.crf.ser.gz',
-        $stanford_ner_path . '/stanford-ner.jar'
+        $path . '/classifiers/english.all.3class.distsim.crf.ser.gz',
+        $path . '/stanford-ner.jar'
     );
 
     $errors = $this->tagger->getErrors();
@@ -48,7 +49,6 @@ class NerTagger implements Tagger {
     }
 
     $keywords = $this->condense_keywords( $keywords );
-
     return $keywords;
   }
 
@@ -59,10 +59,16 @@ class NerTagger implements Tagger {
     }
 
     // Tokenize the request and push it through the tagger
-    // TO-DO: find new ways to tokenize the search string
     $tagger_results = $this->tagger->tag( explode( ' ', $request_string ) );
 
-    return $tagger_results;
+    // Output of tagger -> tag is a nested array. Output is split by sentences, so let's
+    // flatten the array because we only care about the tagged words, not the sentences.
+    $flattened_results = array();
+    foreach ( $tagger_results as &$result ) {
+      $flattened_results = array_merge( $flattened_results, $result );
+    }
+
+    return $flattened_results;
   }
 
   // Interpret the tagger results into Keyword objects
@@ -76,8 +82,7 @@ class NerTagger implements Tagger {
     $keywords = array();
 
     // convert each term into a keyword object
-    // TO-DO: implement relevance
-    foreach ( $tagger_results as $result ) {
+    foreach ( $tagger_results as &$result ) {
       array_push( $keywords, new Keyword( $result[0], $result[1], 0.5, 1 ) );
     }
 
