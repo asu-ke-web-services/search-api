@@ -29,8 +29,8 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
   function __construct( Support\GoogleURLBuilder $url_builder = null,
     Commands\HttpGet $curl_caller = null,
     Support\JsonDecoder $geo_json_decoder = null,
-    Support\GoogleReverseGeocoderParser $geo_parser = null,
-    Support\GoogleForwardGeocoderParser $geo_parser2 = null ) {
+    Support\GoogleReverseGeocoderParser $reverse_geo_parser = null,
+    Support\GoogleForwardGeocoderParser $forward_geo_parser = null ) {
     // building the url initalization
     if ( $url_builder ) {
       $this->url_builder = $url_builder;
@@ -54,9 +54,9 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
 
     // parser initalization
     if ( $geo_parser ) {
-      $this->geo_parser = $geo_parser;
+      $this->geo_parser = $reverse_geo_parser;
     } else if ( $geo_parser2 ) {
-      $this->geo_parser = $geo_parser2;
+      $this->geo_parser = $forward_geo_parser;
     } else {
       $this->geo_parser = null;
     }
