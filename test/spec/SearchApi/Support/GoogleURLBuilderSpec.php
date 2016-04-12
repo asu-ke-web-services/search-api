@@ -26,10 +26,10 @@ class GoogleURLBuilderSpec extends ObjectBehavior {
   }
 
   // specific builder tests
-  function it_should_return_a_string_from_the_google_builder() {
+  function it_should_return_a_string_from_the_reverse_google_url() {
     $this-> beConstructedWith();
     $this->set_coords( $this->good_coords );
-    $result = $this->google_url();
+    $result = $this->reverse_google_url();
     $result->shouldBeString();
     $result->shouldBe( 'https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452' );
   }
