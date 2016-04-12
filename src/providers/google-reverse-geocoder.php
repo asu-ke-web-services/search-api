@@ -29,7 +29,8 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
   function __construct( Support\GoogleURLBuilder $url_builder = null,
     Commands\HttpGet $curl_caller = null,
     Support\JsonDecoder $geo_json_decoder = null,
-    Support\GoogleReverseGeocoderParser $geo_parser = null ) {
+    Support\GoogleReverseGeocoderParser $reverse_geo_parser = null,
+    Support\GoogleForwardGeocoderParser $forward_geo_parser = null ) {
     // building the url initalization
     if ( $url_builder ) {
       $this->url_builder = $url_builder;
@@ -52,32 +53,37 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     }
 
     // parser initalization
-    if ( $geo_parser ) {
-      $this->geo_parser = $geo_parser;
+    if ( $reverse_geo_parser ) {
+      $this->geo_parser = $reverse_geo_parser;
+    } else if ( $forward_geo_parser ) {
+      $this->geo_parser = $forward_geo_parser;
     } else {
-      $this->geo_parser = new Support\GoogleReverseGeocoderParser();
+      $this->geo_parser = null;
     }
   }
 
-  public function get_url( Models\GeoCoordinate $coords ) {
+  public function get_reverse_url( Models\GeoCoordinate $coords ) {
     // building the url and returning
     $this->url_builder->set_coords( $coords );
-    return $this->url_builder->google_url();
+    return $this->url_builder->reverse_google_url();
+  }
+
+  public function get_forward_url( $address ) {
+    // building the url and returning
+    $this->url_builder->set_address( $address );
+    return $this->url_builder->forward_google_url();
   }
 
   /**
-   * Function to gather the location data for the coordinates given
+   * Function to make the call for the geo coding
    *
-   * @param Models\GeoCoordinate $geo_coordinate
+   * @param String url
    * @throws Exception - error in curl call
    */
-  public function get_locations( Models\GeoCoordinate $coords ) {
-    // setting url coords
-    $this->url_builder->set_coords( $coords );
-
+  public function get_data( $url ) {
     // attempting to call google's service
     try {
-      $this->curl_caller->setUrl( $this->url_builder->google_url() );
+      $this->curl_caller->setUrl( $url );
       $geocoding_results = $this->curl_caller->execute();
       // informing that the service failed is down
     } catch ( Exception $e ) {
@@ -85,9 +91,44 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     }
 
     // calling json decoder
-    $decoded_json = $this->geo_json_decoder->reverse_geocoder_json_decoder( $geocoding_results );
+    return $this->geo_json_decoder->reverse_geocoder_json_decoder( $geocoding_results );
+  }
+
+  /**
+   * Function to gather the location data for the coordinates given
+   *
+   * @param Models\GeoCoordinate $geo_coordinate
+   */
+  public function get_locations( Models\GeoCoordinate $coords ) {
+    // setting url coords
+    $this->url_builder->set_coords( $coords );
+
+    $decoded_json = $this->get_data( $this->url_builder->reverse_google_url() );
+
     // calling parser
     // returns array of search terms
+    if ( $this->geo_parser === null ) {
+      $this->geo_parser = new Support\GoogleReverseGeocoderParser();
+    }
     return $this->geo_parser->google_reverse_geocoder_parser( $decoded_json );
+  }
+
+  /**
+   * Function to gather the lat and long data for the address given
+   *
+   * @param address $address
+   */
+  public function get_coordinates( $address ) {
+    // setting url coords
+    $this->url_builder->set_address( $address );
+
+    $decoded_json = $this->get_data( $this->url_builder->forward_google_url() );
+
+    // calling parser
+    // returns array of coordinates
+    if ( $this->geo_parser === null ) {
+      $this->geo_parser = new Support\GoogleForwardGeocoderParser();
+    }
+    return $this->geo_parser->google_forward_geocoder_parser( $decoded_json );
   }
 }
