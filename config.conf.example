@@ -1,3 +1,4 @@
 SolrApiUrl=http://127.0.0.1:8983/solr/gios/select
 StanfordNerPath=./lib/stanford-ner-2015-04-20/
 TestSolrApiUrl=http://127.0.0.1:8983/solr/gios-dev/select
+StanfordPosTaggerPath=./lib/stanford-postagger-2015-04-20/

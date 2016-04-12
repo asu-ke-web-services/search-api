@@ -23,7 +23,7 @@ class NerTaggerSpec extends ObjectBehavior {
   }
 
   // The tagger service should return a nested array object
-  function it_should_return_nested_array() {
+  function it_should_return_array_of_keywords() {
     // Test a single function call instead of several
     $test_result = $this->tagger_service( 'sample request phrase' );
 
@@ -33,10 +33,7 @@ class NerTaggerSpec extends ObjectBehavior {
 
     // Each item in the resulting array should have a specific structure
     foreach ( $test_result as $result ) {
-      $result->shouldBeArray();
-      $result->shouldHaveCount( 2 );
-      $result[0]->shouldBeString();
-      $result[1]->shouldBeString();
+      $result->shouldHaveType( Keyword );
     }
   }
 
