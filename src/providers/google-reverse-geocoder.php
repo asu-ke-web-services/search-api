@@ -53,9 +53,9 @@ class GoogleReverseGeocoder implements ReverseGeocoder {
     }
 
     // parser initalization
-    if ( $geo_parser ) {
+    if ( $reverse_geo_parser ) {
       $this->geo_parser = $reverse_geo_parser;
-    } else if ( $geo_parser2 ) {
+    } else if ( $forward_geo_parser ) {
       $this->geo_parser = $forward_geo_parser;
     } else {
       $this->geo_parser = null;
