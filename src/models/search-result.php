@@ -13,4 +13,5 @@ class SearchResult {
   public $results;
   public $count = 0;
   public $original_request;
+  public $error_message = null;
 }
